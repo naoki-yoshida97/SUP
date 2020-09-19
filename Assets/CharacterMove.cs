@@ -146,7 +146,7 @@ public class CharacterMove : MonoBehaviour
             Debug.Log($"今{nowPos_num}");
             Debug.Log($"サイコロ {moveTime}");
             Debug.Log($"位置{myPosition.position}"); 
-        
+            //push確認
         }
     }
 }
