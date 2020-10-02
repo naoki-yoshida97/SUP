@@ -30,7 +30,6 @@ public class result : MonoBehaviour
         int gg = 0;
         int addm = script.income;
         int offm = yakuin.outcome;
-
         gg = addm - offm;
 
         goukei.text = gg.ToString()+"万円";
