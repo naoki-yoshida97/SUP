@@ -7,7 +7,7 @@ public class result : MonoBehaviour
 {   
     public Text goukei;
     GameObject sc;
-    GameObject of ;
+    GameObject of;
 
     SelectCompany script;
     Officer2 yakuin;
