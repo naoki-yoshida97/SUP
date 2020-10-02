@@ -34,6 +34,5 @@ public class result : MonoBehaviour
 
         goukei.text = gg.ToString()+"万円";
 
-
     }
 }
