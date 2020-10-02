@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Toyodome_Script : MonoBehaviour {
     int pos_x = -200; //-320
-    int pos_y = 80; //150
+    int pos_y = 85; //150
     int num;
     List<string> corp_name = new List<string> ();
     [SerializeField] private Dropdown dropdown; //Dropdownを格納する変数
@@ -40,12 +40,12 @@ public class Toyodome_Script : MonoBehaviour {
     //ボタンが押された場合、今回呼び出される関数
     public void OnClickAdd () {
         num++;
-        Debug.Log ("Add"); //ログを出力
+        // Debug.Log ("Add"); //ログを出力
         string corp_num = dropdown.value.ToString ();
         // listにオブジェクト名を格納
         corp_name.Add (corp_num);
         // ドロップダウンに会社名を追加
-        //        dropdown_delete.options.Add (new Dropdown.OptionData { text = "item" });
+        dropdown_delete.options.Add (new Dropdown.OptionData { text = corpAry[dropdown.value] });
         // 器になるゲームオブジェクトを作成
         // 引数はオブジェクト名
         GameObject corp = new GameObject (corp_name[corp_name.Count - 1]);
@@ -62,11 +62,15 @@ public class Toyodome_Script : MonoBehaviour {
         // 画像のwidthとhightを変更
         //corp.sizeDelta = new Vector2 (50.0f, 50.0f);
         pos_x = pos_x + 80;
-        if (num == 5) {
-            pos_y = pos_y - 120;
+        if (num == 6) {
+            pos_y = pos_y - 105;
             pos_x = -200;
         }
-        //        dropdown_delete.RefreshShownValue ();
+        dropdown_delete.RefreshShownValue ();
+    }
+
+    public void OnClickDelete () {
+
     }
 
 }
