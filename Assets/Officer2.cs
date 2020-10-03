@@ -18,6 +18,6 @@ public class Officer2 : MonoBehaviour
     public void OnClick(){
         //Debug.Log ("クリックされた");//push the button
         outcome += 50;
-        SumOut.text = outcome.ToString() +" 万円"; // int型をstring型に変換
+        SumOut.text = outcome.ToString() +" 万円"; // int型をstring型に変換]
     }
 }
