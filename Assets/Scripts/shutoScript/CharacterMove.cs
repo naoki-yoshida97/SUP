@@ -132,8 +132,6 @@ public class CharacterMove : MonoBehaviour
                     break;
                 }
             }
-
-            
             terget_num = nowPos_num + moveTime;//配列番号にサイコロの目を足す
             
             if (terget_num > 31){
@@ -146,6 +144,7 @@ public class CharacterMove : MonoBehaviour
             pos.z += 0.0f;    // z座標は移動しない
 
             myPosition.position = pos;  // 座標を設定
+            
 
             Debug.Log($"今{nowPos_num}");
             Debug.Log($"サイコロ {moveTime}");
