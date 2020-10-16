@@ -14,7 +14,7 @@ public class CharacterMove : MonoBehaviour
     Vector3 zero = new Vector3(0, 0, 0);
     Vector3 PlayerPos;
     Vector3 searchPos;
-    Vector3 startPos = new Vector3(-7.8f, 0.0f);
+    Vector3 startPos = new Vector3(-600f, -35f);
     Vector3[] vin = new Vector3[32];
     Vector3[] vout = new Vector3[48];
 
@@ -123,7 +123,7 @@ public class CharacterMove : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             roll_of_Dice = UnityEngine.Random.Range(1, 6);
-            moveTime = roll_of_Dice;
+            moveTime = roll_of_Dice;     //サイコロの目が動く数とする
             for (int i = 0; i < 33; i++) // 自分の座標がどの配列番号か判定(内側)
             {        
                 if(vin[i] == myPosition.position)
