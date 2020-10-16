@@ -49,7 +49,7 @@ public class CharacterMove : MonoBehaviour
         vin[21] = new Vector3(-55f, -223f);
         vin[22] = new Vector3(-102f,-253f);
         vin[23] = new Vector3(-148f,-283f);
-        vin[24] = new Vector3(-203f, 320f); // Cスタート
+        vin[24] = new Vector3(-203f, -320f); // Cスタート
         vin[25] = new Vector3(-264f, -280f);
         vin[26] = new Vector3(-304f, -248f);
         vin[27] = new Vector3(-356f, -215f);
@@ -124,7 +124,7 @@ public class CharacterMove : MonoBehaviour
         {
             roll_of_Dice = UnityEngine.Random.Range(1, 6);
             moveTime = roll_of_Dice;     //サイコロの目が動く数とする
-            for (int i = 0; i < 33; i++) // 自分の座標がどの配列番号か判定(内側)
+            for (int i = 0; i < 32; i++) // 自分の座標がどの配列番号か判定(内側)
             {        
                 if(vin[i] == myPosition.position)
                 {
@@ -136,6 +136,10 @@ public class CharacterMove : MonoBehaviour
             
             terget_num = nowPos_num + moveTime;//配列番号にサイコロの目を足す
             
+            if (terget_num > 31){
+                terget_num = terget_num - 31;
+            } 
+　　　　　　　
             Vector3 pos = myPosition.position;
             pos.x = vin[terget_num].x;    // x座標
             pos.y = vin[terget_num].y;    // y座標
