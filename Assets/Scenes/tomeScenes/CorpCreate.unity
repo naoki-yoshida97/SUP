@@ -482,9 +482,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29b1ec8c0590d2941b48ff43dd1f067a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dis_x: 60
-  inputField1: {fileID: 0}
-  inputField2: {fileID: 0}
 --- !u!114 &182022510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -588,8 +585,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c870d8550f78c4b46b05a414a129d490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropdown: {fileID: 0}
-  dropdown_delete: {fileID: 0}
+  dropdown: {fileID: 446411200}
+  dropdown_delete: {fileID: 1467875295}
 --- !u!1 &184224921
 GameObject:
   m_ObjectHideFlags: 0
@@ -808,9 +805,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29b1ec8c0590d2941b48ff43dd1f067a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dis_x: 60
-  inputField1: {fileID: 0}
-  inputField2: {fileID: 0}
 --- !u!114 &242184146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2032,9 +2026,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29b1ec8c0590d2941b48ff43dd1f067a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dis_x: 60
-  inputField1: {fileID: 0}
-  inputField2: {fileID: 0}
 --- !u!4 &489902728
 Transform:
   m_ObjectHideFlags: 0
@@ -2136,6 +2127,7 @@ GameObject:
   - component: {fileID: 511755179}
   - component: {fileID: 511755178}
   - component: {fileID: 511755177}
+  - component: {fileID: 511755181}
   m_Layer: 5
   m_Name: CityDeleteButton
   m_TagString: Untagged
@@ -2175,9 +2167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29b1ec8c0590d2941b48ff43dd1f067a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dis_x: 60
-  inputField1: {fileID: 0}
-  inputField2: {fileID: 0}
 --- !u!114 &511755178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2220,7 +2209,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 511755179}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 511755181}
+        m_MethodName: CityClickDelete
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &511755179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2258,6 +2258,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 511755175}
   m_CullTransparentMesh: 0
+--- !u!114 &511755181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511755175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33c62b9422d6173488953b88e4491b80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropdown: {fileID: 432428886}
+  dropdown_delete: {fileID: 615163748}
 --- !u!1 &517550906
 GameObject:
   m_ObjectHideFlags: 0
@@ -2362,9 +2376,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29b1ec8c0590d2941b48ff43dd1f067a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dis_x: 60
-  inputField1: {fileID: 0}
-  inputField2: {fileID: 0}
 --- !u!114 &523464187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3369,9 +3380,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29b1ec8c0590d2941b48ff43dd1f067a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dis_x: 60
-  inputField1: {fileID: 0}
-  inputField2: {fileID: 0}
 --- !u!114 &862608801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3527,7 +3535,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 868026974}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8ba7f7e43e69c34faa2b792254b8dee, type: 3}
+  m_Script: {fileID: 11500000, guid: 33c62b9422d6173488953b88e4491b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dropdown: {fileID: 432428886}
@@ -3544,9 +3552,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29b1ec8c0590d2941b48ff43dd1f067a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dis_x: 60
-  inputField1: {fileID: 0}
-  inputField2: {fileID: 0}
 --- !u!114 &868026978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3591,7 +3596,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 868026976}
-        m_MethodName: OnClickAdd
+        m_MethodName: CityClickAdd
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
