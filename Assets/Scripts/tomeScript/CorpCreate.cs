@@ -13,8 +13,8 @@ public class CorpCreate : MonoBehaviour {
 
     // 会社名配列
     string[] corpAry = new string[21] {
-        "建築会社",
-        "ゲストハウス",
+        "建築会社",//0
+        "ゲストハウス",//1
         "コンビニ",
         "ファミレス",
         "カフェ",
@@ -33,7 +33,7 @@ public class CorpCreate : MonoBehaviour {
         "PGスクール",
         "広告代理店",
         "動画制作",
-        "IT企業"
+        "IT企業"//20
     };
     //同一企業カードの数表示用
     int[] corp_cnt = new int[21] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -45,24 +45,34 @@ public class CorpCreate : MonoBehaviour {
         string name;
         // listにオブジェクト名を格納
         name = dropdown.value.ToString () + "_" + corp_cnt[dropdown.value];
+
+        //会社番号(0,1,2...)_その枚数
         corp_name_list.Add (name);
         corp_cnt[dropdown.value]++;
+
         // ドロップダウンに会社名を追加
         //dropdown_delete.options.Add (new Dropdown.OptionData { text = corpAry[dropdown.value] + corp_cnt[dropdown.value] });
         dropdown_delete.options.Add (new Dropdown.OptionData { text = corpAry[dropdown.value] });
+
         // 器になるゲームオブジェクトを作成
         // 引数はオブジェクト名
         GameObject corp = new GameObject (corp_name_list[corp_name_list.Count - 1]);
+
         // 作ったゲームオブジェクトをCanvasの子にする
         corp.transform.parent = GameObject.Find ("Canvas").transform;
+        
         // 画像のアンカーポジションを追加
         corp.AddComponent<RectTransform> ().anchoredPosition = new Vector3 (pos_x, pos_y, 0);
+
         // 縮尺を変更
         corp.GetComponent<RectTransform> ().localScale = new Vector3 (0.6f, 0.6f, 0.6f);
+
         // スプライト画像追加
         corp.AddComponent<Image> ().sprite = Resources.Load<Sprite> (dropdown.value.ToString ());
+
         // アスペクト比を元画像と同じサイズにする
         corp.GetComponent<Image> ().preserveAspect = true;
+
         // 画像のwidthとhightを変更
         //corp.sizeDelta = new Vector2 (50.0f, 50.0f);
         pos_x = pos_x + 55;
@@ -88,19 +98,26 @@ public class CorpCreate : MonoBehaviour {
         pos_y = -30; //150
         for (int i = 0; i < corp_name_list.Count; i++) {
             string[] arr = corp_name_list[i].Split ('_');
+            
             // 器になるゲームオブジェクトを作成
             // 引数はオブジェクト名
             GameObject corp = new GameObject (corp_name_list[i]);
+
             // 作ったゲームオブジェクトをCanvasの子にする
             corp.transform.parent = GameObject.Find ("Canvas").transform;
+
             // 画像のアンカーポジションを追加
             corp.AddComponent<RectTransform> ().anchoredPosition = new Vector3 (pos_x, pos_y, 0);
+
             // 縮尺を変更
             corp.GetComponent<RectTransform> ().localScale = new Vector3 (0.6f, 0.6f, 0.6f);
+
             // スプライト画像追加
             corp.AddComponent<Image> ().sprite = Resources.Load<Sprite> (arr[0]);
+
             // アスペクト比を元画像と同じサイズにする
             corp.GetComponent<Image> ().preserveAspect = true;
+
             // 画像のwidthとhightを変更
             //corp.sizeDelta = new Vector2 (50.0f, 50.0f);
             pos_x = pos_x + 55;

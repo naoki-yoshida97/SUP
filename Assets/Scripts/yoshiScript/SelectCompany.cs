@@ -16,6 +16,9 @@ public class SelectCompany : MonoBehaviour
         this.SumCom = GameObject.Find("sumcomp").GetComponent<Text>();
         SumCom.text = income.ToString()+" 万円";
 
+        //スクリプトとカード関係の読み込み
+        CorpeCreate cc;
+
     }
 
     public void OnClick()
@@ -25,4 +28,5 @@ public class SelectCompany : MonoBehaviour
         SumCom.text = income.ToString() +" 万円"; // int型をstring型に変換
          
     }
+
 }
