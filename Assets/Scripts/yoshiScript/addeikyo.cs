@@ -17,6 +17,7 @@ public class addeikyo : MonoBehaviour
     public void OnClick()
     {
         Debug.Log ("クリックされた");
+        //初期値は３
     }
 
 }

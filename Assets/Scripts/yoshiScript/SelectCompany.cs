@@ -10,7 +10,7 @@ public class SelectCompany : MonoBehaviour
     public int income = 0;
 
     //スクリプトとカード関係の読み込み
-    CorpeCreate cc;
+    // CorpeCreate cc;
    
     // Start is called before the first frame update
     void Start()
