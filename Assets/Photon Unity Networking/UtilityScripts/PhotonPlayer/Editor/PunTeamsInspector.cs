@@ -8,14 +8,19 @@
 // <author>developer@exitgames.com</author>
 // --------------------------------------------------------------------------------------------------------------------
 
+
 using System;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 
-namespace ExitGames.UtilityScripts
+using Photon.Pun;
+using Photon.Realtime;
+
+namespace Photon.Pun.UtilityScripts
 {
+#pragma warning disable 0618
 	[CustomEditor(typeof(PunTeams))]
 	public class PunTeamsInspector : Editor {
 
@@ -31,8 +36,9 @@ namespace ExitGames.UtilityScripts
 
 			if (PunTeams.PlayersPerTeam!=null)
 			{
-				foreach (KeyValuePair<PunTeams.Team,List<PhotonPlayer>> _pair in PunTeams.PlayersPerTeam)
+				foreach (KeyValuePair<PunTeams.Team,List<Player>> _pair in PunTeams.PlayersPerTeam)
 				{	
+#pragma warning restore 0618
 					if (!_Foldouts.ContainsKey(_pair.Key))
 					{
 						_Foldouts[_pair.Key] = true;
@@ -43,9 +49,9 @@ namespace ExitGames.UtilityScripts
 					if (_Foldouts[_pair.Key])
 					{
 						EditorGUI.indentLevel++;
-						foreach(PhotonPlayer _player in _pair.Value)
+						foreach(Player _player in _pair.Value)
 						{
-							EditorGUILayout.LabelField("",_player.ToString() + (PhotonNetwork.player==_player?" - You -":""));
+							EditorGUILayout.LabelField("",_player.ToString() + (PhotonNetwork.LocalPlayer==_player?" - You -":""));
 						}
 						EditorGUI.indentLevel--;
 					}
@@ -55,3 +61,4 @@ namespace ExitGames.UtilityScripts
 		}
 	}
 }
+

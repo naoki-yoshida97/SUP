@@ -3,33 +3,26 @@
 //   Part of: Photon Unity Networking Demos
 // </copyright>
 // <summary>
-//  Used in DemoAnimator to cdeal with the networked player Animator Component controls.
+//  Used in PUN Basics Tutorial to deal with the networked player Animator Component controls.
 // </summary>
 // <author>developer@exitgames.com</author>
 // --------------------------------------------------------------------------------------------------------------------
 
-
 using UnityEngine;
-using System.Collections;
 
-namespace ExitGames.Demos.DemoAnimator
+namespace Photon.Pun.Demo.PunBasics
 {
-	public class PlayerAnimatorManager : Photon.MonoBehaviour 
+	public class PlayerAnimatorManager : MonoBehaviourPun 
 	{
-		#region PUBLIC PROPERTIES
+        #region Private Fields
 
-		public float DirectionDampTime = 0.25f;
-
-		#endregion
-
-		#region PRIVATE PROPERTIES
-
-		Animator animator;
-	//	PhotonAnimatorView animatorView;
+        [SerializeField]
+	    private float directionDampTime = 0.25f;
+        Animator animator;
 
 		#endregion
 
-		#region MONOBEHAVIOUR MESSAGES
+		#region MonoBehaviour CallBacks
 
 		/// <summary>
 		/// MonoBehaviour method called on GameObject by Unity during initialization phase.
@@ -37,7 +30,6 @@ namespace ExitGames.Demos.DemoAnimator
 	    void Start () 
 	    {
 	        animator = GetComponent<Animator>();
-	//		animatorView = GetComponent<PhotonAnimatorView>();
 	    }
 	        
 		/// <summary>
@@ -47,7 +39,7 @@ namespace ExitGames.Demos.DemoAnimator
 	    {
 
 			// Prevent control is connected to Photon and represent the localPlayer
-	        if( photonView.isMine == false && PhotonNetwork.connected == true )
+	        if( photonView.IsMine == false && PhotonNetwork.IsConnected == true )
 	        {
 	            return;
 	        }
@@ -65,7 +57,7 @@ namespace ExitGames.Demos.DemoAnimator
             if (stateInfo.IsName("Base Layer.Run"))
             {
 				// When using trigger parameter
-				if (Input.GetButtonDown("Fire2")) animator.SetTrigger("Jump"); 
+                if (Input.GetButtonDown("Fire2")) animator.SetTrigger("Jump"); 
 			}
            
 			// deal with movement
@@ -80,7 +72,7 @@ namespace ExitGames.Demos.DemoAnimator
 
 			// set the Animator Parameters
             animator.SetFloat( "Speed", h*h+v*v );
-            animator.SetFloat( "Direction", h, DirectionDampTime, Time.deltaTime );
+            animator.SetFloat( "Direction", h, directionDampTime, Time.deltaTime );
 	    }
 
 		#endregion

@@ -3,7 +3,7 @@
 //   Part of: Photon Unity Networking Demos
 // </copyright>
 // <summary>
-//  Used in DemoAnimator to deal with the networked player instance
+//  Used in PUN Basics Tutorial to deal with the networked player instance
 // </summary>
 // <author>developer@exitgames.com</author>
 // --------------------------------------------------------------------------------------------------------------------
@@ -11,21 +11,17 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace ExitGames.Demos.DemoAnimator
+namespace Photon.Pun.Demo.PunBasics
 {
+	#pragma warning disable 649
+
     /// <summary>
     /// Player manager.
     /// Handles fire Input and Beams.
     /// </summary>
-    public class PlayerManager : Photon.PunBehaviour, IPunObservable
+    public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     {
-        #region Public Variables
-
-        [Tooltip("The Player's UI GameObject Prefab")]
-        public GameObject PlayerUiPrefab;
-
-        [Tooltip("The Beams GameObject to control")]
-        public GameObject Beams;
+        #region Public Fields
 
         [Tooltip("The current Health of our player")]
         public float Health = 1f;
@@ -35,7 +31,15 @@ namespace ExitGames.Demos.DemoAnimator
 
         #endregion
 
-        #region Private Variables
+        #region Private Fields
+
+        [Tooltip("The Player's UI GameObject Prefab")]
+        [SerializeField]
+        private GameObject playerUiPrefab;
+
+        [Tooltip("The Beams GameObject to control")]
+        [SerializeField]
+        private GameObject beams;
 
         //True, when the user is firing
         bool IsFiring;
@@ -49,18 +53,18 @@ namespace ExitGames.Demos.DemoAnimator
         /// </summary>
         public void Awake()
         {
-            if (this.Beams == null)
+            if (this.beams == null)
             {
                 Debug.LogError("<Color=Red><b>Missing</b></Color> Beams Reference.", this);
             }
             else
             {
-                this.Beams.SetActive(false);
+                this.beams.SetActive(false);
             }
 
             // #Important
             // used in GameManager.cs: we keep track of the localPlayer instance to prevent instanciation when levels are synchronized
-            if (photonView.isMine)
+            if (photonView.IsMine)
             {
                 LocalPlayerInstance = gameObject;
             }
@@ -79,7 +83,7 @@ namespace ExitGames.Demos.DemoAnimator
 
             if (_cameraWork != null)
             {
-                if (photonView.isMine)
+                if (photonView.IsMine)
                 {
                     _cameraWork.OnStartFollowing();
                 }
@@ -90,9 +94,9 @@ namespace ExitGames.Demos.DemoAnimator
             }
 
             // Create the UI
-            if (this.PlayerUiPrefab != null)
+            if (this.playerUiPrefab != null)
             {
-                GameObject _uiGo = Instantiate(this.PlayerUiPrefab) as GameObject;
+                GameObject _uiGo = Instantiate(this.playerUiPrefab);
                 _uiGo.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
             }
             else
@@ -100,15 +104,18 @@ namespace ExitGames.Demos.DemoAnimator
                 Debug.LogWarning("<Color=Red><b>Missing</b></Color> PlayerUiPrefab reference on player Prefab.", this);
             }
 
-			#if UNITY_5_4_OR_NEWER
+            #if UNITY_5_4_OR_NEWER
             // Unity 5.4 has a new scene management. register a method to call CalledOnLevelWasLoaded.
 			UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
             #endif
         }
 
 
-		public void OnDisable()
+		public override void OnDisable()
 		{
+			// Always call the base to remove callbacks
+			base.OnDisable ();
+
 			#if UNITY_5_4_OR_NEWER
 			UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
 			#endif
@@ -124,7 +131,7 @@ namespace ExitGames.Demos.DemoAnimator
         public void Update()
         {
             // we only process Inputs and check health if we are the local player
-            if (photonView.isMine)
+            if (photonView.IsMine)
             {
                 this.ProcessInputs();
 
@@ -134,9 +141,9 @@ namespace ExitGames.Demos.DemoAnimator
                 }
             }
 
-            if (this.Beams != null && this.IsFiring != this.Beams.GetActive())
+            if (this.beams != null && this.IsFiring != this.beams.activeInHierarchy)
             {
-                this.Beams.SetActive(this.IsFiring);
+                this.beams.SetActive(this.IsFiring);
             }
         }
 
@@ -148,7 +155,7 @@ namespace ExitGames.Demos.DemoAnimator
         /// </summary>
         public void OnTriggerEnter(Collider other)
         {
-            if (!photonView.isMine)
+            if (!photonView.IsMine)
             {
                 return;
             }
@@ -172,7 +179,7 @@ namespace ExitGames.Demos.DemoAnimator
         public void OnTriggerStay(Collider other)
         {
             // we dont' do anything if we are not the local player.
-            if (!photonView.isMine)
+            if (!photonView.IsMine)
             {
                 return;
             }
@@ -189,7 +196,7 @@ namespace ExitGames.Demos.DemoAnimator
         }
 
 
-		#if !UNITY_5_4_OR_NEWER
+        #if !UNITY_5_4_OR_NEWER
         /// <summary>See CalledOnLevelWasLoaded. Outdated in Unity 5.4.</summary>
         void OnLevelWasLoaded(int level)
         {
@@ -212,7 +219,7 @@ namespace ExitGames.Demos.DemoAnimator
                 transform.position = new Vector3(0f, 5f, 0f);
             }
 
-            GameObject _uiGo = Instantiate(this.PlayerUiPrefab) as GameObject;
+            GameObject _uiGo = Instantiate(this.playerUiPrefab);
             _uiGo.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
         }
 
@@ -224,7 +231,6 @@ namespace ExitGames.Demos.DemoAnimator
 		#if UNITY_5_4_OR_NEWER
 		void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode loadingMode)
 		{
-			
 			this.CalledOnLevelWasLoaded(scene.buildIndex);
 		}
 		#endif
@@ -260,33 +266,11 @@ namespace ExitGames.Demos.DemoAnimator
 
         #endregion
 
-        /*
-        #region IPunObservable implementation
-
-		void IPunObservable.OnPhotonSerializeView (PhotonStream stream, PhotonMessageInfo info)
-		{
-			if (stream.isWriting)
-			{
-				// We own this player: send the others our data
-				stream.SendNext(IsFiring);
-				stream.SendNext(Health);
-			}
-            else
-            {
-				// Network player, receive data
-				this.IsFiring = (bool)stream.ReceiveNext();
-				this.Health = (float)stream.ReceiveNext();
-			}
-		}
-
-        #endregion
-        */
-
         #region IPunObservable implementation
 
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
-            if (stream.isWriting)
+            if (stream.IsWriting)
             {
                 // We own this player: send the others our data
                 stream.SendNext(this.IsFiring);

@@ -4,12 +4,15 @@ using System.IO;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEditor;
-using ExitGames.Client.Photon;
 
+using Photon.Pun;
+using Photon.Realtime;
+using ExitGames.Client.Photon;
+using UnityEngine.SceneManagement;
 
 [InitializeOnLoad]
 public class PunStartup : MonoBehaviour
-{ 
+{
 
     static PunStartup()
     {
@@ -22,15 +25,17 @@ public class PunStartup : MonoBehaviour
 
     static void OnUpdate()
     {
-        if (EditorApplication.isUpdating)
+		if (EditorApplication.isUpdating || Application.isPlaying)
         {
             return;
         }
 
         bool doneBefore = EditorPrefs.GetBool("PunDemosOpenedBefore");
+        EditorPrefs.SetBool("PunDemosOpenedBefore", true);
+        EditorApplication.update -= OnUpdate;
+
         if (doneBefore)
         {
-            EditorApplication.update -= OnUpdate;
             return;
         }
 
@@ -38,12 +43,7 @@ public class PunStartup : MonoBehaviour
         {
             LoadPunDemoHub();
             SetPunDemoBuildSettings();
-            EditorPrefs.SetBool("PunDemosOpenedBefore", true);
             Debug.Log("No scene was open. Loaded PUN Demo Hub Scene and added demos to build settings. Ready to go! This auto-setup is now disabled in this Editor.");
-        }
-        else
-        {
-            EditorApplication.update -= OnUpdate;
         }
     }
 
@@ -61,72 +61,91 @@ public class PunStartup : MonoBehaviour
 
     public static void LoadPunDemoHub()
     {
-		string _hubScene = PhotonNetwork.FindAssetPath("DemoHub-Scene-V2 t:scene");
-		EditorSceneManager.OpenScene(_hubScene);
-		Selection.activeObject = AssetDatabase.LoadMainAssetAtPath(_hubScene);
+		string scenePath = FindAssetPath("DemoHub-Scene t:scene");
+        if (!string.IsNullOrEmpty(scenePath))
+        {
+				EditorSceneManager.OpenScene (scenePath);
+				Selection.activeObject = AssetDatabase.LoadMainAssetAtPath (scenePath);
+        }
     }
 
-
-
+    /// <summary>Finds the asset path base on its name or search query: https://docs.unity3d.com/ScriptReference/AssetDatabase.FindAssets.html </summary>
+    /// <returns>The asset path. String.Empty, if not found.</returns>
+    /// <param name="asset">Asset filter for AssetDatabase.FindAssets.</param>
+    public static string FindAssetPath(string asset)
+	{
+		string[] guids = AssetDatabase.FindAssets(asset, null);
+		if (guids.Length < 1)
+		{
+		    Debug.LogError("We have a problem finding the asset: " + asset);
+			return string.Empty;
+		} else
+		{
+			return AssetDatabase.GUIDToAssetPath(guids[0]);
+		}
+	}
 
     /// <summary>
     /// Finds scenes in "Assets/Photon Unity Networking/Demos/", excludes those in folder "PUNGuide_M2H" and applies remaining scenes to build settings. The one with "Hub" in it first.
     /// </summary>
     public static void SetPunDemoBuildSettings()
     {
-
 		string _PunPath = string.Empty;
-		
+
 		string _thisPath = PhotonNetwork.FindAssetPath ("PunStartUp");
-		
+
 		_thisPath = Application.dataPath + _thisPath.Substring (6); // remove "Assets/"
 
-		_PunPath = PhotonEditorUtils.GetParent(_thisPath,"Photon Unity Networking");
+		//_PunPath = PhotonEditorUtils.GetParent(_thisPath,"Photon");
 
-		if (_PunPath == null)
+		if (string.IsNullOrEmpty(_PunPath))
 		{
-			_PunPath = Application.dataPath+"Photon Unity Networking";
+			_PunPath = Application.dataPath+"/Photon";
 		}
 
-        // find path of pun guide
-		string[] tempPaths = Directory.GetDirectories(_PunPath, "Demos", SearchOption.AllDirectories);
-        if (tempPaths == null || tempPaths.Length != 1)
-        {
-            return;
-        }
+		// find path of pun guide
+
+		string[] tempPaths = Directory.GetDirectories(_PunPath, "Demos*", SearchOption.AllDirectories);
+		if (tempPaths == null)
+		{
+			return;
+		}
+
+		List<EditorBuildSettingsScene> sceneAr = new List<EditorBuildSettingsScene> ();
 
         // find scenes of guide
-        string guidePath = tempPaths[0];
-        tempPaths = Directory.GetFiles(guidePath, "*.unity", SearchOption.AllDirectories);
+		foreach (string guidePath in tempPaths)
+		{
+			tempPaths = Directory.GetFiles (guidePath, "*.unity", SearchOption.AllDirectories);
 
-        if (tempPaths == null || tempPaths.Length == 0)
-        {
-            return;
-        }
+			if (tempPaths == null || tempPaths.Length == 0)
+			{
+				return;
+			}
 
-        // add found guide scenes to build settings
-        List<EditorBuildSettingsScene> sceneAr = new List<EditorBuildSettingsScene>();
-        for (int i = 0; i < tempPaths.Length; i++)
-        {
-            //Debug.Log(tempPaths[i]);
-            string path = tempPaths[i].Substring(Application.dataPath.Length - "Assets".Length);
-            path = path.Replace('\\', '/');
-            //Debug.Log(path);
+			// add found guide scenes to build settings
+			for (int i = 0; i < tempPaths.Length; i++)
+			{
+				//Debug.Log(tempPaths[i]);
+				string path = tempPaths [i].Substring (Application.dataPath.Length - "Assets".Length);
+				path = path.Replace ('\\', '/');
+				//Debug.Log(path);
 
-            if (path.Contains("PUNGuide_M2H"))
-            {
-                continue;
-            }
+				if (path.Contains ("PUNGuide_M2H"))
+				{
+					continue;
+				}
 
-			// edited to avoid old scene to be included.
-			if (path.Contains("DemoHub-Scene-V2"))
-            {
-                sceneAr.Insert(0, new EditorBuildSettingsScene(path, true));
-                continue;
-            }
+				// edited to avoid old scene to be included.
+				if (path.Contains ("DemoHub-Scene"))
+				{
+					sceneAr.Insert (0, new EditorBuildSettingsScene (path, true));
+					continue;
+				}
 
-            sceneAr.Add(new EditorBuildSettingsScene(path, true));
-        }
+				sceneAr.Add (new EditorBuildSettingsScene (path, true));
+			}
+		}
 
         EditorBuildSettings.scenes = sceneAr.ToArray();
         EditorSceneManager.OpenScene(sceneAr[0].path);

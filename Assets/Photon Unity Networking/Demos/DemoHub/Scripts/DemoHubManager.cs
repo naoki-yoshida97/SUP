@@ -8,17 +8,15 @@
 // <author>developer@exitgames.com</author>
 // --------------------------------------------------------------------------------------------------------------------
 
-
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
-
 using UnityEngine.SceneManagement;
 
-namespace ExitGames.Demos
+using System.Collections.Generic;
+
+using Photon.Pun.Demo.Cockpit;
+
+namespace Photon.Pun.Demo.Hub
 {
 	public class DemoHubManager : MonoBehaviour {
 
@@ -29,7 +27,7 @@ namespace ExitGames.Demos
 		public GameObject OpenTutorialLinkButton;
 		public GameObject OpenDocLinkButton;
 
-        string MainDemoWebLink = "http://bit.ly/2f8OFu8";
+        string MainDemoWebLink = "https://doc.photonengine.com/en-us/pun/v2/getting-started/pun-intro";
 
 		struct DemoData
 		{
@@ -46,7 +44,9 @@ namespace ExitGames.Demos
 
 		// Use this for initialization
 		void Awake () {
-		
+
+			PunCockpit.Embedded = false;
+
 			OpenSceneButton.SetActive(false);
 			
 			OpenTutorialLinkButton.SetActive(false);
@@ -105,8 +105,8 @@ namespace ExitGames.Demos
 						"New Unity UI all around, for Menus and player health HUD.\n" +
 						"Full step by step tutorial available online.",
 				Scene = "PunBasics-Launcher" ,
-				TutorialLink = "http://j.mp/2dibZIM"
-				}
+				TutorialLink = "https://doc.photonengine.com/en-us/pun/v2/demos-and-tutorials/pun-basics-tutorial/intro"
+                }
 			);
 			
 			_data.Add(
@@ -130,7 +130,7 @@ namespace ExitGames.Demos
 					"Implements item pickup with RPCs.\n" +
 					"Uses Custom Properties for Teams.\n" +
 					"Counts score per player and team.\n" +
-					"Uses PhotonPlayer extension methods for easy Custom Property access.",
+					"Uses Player extension methods for easy Custom Property access.",
 				Scene = "DemoPickup-Scene"
 				}
 			);
@@ -140,13 +140,13 @@ namespace ExitGames.Demos
 				new DemoData()
 				{
 				Title = "Chat",
-				Description = "Uses the Chat API (now part of PUN).\n" +
+				Description = "Uses the Chat API.\n" +
 					"Simple UI.\n" +
 					"You can enter any User ID.\n" +
 					"Automatically subscribes some channels.\n" +
 					"Allows simple commands via text.\n" +
 					"\n" +
-					"Requires configuration of Chat App ID in scene.",
+					"Requires configuration of Chat App ID in ServerSettings.",
 						Scene = "DemoChat-Scene",
 						DocLink = "http://j.mp/2iwQkPJ" 
 				}
@@ -211,7 +211,51 @@ namespace ExitGames.Demos
 				Scene = "DemoRPS-Scene"
 				}
 			);
-		}
+
+			_data.Add(
+				"Asteroids", 
+				new DemoData()
+				{
+					Title = "Asteroids",
+					Description = "Simple asteroid game based on the Unity learning asset.\n",
+					Scene = "DemoAsteroids-LobbyScene"
+				}
+			);
+
+			_data.Add(
+				"SlotRacer", 
+				new DemoData()
+				{
+					Title = "Slot Racer",
+					Description = "Simple SlotRacing game.\n",
+					Scene = "SlotCar-Scene"
+				}
+			);
+
+
+			_data.Add(
+				"LoadBalancing", 
+				new DemoData()
+				{
+					Title = "Load Balancing",
+					Description = "Shows how to use the raw LoadBalancing system.\n" +
+						"\n" +
+						"This is a simple test scene to connect and join a random room, without using PUN but the actual LoadBalancing api only",
+					Scene = "DemoLoadBalancing-Scene"
+				}
+			);
+
+			_data.Add(
+				"PunCockpit", 
+					new DemoData()
+					{
+						Title = "Cockpit",
+						Description = "Controls most aspect of PUN.\n" +
+							"Connection, Lobby, Room access, Player control",
+					Scene = "PunCockpit-Scene"
+					}
+			);
+        }
 
 		public void SelectDemo(string Reference)
 		{
@@ -262,13 +306,6 @@ namespace ExitGames.Demos
 		public void OpenMainWebLink()
 		{
 			Application.OpenURL(MainDemoWebLink);
-		}
-
-		// Fixes the annoying issue described here: http://forum.unity3d.com/threads/158676-!dest-m_MultiFrameGUIState-m_NamedKeyControlList/page2
-		Rect BugFixbounds = new Rect(0,0,0,0);
-		void OnGUI() {
-			GUI.SetNextControlName(gameObject.GetHashCode().ToString());
-			GUI.TextField(BugFixbounds, string.Empty, 0);
 		}
 	}
 }

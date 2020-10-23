@@ -16,21 +16,36 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace ExitGames.Client.Photon
+namespace Photon.Pun
 {
-   /// <summary>
+    /// <summary>
     /// Creates a instance of the Account Service to register Photon Cloud accounts.
     /// </summary>
     public class AccountService
     {
-        private const string ServiceUrl = "https://partner.photonengine.com/api/Unity/User/RegisterEx";
+        private const string ServiceUrl = "https://partner.photonengine.com/api/{0}/User/RegisterEx";
 
         private readonly Dictionary<string, string> RequestHeaders = new Dictionary<string, string>
         {
             { "Content-Type", "application/json" },
-            { "x-functions-key", "VQ920wVUieLHT9c3v1ZCbytaLXpXbktUztKb3iYLCdiRKjUagcl6eg==" }
+            { "x-functions-key", "" }
         };
 
+        private const string DefaultContext = "Unity";
+
+        private const string DefaultToken = "VQ920wVUieLHT9c3v1ZCbytaLXpXbktUztKb3iYLCdiRKjUagcl6eg==";
+
+        /// <summary>
+        /// third parties custom context, if null, defaults to DefaultContext property value
+        /// </summary>
+        public string CustomContext = null;
+        
+        /// <summary>
+        /// third parties custom token. If null, defaults to DefaultToken property value
+        /// </summary>
+        public string CustomToken = null;
+        
+        
         /// <summary>
         /// Attempts to create a Photon Cloud Account asynchronously.
         /// Once your callback is called, check ReturnCode, Message and AppId to get the result of this attempt.
@@ -53,6 +68,7 @@ namespace ExitGames.Client.Photon
             AccountServiceRequest req = new AccountServiceRequest();
             req.Email = email;
             req.ServiceTypes = serviceTypes;
+            //Debug.LogWarningFormat("Service types sent {0}", serviceTypes);
             return this.RegisterByEmail(req, callback, errorCallback);
         }
 
@@ -73,12 +89,18 @@ namespace ExitGames.Client.Photon
                 Debug.LogError("Registration request is null");
                 return false;
             }
+            string fullUrl = GetUrlWithQueryStringEscaped(request);
+
+            RequestHeaders["x-functions-key"] = string.IsNullOrEmpty(CustomToken) ? DefaultToken : CustomToken;
+            
+            //Debug.LogWarningFormat("Full URL {0}", fullUrl);
             PhotonEditorUtils.StartCoroutine(
-                PhotonEditorUtils.HttpPost(GetUrlWithQueryStringEscaped(request),
+                PhotonEditorUtils.HttpPost(fullUrl,
                     RequestHeaders,
                     null,
                     s =>
                     {
+                        //Debug.LogWarningFormat("received response {0}", s);
                         if (string.IsNullOrEmpty(s))
                         {
                             if (errorCallback != null)
@@ -113,16 +135,12 @@ namespace ExitGames.Client.Photon
             return true;
         }
 
-        private static string GetUrlWithQueryStringEscaped(AccountServiceRequest request)
+        private string GetUrlWithQueryStringEscaped(AccountServiceRequest request)
         {
-            #if UNITY_2017_3_OR_NEWER
             string email = UnityEngine.Networking.UnityWebRequest.EscapeURL(request.Email);
             string st = UnityEngine.Networking.UnityWebRequest.EscapeURL(request.ServiceTypes);
-            #else
-            string email = WWW.EscapeURL(request.Email);
-            string st = WWW.EscapeURL(request.ServiceTypes);
-            #endif
-            return string.Format("{0}?email={1}&st={2}", ServiceUrl, email, st);
+            string serviceUrl = string.Format(ServiceUrl, string.IsNullOrEmpty(CustomContext) ? DefaultContext : CustomContext );
+            return string.Format("{0}?email={1}&st={2}", serviceUrl, email, st);
         }
 
         /// <summary>
