@@ -44,7 +44,8 @@ public class CorpCreate : MonoBehaviour {
     public void CorpClickAdd () {
         num++;
         string name;
-        // listにオブジェクト名を格納
+
+        // listにオブジェクト名を格納 num_cnt
         name = dropdown.value.ToString () + "_" + corp_cnt[dropdown.value];
 
         //会社番号(0,1,2...)_その枚数
