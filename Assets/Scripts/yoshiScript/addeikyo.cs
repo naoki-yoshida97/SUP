@@ -7,12 +7,15 @@ public class addeikyo : MonoBehaviour
 {   
     
     //settintg Array argument
-
+    static int pos_eix = -321;
+    static int pos_eiy = -300;
+    static int num_ei;
 
     // Start is called before the first frame update
     void Start()
     {
-               //初期値は３
+           //初期値は３
+
 
     }
 
