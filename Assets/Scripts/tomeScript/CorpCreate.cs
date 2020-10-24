@@ -7,9 +7,11 @@ public class CorpCreate : MonoBehaviour {
     static int pos_x = 320;
     static int pos_y = -30;
     static int num;
+    // drop down 
     public static List<string> corp_name_list = new List<string> ();
     [SerializeField] private Dropdown dropdown; //Dropdownを格納する変数
     [SerializeField] private Dropdown dropdown_delete; //Dropdownを格納する変数
+    //drop down
 
     // 会社名配列
     string[] corpAry = new string[21] {
@@ -45,6 +47,7 @@ public class CorpCreate : MonoBehaviour {
         num++;
         string name;
 
+        //delete drop down
         // listにオブジェクト名を格納 num_cnt
         name = dropdown.value.ToString () + "_" + corp_cnt[dropdown.value];
 
@@ -55,7 +58,9 @@ public class CorpCreate : MonoBehaviour {
         // ドロップダウンに会社名を追加
         //dropdown_delete.options.Add (new Dropdown.OptionData { text = corpAry[dropdown.value] + corp_cnt[dropdown.value] });
         dropdown_delete.options.Add (new Dropdown.OptionData { text = corpAry[dropdown.value] });
+        //~~~~dellete drop down
 
+        //add column
         // 器になるゲームオブジェクトを作成
         // 引数はオブジェクト名
         GameObject corp = new GameObject (corp_name_list[corp_name_list.Count - 1]);

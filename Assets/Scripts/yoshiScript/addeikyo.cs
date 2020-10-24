@@ -13,21 +13,27 @@ public class addeikyo : MonoBehaviour
 
     int[] ei_cnt = new int[8] { 0, 0, 0, 0, 0, 0, 0, 0};
 
+    //初期値は３
+    public int ei_coin = 3;
+
+    //Game Objects name 
+    public GameObject inful;
+
     // Start is called before the first frame update
-    void Start()
-    {
-           //初期値は３
-
-
-    }
-
-    
+    // void Start()
+    // {  
+    // }
 
     // Pudh Object:eip button when it starts
     public void addClick()
-    {
-        Debug.Log ("クリックされた");
+    {   
+        // Debug.Log ("クリックされた");
         //クリックされたら増える
+        ei_coin++;
+        
+        inful = new GameObject
+
+
 
     }
 
