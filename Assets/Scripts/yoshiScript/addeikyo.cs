@@ -11,6 +11,8 @@ public class addeikyo : MonoBehaviour
     static int pos_eiy = -300;
     static int num_ei;
 
+    int[] ei_cnt = new int[8] { 0, 0, 0, 0, 0, 0, 0, 0};
+
     // Start is called before the first frame update
     void Start()
     {

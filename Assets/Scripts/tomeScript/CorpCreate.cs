@@ -39,6 +39,7 @@ public class CorpCreate : MonoBehaviour {
     int[] corp_cnt = new int[21] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
     private GameObject corp; //会社を格納する変数
+
     //ボタンが押された場合、今回呼び出される関数
     public void CorpClickAdd () {
         num++;
