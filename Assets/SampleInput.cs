@@ -34,13 +34,13 @@ public class SampleInput : MonoBehaviour {
     }
 
     public void OnClickStartButton () {
-        PhotonNetwork.CreateRoom("Room1", new RoomOptions() { MaxPlayers = 4 }, TypedLobby.Default);
+        PhotonNetwork.CreateRoom("Room1", new RoomOptions() { MaxPlayers = 5 }, TypedLobby.Default);
         Debug.Log("Room1作成");
-        //PhotonNetwork.CreateRoom("Room2", new RoomOptions() { MaxPlayers = 4 }, TypedLobby.Default);
+        //PhotonNetwork.CreateRoom("Room2", new RoomOptions() { MaxPlayers = 5 }, TypedLobby.Default);
         //Debug.Log("Room2作成");
-        //PhotonNetwork.CreateRoom("Room3", new RoomOptions() { MaxPlayers = 4 }, TypedLobby.Default);
+        //PhotonNetwork.CreateRoom("Room3", new RoomOptions() { MaxPlayers = 5 }, TypedLobby.Default);
         //Debug.Log("Room3作成");
-        //PhotonNetwork.CreateRoom("Room4", new RoomOptions() { MaxPlayers = 4 }, TypedLobby.Default);
+        //PhotonNetwork.CreateRoom("Room4", new RoomOptions() { MaxPlayers = 5 }, TypedLobby.Default);
         //Debug.Log("Room4作成");
         SceneManager.LoadScene ("Lobby");
 
