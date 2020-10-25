@@ -10,13 +10,14 @@ public class result : MonoBehaviour
     GameObject sc;
     GameObject of;
 
+    //スクリプト名と使う関係
     SelectCompany script;
     Officer2 yakuin;
 
     // Start is called before the first frame update
     void Start()
     {
-        // goukei.text = "hogehoge"; 
+        // オブジェクトの検出と変数作成 
         sc = GameObject.Find("Button");
         of = GameObject.Find("Button2");
         
