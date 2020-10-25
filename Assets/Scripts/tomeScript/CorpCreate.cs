@@ -90,6 +90,7 @@ public class CorpCreate : MonoBehaviour {
         dropdown_delete.RefreshShownValue ();
     }
 
+    //削除---------------------------------------------------------------------------------------
     public void CorpClickDelete () {
         num--;
         //会社カードcorp_name_listの中身を全部削除
@@ -134,5 +135,5 @@ public class CorpCreate : MonoBehaviour {
             }
         }
     }
-
+    // ------------------------------------------------------------------------------------
 }
