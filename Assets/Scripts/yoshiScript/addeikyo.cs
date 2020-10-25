@@ -37,7 +37,7 @@ public class addeikyo : MonoBehaviour
         Debug.Log(hoge);
 
         //ヒエラルキーに追加されつ名前の追加
-        GameObject inful = new GameObject("eikyo");
+        GameObject inful = new GameObject(hoge);
 
         //canvasの子に追加
         inful.transform.parent = GameObject.Find("Canvas").transform;
