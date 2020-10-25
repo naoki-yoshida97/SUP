@@ -100,7 +100,11 @@ namespace ExitGames.Client.Photon
             MonoBehaviour mb = this.websocketConnectionObject.AddComponent<MonoBehaviourExt>();
             this.websocketConnectionObject.hideFlags = HideFlags.HideInHierarchy;
             UnityEngine.Object.DontDestroyOnLoad(this.websocketConnectionObject);
+<<<<<<< .merge_file_ixiLTX
             this.sock = new WebSocket(new Uri(this.ServerAddress), this.SerializationProtocol);
+=======
+            this.sock = new WebSocket(new Uri(this.ConnectAddress), this.SerializationProtocol);
+>>>>>>> .merge_file_2EgnJV
             this.sock.Connect();
 
             mb.StartCoroutine(this.ReceiveLoop());
@@ -203,6 +207,10 @@ namespace ExitGames.Client.Photon
                     yield return new WaitForRealSeconds(0.1f);
                 }
 
+<<<<<<< .merge_file_ixiLTX
+=======
+
+>>>>>>> .merge_file_2EgnJV
                 if (this.sock != null)
                 {
                     if (this.sock.Error != null)
@@ -219,6 +227,11 @@ namespace ExitGames.Client.Photon
                         }
 
                         this.State = PhotonSocketState.Connected;
+<<<<<<< .merge_file_ixiLTX
+=======
+                        this.peerBase.OnConnect();
+
+>>>>>>> .merge_file_2EgnJV
                         while (this.State == PhotonSocketState.Connected)
                         {
                             if (this.sock != null)
