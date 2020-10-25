@@ -441,7 +441,6 @@ GameObject:
   - component: {fileID: 182022512}
   - component: {fileID: 182022511}
   - component: {fileID: 182022510}
-  - component: {fileID: 182022509}
   - component: {fileID: 182022513}
   m_Layer: 5
   m_Name: OfficerDeleteButton
@@ -470,18 +469,6 @@ RectTransform:
   m_AnchoredPosition: {x: 480, y: -345}
   m_SizeDelta: {x: 50, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &182022509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 182022507}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29b1ec8c0590d2941b48ff43dd1f067a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &182022510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -585,8 +572,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c870d8550f78c4b46b05a414a129d490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropdown: {fileID: 0}
-  dropdown_delete: {fileID: 0}
+  dropdown: {fileID: 446411200}
+  dropdown_delete: {fileID: 1467875295}
 --- !u!1 &184224921
 GameObject:
   m_ObjectHideFlags: 0
@@ -2163,9 +2150,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 511755175}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29b1ec8c0590d2941b48ff43dd1f067a, type: 3}
+  m_Script: {fileID: 11500000, guid: 33c62b9422d6173488953b88e4491b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropdown: {fileID: 432428886}
+  dropdown_delete: {fileID: 615163748}
 --- !u!114 &511755178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2208,7 +2197,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 511755179}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 511755177}
+        m_MethodName: CityClickDelete
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &511755179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2294,8 +2294,6 @@ GameObject:
   - component: {fileID: 523464189}
   - component: {fileID: 523464188}
   - component: {fileID: 523464187}
-  - component: {fileID: 523464186}
-  - component: {fileID: 523464185}
   - component: {fileID: 523464190}
   m_Layer: 5
   m_Name: OfficerAddButton
@@ -2324,32 +2322,6 @@ RectTransform:
   m_AnchoredPosition: {x: 480, y: -300}
   m_SizeDelta: {x: 50, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &523464185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 523464183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8ba7f7e43e69c34faa2b792254b8dee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dropdown: {fileID: 446411200}
-  dropdown_delete: {fileID: 1467875295}
---- !u!114 &523464186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 523464183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29b1ec8c0590d2941b48ff43dd1f067a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &523464187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3471,7 +3443,6 @@ GameObject:
   - component: {fileID: 868026980}
   - component: {fileID: 868026979}
   - component: {fileID: 868026978}
-  - component: {fileID: 868026977}
   - component: {fileID: 868026976}
   m_Layer: 5
   m_Name: CityAddButton
@@ -3509,23 +3480,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 868026974}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8ba7f7e43e69c34faa2b792254b8dee, type: 3}
+  m_Script: {fileID: 11500000, guid: 33c62b9422d6173488953b88e4491b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dropdown: {fileID: 432428886}
   dropdown_delete: {fileID: 615163748}
---- !u!114 &868026977
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 868026974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29b1ec8c0590d2941b48ff43dd1f067a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &868026978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3570,7 +3529,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 868026976}
-        m_MethodName: OnClickAdd
+        m_MethodName: CityClickAdd
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
