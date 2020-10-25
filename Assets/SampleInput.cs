@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+using Photon.Pun;
+using Photon.Realtime;
+
 
 
 public class SampleInput : MonoBehaviour {
@@ -14,6 +17,7 @@ public class SampleInput : MonoBehaviour {
 
   void Start () {
         //Componentを扱えるようにする
+        PhotonNetwork.ConnectUsingSettings();
         inputField = inputField.GetComponent<InputField>();
         text = text.GetComponent<Text> ();
     }
@@ -30,7 +34,16 @@ public class SampleInput : MonoBehaviour {
     }
 
     public void OnClickStartButton () {
+        PhotonNetwork.CreateRoom("Room1", new RoomOptions() { MaxPlayers = 4 }, TypedLobby.Default);
+        Debug.Log("Room1作成");
+        //PhotonNetwork.CreateRoom("Room2", new RoomOptions() { MaxPlayers = 4 }, TypedLobby.Default);
+        //Debug.Log("Room2作成");
+        //PhotonNetwork.CreateRoom("Room3", new RoomOptions() { MaxPlayers = 4 }, TypedLobby.Default);
+        //Debug.Log("Room3作成");
+        //PhotonNetwork.CreateRoom("Room4", new RoomOptions() { MaxPlayers = 4 }, TypedLobby.Default);
+        //Debug.Log("Room4作成");
         SceneManager.LoadScene ("Lobby");
+
     }
 
 }
