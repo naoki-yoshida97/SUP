@@ -23,17 +23,30 @@ public class addeikyo : MonoBehaviour
     // void Start()
     // {  
     // }
-
     // Pudh Object:eip button when it starts
     public void addClick()
     {   
         // Debug.Log ("クリックされた");
         //クリックされたら増える
         ei_coin++;
+
+        GameObject inful = new GameObject("eikyo");
         
-        inful = new GameObject
+        // inful = new GameObject
+        inful.transform.parent = GameObject.Find("Canvas").transform;
+
+        inful.AddComponent<RectTransform> ().anchoredPosition = new Vector3 (pos_eix, pos_eiy, 0);
+
+        inful.GetComponent<RectTransform> ().localScale = new Vector3 (1f, 1f, 1f);
+
+        inful.AddComponent<Image> ().sprite = Resources.Load<Sprite> ("eikyou");
+
+        inful.GetComponent<Image> ().preserveAspect = true;
 
 
+        // xに-11移動
+        pos_eix = pos_eix - 11;
+        Debug.Log(pos_eix);
 
     }
 

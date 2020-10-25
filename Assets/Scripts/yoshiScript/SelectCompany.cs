@@ -18,9 +18,7 @@ public class SelectCompany : MonoBehaviour
         //ここでオブジェクトの指定と表記
         this.SumCom = GameObject.Find("sumcomp").GetComponent<Text>();
         SumCom.text = income.ToString()+" 万円";
-
         
-
     }
 
     public void OnClick()

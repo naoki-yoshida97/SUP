@@ -47,7 +47,7 @@ public class CorpCreate : MonoBehaviour {
         num++;
         string name;
 
-        //delete drop down
+        //delete drop down~~~~~~
         // listにオブジェクト名を格納 num_cnt
         name = dropdown.value.ToString () + "_" + corp_cnt[dropdown.value];
 
