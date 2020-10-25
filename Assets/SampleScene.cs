@@ -10,10 +10,14 @@ using UnityEngine.UI;
 // MonoBehaviourではなくMonoBehaviourPunCallbacksを継承して、Photonのコールバックを受け取れるようにする
 public class SampleScene : MonoBehaviourPunCallbacks{
 
+    //InputFieldを格納するための変数
+    ///InputField inputField;
 
     private void Start() {
         // PhotonServerSettingsに設定した内容を使ってマスターサーバーへ接続する
         PhotonNetwork.ConnectUsingSettings();
+        //InputFieldコンポーネントを取得
+        ///inputField = GameObject.Find("InputField").GetComponent<InputField>();
     }
 
     // マスターサーバーへの接続が成功した時に呼ばれるコールバック
@@ -22,6 +26,8 @@ public class SampleScene : MonoBehaviourPunCallbacks{
         PhotonNetwork.JoinOrCreateRoom("room", new RoomOptions(), TypedLobby.Default);
         //PhotonNetwork.JoinRoom("room");
     }
+
+
 
     // マッチングが成功した時に呼ばれるコールバック
     public override void OnJoinedRoom() {
