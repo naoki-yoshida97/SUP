@@ -10,6 +10,7 @@ public class addeikyo : MonoBehaviour
     static int pos_eix = 400;
     static int pos_eiy = 85;
     static int num_ei;
+    public static List<string> eik_coins = new List<string> ();
 
     int[] ei_cnt = new int[8] { 0, 0, 0, 0, 0, 0, 0, 0};
 
@@ -20,26 +21,62 @@ public class addeikyo : MonoBehaviour
     public GameObject inful;
 
     // Start is called before the first frame update
-    // void Start()
-    // {  
-    // }
+    void Start()
+    {  
+        for(int i = 0; i < 1; i++) {
+        ei_coin++;
+        string hoge;
+        //into list
+        // eik_cnt.Add(hoge);
+
+        //ヒエラルキーに追加されつ名前の追加
+        GameObject inful = new GameObject("eikyo");
+
+        //canvasの子に追加
+        inful.transform.parent = GameObject.Find("Canvas").transform;
+
+        //ポジション
+        inful.AddComponent<RectTransform> ().anchoredPosition = new Vector3 (pos_eix, pos_eiy, 0);
+        
+        //倍率
+        inful.GetComponent<RectTransform> ().localScale = new Vector3 (0.5f, 0.5f, 0.5f);
+
+        //Rssourcesから"eikyou"画像の読み込み
+        inful.AddComponent<Image> ().sprite = Resources.Load<Sprite> ("eikyou");
+
+        //真にすることで表記
+        inful.GetComponent<Image> ().preserveAspect = true;
+
+        // xに-13移動
+        pos_eix = pos_eix - 13;
+        }
+    }
     // Pudh Object:eip button when it starts
     public void addClick()
     {   
         // Debug.Log ("クリックされた");
         //クリックされたら増える
         ei_coin++;
+        string hoge;
+
+        //into list
+        // eik_cnt.Add(hoge)
 
         //ヒエラルキーに追加されつ名前の追加
         GameObject inful = new GameObject("eikyo");
+
         //canvasの子に追加
         inful.transform.parent = GameObject.Find("Canvas").transform;
+
         //ポジション
         inful.AddComponent<RectTransform> ().anchoredPosition = new Vector3 (pos_eix, pos_eiy, 0);
+
         //倍率
         inful.GetComponent<RectTransform> ().localScale = new Vector3 (0.5f, 0.5f, 0.5f);
+
         //Rssourcesから"eikyou"画像の読み込み
         inful.AddComponent<Image> ().sprite = Resources.Load<Sprite> ("eikyou");
+        
         //真にすることで表記
         inful.GetComponent<Image> ().preserveAspect = true;
 
@@ -54,7 +91,8 @@ public class addeikyo : MonoBehaviour
     {
         //クリックされたら減る
         ei_coin--;
-        
+        GameObject inful = GameObject.Find ("eikyo");
+        Destroy (inful);
 
     }
 
