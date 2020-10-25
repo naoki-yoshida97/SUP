@@ -2,9 +2,15 @@
 using Photon.Realtime;
 using UnityEngine;
 
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.UI;
+
+
 // MonoBehaviourではなくMonoBehaviourPunCallbacksを継承して、Photonのコールバックを受け取れるようにする
-public class SampleScene : MonoBehaviourPunCallbacks
-{
+public class SampleScene : MonoBehaviourPunCallbacks{
+
+
     private void Start() {
         // PhotonServerSettingsに設定した内容を使ってマスターサーバーへ接続する
         PhotonNetwork.ConnectUsingSettings();
