@@ -12,45 +12,17 @@ public class addeikyo : MonoBehaviour
     static int num_ei;
     public static List<string> eik_coins = new List<string> ();
 
-    int[] ei_cnt = new int[8] { 0, 0, 0, 0, 0, 0, 0, 0};
-
-    //初期値は３
-    public int ei_coin = 3;
+    //コインの管理
+    public int ei_coin = 0;
 
     //Game Objects name 
     public GameObject inful;
 
     // Start is called before the first frame update
-    void Start()
-    {  
-        for(int i = 0; i < 1; i++) {
-        ei_coin++;
-        string hoge;
-        //into list
-        // eik_cnt.Add(hoge);
+    // void Start()//初期値は３
+    // {  
+    // }
 
-        //ヒエラルキーに追加されつ名前の追加
-        GameObject inful = new GameObject("eikyo");
-
-        //canvasの子に追加
-        inful.transform.parent = GameObject.Find("Canvas").transform;
-
-        //ポジション
-        inful.AddComponent<RectTransform> ().anchoredPosition = new Vector3 (pos_eix, pos_eiy, 0);
-        
-        //倍率
-        inful.GetComponent<RectTransform> ().localScale = new Vector3 (0.5f, 0.5f, 0.5f);
-
-        //Rssourcesから"eikyou"画像の読み込み
-        inful.AddComponent<Image> ().sprite = Resources.Load<Sprite> ("eikyou");
-
-        //真にすることで表記
-        inful.GetComponent<Image> ().preserveAspect = true;
-
-        // xに-13移動
-        pos_eix = pos_eix - 13;
-        }
-    }
     // Pudh Object:eip button when it starts
     public void addClick()
     {   
@@ -59,8 +31,10 @@ public class addeikyo : MonoBehaviour
         ei_coin++;
         string hoge;
 
+        hoge = "eikyo_"+ ei_coin;
         //into list
-        // eik_cnt.Add(hoge)
+        eik_coins.Add(hoge);
+        Debug.Log(hoge);
 
         //ヒエラルキーに追加されつ名前の追加
         GameObject inful = new GameObject("eikyo");
