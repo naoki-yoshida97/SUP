@@ -133,8 +133,8 @@ public class CorpCreate : MonoBehaviour {
             //削除したdropdown_delete.value以外のcorp_name_listを全部再生成
             pos_x = 320; //-320
             pos_y = 15; //150
-            pos_x_toggle = 737;
-            pos_y_toggle = 260;
+            pos_x_toggle = 680;
+            pos_y_toggle = 240;
             for (int i = 0; i < corp_name_list.Count; i++) {
                 string[] arr = corp_name_list[i].Split ('_');
 
@@ -165,13 +165,13 @@ public class CorpCreate : MonoBehaviour {
                 Toggle.name = "ToggleGroup_" + (i + 1);
 
                 pos_x = pos_x + 55;
-                pos_x_toggle = pos_x_toggle + 42;
+                pos_x_toggle = pos_x_toggle + 40;
                 if (i == 5) {
-                    pos_y = pos_y - 90;
+                    pos_y = pos_y - 87;
                     pos_x = 320;
 
-                    pos_y_toggle = pos_y_toggle - 70;
-                    pos_x_toggle = 737;
+                    pos_y_toggle = pos_y_toggle - 62;
+                    pos_x_toggle = 680;
                 }
             }
         }
