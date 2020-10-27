@@ -77,49 +77,52 @@ public class OfficerCreate : MonoBehaviour {
     }
 
     public void OfficerClickDelete () {
-        num--;
-        //会社カードcorp_name_listの中身を全部削除
-        for (int i = 0; i < corp_name_list.Count; i++) {
-            GameObject obj = GameObject.Find (corp_name_list[i]);
-            Destroy (obj);
-        }
-        Debug.Log (dropdown_delete.value);
-        corp_name_list.RemoveAt (dropdown_delete.value);
-        dropdown_delete.options.RemoveAt (dropdown_delete.value);
+        if (num < 1) {;
+        } else {
+            num--;
+            //会社カードcorp_name_listの中身を全部削除
+            for (int i = 0; i < corp_name_list.Count; i++) {
+                GameObject obj = GameObject.Find (corp_name_list[i]);
+                Destroy (obj);
+            }
+            Debug.Log (dropdown_delete.value);
+            corp_name_list.RemoveAt (dropdown_delete.value);
+            dropdown_delete.options.RemoveAt (dropdown_delete.value);
 
-        //削除したdropdown_delete.value以外のcorp_name_listを全部再生成
-        pos_x = 320; //-320
-        pos_y = -160; //150
-        for (int i = 0; i < corp_name_list.Count; i++) {
-            string[] arr = corp_name_list[i].Split ('_');
+            //削除したdropdown_delete.value以外のcorp_name_listを全部再生成
+            pos_x = 320; //-320
+            pos_y = -160; //150
+            for (int i = 0; i < corp_name_list.Count; i++) {
+                string[] arr = corp_name_list[i].Split ('_');
 
-            // 器になるゲームオブジェクトを作成
-            // 引数はオブジェクト名
-            GameObject corp = new GameObject (corp_name_list[i]);
+                // 器になるゲームオブジェクトを作成
+                // 引数はオブジェクト名
+                GameObject corp = new GameObject (corp_name_list[i]);
 
-            // 作ったゲームオブジェクトをCanvasの子にする
-            corp.transform.parent = GameObject.Find ("Canvas").transform;
+                // 作ったゲームオブジェクトをCanvasの子にする
+                corp.transform.parent = GameObject.Find ("Canvas").transform;
 
-            // 画像のアンカーポジションを追加
-            corp.AddComponent<RectTransform> ().anchoredPosition = new Vector3 (pos_x, pos_y, 0);
+                // 画像のアンカーポジションを追加
+                corp.AddComponent<RectTransform> ().anchoredPosition = new Vector3 (pos_x, pos_y, 0);
 
-            // 縮尺を変更
-            corp.GetComponent<RectTransform> ().localScale = new Vector3 (0.6f, 0.6f, 0.6f);
+                // 縮尺を変更
+                corp.GetComponent<RectTransform> ().localScale = new Vector3 (0.6f, 0.6f, 0.6f);
 
-            // スプライト画像追加
-            corp.AddComponent<Image> ().sprite = Resources.Load<Sprite> (arr[0]);
+                // スプライト画像追加
+                corp.AddComponent<Image> ().sprite = Resources.Load<Sprite> (arr[0]);
 
-            // アスペクト比を元画像と同じサイズにする
-            corp.GetComponent<Image> ().preserveAspect = true;
+                // アスペクト比を元画像と同じサイズにする
+                corp.GetComponent<Image> ().preserveAspect = true;
 
-            // 画像のwidthとhightを変更
-            //corp.sizeDelta = new Vector2 (50.0f, 50.0f);
-            pos_x = pos_x + 55;
-            if ((num % 6) == 0) {
-                pos_y = pos_y - 65;
-                pos_x = 320;
+                // 画像のwidthとhightを変更
+                //corp.sizeDelta = new Vector2 (50.0f, 50.0f);
+                pos_x = pos_x + 55;
+                if ((num % 6) == 0) {
+                    pos_y = pos_y - 65;
+                    pos_x = 320;
+                }
             }
         }
-    }
 
+    }
 }
