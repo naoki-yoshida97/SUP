@@ -8,8 +8,8 @@ using UnityEngine.UI;
 public class CorpCreate : MonoBehaviour {
     static int pos_x = 320;
     static int pos_y = 15;
-    static int pos_x_toggle = 752;
-    static int pos_y_toggle = 265;
+    static int pos_x_toggle = 680;
+    static int pos_y_toggle = 240;
     static int num = 0;
 
     // drop down 
@@ -100,13 +100,13 @@ public class CorpCreate : MonoBehaviour {
             Toggle.name = "ToggleGroup_" + num;
 
             pos_x = pos_x + 55;
-            pos_x_toggle = pos_x_toggle + 44;
+            pos_x_toggle = pos_x_toggle + 40;
             if (num == 6) {
-                pos_y = pos_y - 90;
+                pos_y = pos_y - 87;
                 pos_x = 320;
 
-                pos_y_toggle = pos_y_toggle - 70;
-                pos_x_toggle = 752;
+                pos_y_toggle = pos_y_toggle - 62;
+                pos_x_toggle = 680;
             }
             dropdown_delete.RefreshShownValue ();
 
@@ -133,8 +133,8 @@ public class CorpCreate : MonoBehaviour {
             //削除したdropdown_delete.value以外のcorp_name_listを全部再生成
             pos_x = 320; //-320
             pos_y = 15; //150
-            pos_x_toggle = 712;
-            pos_y_toggle = 252;
+            pos_x_toggle = 737;
+            pos_y_toggle = 260;
             for (int i = 0; i < corp_name_list.Count; i++) {
                 string[] arr = corp_name_list[i].Split ('_');
 
@@ -165,13 +165,13 @@ public class CorpCreate : MonoBehaviour {
                 Toggle.name = "ToggleGroup_" + (i + 1);
 
                 pos_x = pos_x + 55;
-                pos_x_toggle = pos_x_toggle + 41;
+                pos_x_toggle = pos_x_toggle + 42;
                 if (i == 5) {
                     pos_y = pos_y - 90;
                     pos_x = 320;
 
                     pos_y_toggle = pos_y_toggle - 70;
-                    pos_x_toggle = 752;
+                    pos_x_toggle = 737;
                 }
             }
         }
@@ -199,7 +199,7 @@ public class CorpCreate : MonoBehaviour {
 
         // nの要素番号のListed_flgを0に
         Listed_flg[n] = 0;
-        //Debug.Log ("Nonlisted! : " + str + ": 0: " + Listed_flg[n]);
+        Debug.Log ("Nonlisted! : " + str + ": 0: " + Listed_flg[n]);
     }
 
     //上場にチェックされたとき
@@ -219,7 +219,7 @@ public class CorpCreate : MonoBehaviour {
         // nの要素番号のListed_flgを1に
         Listed_flg[n] = 1;
 
-        //Debug.Log ("Listed! : " + str + ": 1: " + Listed_flg[n]);
+        Debug.Log ("Listed! : " + str + ": 1: " + Listed_flg[n]);
 
     }
 
