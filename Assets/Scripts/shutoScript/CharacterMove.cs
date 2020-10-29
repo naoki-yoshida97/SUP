@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CharacterMove : MonoBehaviour
 {
-
+    //---variable----
     public int moveTime;
     public int roll_of_Dice;
     public int nowPos_num;
@@ -13,11 +13,30 @@ public class CharacterMove : MonoBehaviour
 
     Vector3 zero = new Vector3(0, 0, 0);
     Vector3 PlayerPos;
+    Vector3 MovedPos;
     Vector3 searchPos;
-    Vector3 startPos = new Vector3(-600f, -35f);
+    Vector3 startPos = new Vector3(-600f, -35f); //cityのA地点
+    Vector3 Apoint = new Vector3(-600f,-35f);
+    Vector3 Bpoint = new Vector3(-205f ,241f);
+    Vector3 Cpoint = new Vector3(-203f, -320f);
+    Vector3 Dpoint = new Vector3(197f, -46f);
     Vector3[] vin = new Vector3[32];
     Vector3[] vout = new Vector3[48];
     Vector3[] aimV = new Vector3[30];
+
+
+    //-----method------
+    
+        // ダイアログを追加する親のCanvas
+        [SerializeField] private Canvas par = default;
+        // 表示するダイアログ
+        [SerializeField] private OK dial = default;
+    public void ShowDialog()
+    {
+        GameObject SampleDialog = Instantiate ((GameObject) Resources.Load ("SampleDia")) as GameObject;
+        
+       
+    }
 
     // mypositionに設定したstart positionを入れる
     void Start()
@@ -94,7 +113,7 @@ public class CharacterMove : MonoBehaviour
         vin[2] = new Vector3(-503f, -110f);
         vin[1] = new Vector3(-545f, -77f);
 
-        //--------
+        //---外側  Vout-----
 
         vout[1] = new Vector3(-635f, 18f);
         vout[2] = new Vector3(-635f, 76f);
@@ -143,21 +162,62 @@ public class CharacterMove : MonoBehaviour
         vout[44] = new Vector3(-635f, -212f);
         vout[44] = new Vector3(-635f, -154f);
         vout[44] = new Vector3(-635f, -96f);
-
-
-
-
-
     }
 
 
+    public void rollOfDice()
+    {
+        Transform myPosition = this.transform;
+
+         roll_of_Dice = UnityEngine.Random.Range(1, 6);
+            moveTime = roll_of_Dice;     //サイコロの目が動く数とする
+            for (int i = 0; i < 32; i++) // 自分の座標がどの配列番号か判定(内側)
+            {        
+                if(vin[i] == myPosition.position)
+                {
+                    nowPos_num = i;
+                    break;
+                }
+            }
+            terget_num = nowPos_num + moveTime;//配列番号にサイコロの目を足す
+            
+            if (terget_num > 31){
+                terget_num = terget_num - 31;
+            } 
+　　　　　　　
+            Vector3 pos = myPosition.position;
+            pos.x = vin[terget_num].x;    // x座標
+            pos.y = vin[terget_num].y;    // y座標
+            pos.z += 0.0f;    // z座標は移動しない
+
+            myPosition.position = pos;  // 座標を設定
+            MovedPos = pos;
+            
+
+            Debug.Log($"今{nowPos_num}");
+            Debug.Log($"サイコロ {moveTime}");
+            Debug.Log($"位置{myPosition.position}"); 
+            
+            //---移動後の自分の座標を判定 ---> 駒に応じたダイアログを発生
+            if(MovedPos == Apoint|MovedPos == Bpoint|MovedPos == Cpoint|MovedPos == Dpoint)
+            {
+                //クリックでサイコロを回すようにする。
+                
+                //ここに分岐用のダイアログを生成するプログラムを書く 
+                ShowDialog();               
+            }
+    }
     // Update is called once per frame
     void Update()
     {
 
         Transform myPosition = this.transform;
         
-        //プレイヤーが外を通っているか内を通っているかの判定
+        //aiming --> 1, city-out --> 2, city-in --> 3,
+        //として自分が今どのコースにいるのか判定、プレイヤーごとprivateに保持
+
+        //-------------------------------------
+        //--内側の移動--------------------------
         if (Input.GetKeyDown(KeyCode.Return))
         {
             roll_of_Dice = UnityEngine.Random.Range(1, 6);
@@ -182,12 +242,22 @@ public class CharacterMove : MonoBehaviour
             pos.z += 0.0f;    // z座標は移動しない
 
             myPosition.position = pos;  // 座標を設定
+            MovedPos = pos;
             
 
             Debug.Log($"今{nowPos_num}");
             Debug.Log($"サイコロ {moveTime}");
             Debug.Log($"位置{myPosition.position}"); 
-            //push確認
+            
+            //---移動後の自分の座標を判定 ---> 駒に応じたダイアログを発生
+            if(MovedPos == Apoint|MovedPos == Bpoint|MovedPos == Cpoint|MovedPos == Dpoint)
+            {
+                //クリックでサイコロを回すようにする。
+                
+                //ここに分岐用のダイアログを生成するプログラムを書く 
+                Invoke("ShowDialog",0.3f);               
+            } 
+
         }
 
         //--------外側の移動
@@ -216,6 +286,7 @@ public class CharacterMove : MonoBehaviour
             pos.z += 0.0f;    // z座標は移動しない
 
             myPosition.position = pos;  // 座標を設定
+            MovedPos = pos;
             
 
             Debug.Log($"今{nowPos_num}");
@@ -223,9 +294,5 @@ public class CharacterMove : MonoBehaviour
             Debug.Log($"位置{myPosition.position}"); 
             //push確認
         }
-    
-    //---移動後の自分の座標を判定 ---> 駒に応じたダイアログを発生
-
-
     }
 }

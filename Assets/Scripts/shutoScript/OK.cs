@@ -9,6 +9,8 @@ public class OK : MonoBehaviour
     {
         OK,
         Cancel,
+
+        Retry,
     }
 
     public Action<DialogResult> FixDialog{ get; set; }
@@ -23,5 +25,10 @@ public class OK : MonoBehaviour
     {
         this.FixDialog?.Invoke(DialogResult.Cancel);
         Destroy(this.gameObject);
+    }
+
+    public void Onbody()
+    {
+        this.FixDialog.Invoke(DialogResult.Retry);
     }
 }
