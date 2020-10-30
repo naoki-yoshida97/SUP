@@ -60,6 +60,10 @@ public class CorpCreate : MonoBehaviour {
         } else {
             num++;
             string name;
+            
+            //呼び出された番号を追加する
+
+
 
             //delete drop down~~~~~~
             // listにオブジェクト名を格納 num_cnt
