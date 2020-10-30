@@ -51,6 +51,9 @@ public class CorpCreate : MonoBehaviour {
     //同一企業カードの数表示用
     int[] corp_cnt = new int[21] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
+    //収入配列
+    int[,] zero　=[[1000,4600],[1300,5600],[1600,6600],[]] 
+
     private GameObject corp; //会社を格納する変数
 
     //ボタンが押された場合、今回呼び出される関数
@@ -61,7 +64,7 @@ public class CorpCreate : MonoBehaviour {
             num++;
             string name;
             
-            //呼び出された番号を追加する
+            //呼び出された番号を元に引っ張っってくる
 
 
 
