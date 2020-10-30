@@ -28,6 +28,9 @@ public class OfficerCreate : MonoBehaviour {
     //同一企業カードの数表示用
     int[] corp_cnt = new int[9] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
+    //人事系　引っ張る時""-54""
+    int[] human_resources = new int[] {600,800,800,800,600,600,600,600,600};//マーケティング、企画、SE、マネージャー、人事、事務、経理、PG、営業
+
     private GameObject corp; //会社を格納する変数
 
     void Start()
