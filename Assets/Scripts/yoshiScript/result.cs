@@ -11,19 +11,19 @@ public class result : MonoBehaviour
     GameObject of;
 
     //スクリプト名と使う関係
-    SelectCompany script;
-    Officer2 yakuin;
+    CorpCreate script;
+    OfficerCreate yakuin;
 
     // Start is called before the first frame update
     void Start()
     {
         // オブジェクトの検出と変数作成 
-        sc = GameObject.Find("Button");
-        of = GameObject.Find("Button2");
-        
+        sc = GameObject.Find("CorpAddButton");
+        of = GameObject.Find("OfficerAddButton");
+                          
         //スクリプトの読み込みと代入
-        script = sc.GetComponent<SelectCompany>();
-        yakuin = of.GetComponent<Officer2>();
+        script = sc.GetComponent<CorpCreate>();
+        yakuin = of.GetComponent<OfficerCreate>();
 
     }
 

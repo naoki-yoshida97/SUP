@@ -7,12 +7,23 @@ public class CorpCreate : MonoBehaviour {
     static int pos_x = 320;
     static int pos_y = -30;
     static int num;
+    public int income = 0;
+    private Text SumCom;
     // drop down 
     public static List<string> corp_name_list = new List<string> ();
     [SerializeField] private Dropdown dropdown; //Dropdownを格納する変数
     [SerializeField] private Dropdown dropdown_delete; //Dropdownを格納する変数
     //drop down
 
+    // Start is called before the first frame update
+    void Start()
+    {
+        //ここでオブジェクトの指定と表記
+        //増える方
+        this.SumCom = GameObject.Find("sumcomp").GetComponent<Text>();
+        SumCom.text = income.ToString()+" 万円";
+        
+    }
     // 会社名配列
     string[] corpAry = new string[21] {
         "建築会社", //0
@@ -92,6 +103,8 @@ public class CorpCreate : MonoBehaviour {
             }
             dropdown_delete.RefreshShownValue ();
 
+            income += 50;
+            SumCom.text = income.ToString() +" 万円"; // int型をstring型に変換
         }
     }
 

@@ -7,6 +7,8 @@ public class OfficerCreate : MonoBehaviour {
     static int pos_x = 320;
     static int pos_y = -160;
     static int num;
+    public int outcome = 0;
+    private Text SumOut; 
     public static List<string> corp_name_list = new List<string> ();
     [SerializeField] private Dropdown dropdown; //Dropdownを格納する変数
     [SerializeField] private Dropdown dropdown_delete; //Dropdownを格納する変数
@@ -28,6 +30,12 @@ public class OfficerCreate : MonoBehaviour {
 
     private GameObject corp; //会社を格納する変数
 
+    void Start()
+    {
+        this.SumOut = GameObject.Find("sumout").GetComponent<Text>();
+        SumOut.text = outcome.ToString()+" 万円";
+    }
+
     //ボタンが押された場合、今回呼び出される関数
     public void OfficerClickAdd () {
         if (num == 6) {
@@ -41,6 +49,9 @@ public class OfficerCreate : MonoBehaviour {
             name = officer_card_num.ToString () + "_" + corp_cnt[dropdown.value];
             corp_name_list.Add (name);
             corp_cnt[dropdown.value]++;
+
+            outcome += 50;
+            SumOut.text = outcome.ToString() +" 万円"; // int型をstring型に変換]
 
             // ドロップダウンに会社名を追加
             //dropdown_delete.options.Add (new Dropdown.OptionData { text = corpAry[dropdown.value] + corp_cnt[dropdown.value] });
@@ -73,6 +84,8 @@ public class OfficerCreate : MonoBehaviour {
                 pos_x = 320;
             }
             dropdown_delete.RefreshShownValue ();
+
+            
         }
     }
 

@@ -11,17 +11,12 @@ public class addeikyo : MonoBehaviour
     static int pos_eiy = 85;
     static int num_ei;
     public static List<string> eik_coins = new List<string> ();
-
+    string hoge;
     //コインの管理
     public int ei_coin = 0;
 
     //Game Objects name 
     public GameObject inful;
-
-    // Start is called before the first frame update
-    // void Start()//初期値は３
-    // {  
-    // }
 
     // Pudh Object:eip button when it starts
     public void addClick()
@@ -29,7 +24,7 @@ public class addeikyo : MonoBehaviour
         // Debug.Log ("クリックされた");
         //クリックされたら増える
         ei_coin++;
-        string hoge;
+        
 
         hoge = "eikyo_"+ ei_coin;
         //into list
@@ -54,7 +49,6 @@ public class addeikyo : MonoBehaviour
         //真にすることで表記
         inful.GetComponent<Image> ().preserveAspect = true;
 
-
         // xに-13移動
         pos_eix = pos_eix - 13;
         // Debug.Log(pos_eix);
@@ -65,9 +59,15 @@ public class addeikyo : MonoBehaviour
     {
         //クリックされたら減る
         ei_coin--;
-        GameObject inful = GameObject.Find ("eikyo");
+        hoge = "eikyo_"+ ei_coin;
+        GameObject inful = GameObject.Find (hoge);
         Destroy (inful);
-
+        Debug.Log("osita");
+        // public static List<string> eik_coins = new List<string> ();
+        // for (int i = 0; i < eik_coins.Count; i++) {
+        // GameObject obj = GameObject.Find (eik_coins[i]);
+        // Destroy (obj);
+        // }
     }
 
 }
