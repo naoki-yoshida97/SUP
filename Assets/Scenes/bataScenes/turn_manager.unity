@@ -289,7 +289,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: "\u30BF\u30FC\u30F3\u7D42\u4E86"
 --- !u!222 &1711570983
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -442,4 +442,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 635124711}
-  dialog: {fileID: 1354990638631941023, guid: f5591ae6cbbec43c0a3810e63544da58, type: 3}
+  dialog: {fileID: 520025238326968301, guid: c08e1daa95acd4038b156fd3a2dae309, type: 3}
