@@ -8,9 +8,8 @@ using UnityEngine.UI;
 public class CorpCreate : MonoBehaviour {
     static int pos_x = 320;
     static int pos_y = 15;
-    static int pos_x_toggle = 680;
-    static int pos_y_toggle = 240;
     static int num = 0;
+    static int corp_amount = 300;
 
     // drop down 
     public static List<string> corp_name_list = new List<string> ();
@@ -55,6 +54,13 @@ public class CorpCreate : MonoBehaviour {
             num++;
             string name;
 
+            //会社を立てた分資産を減らす
+            //calculatorからtext_gを参照
+            int Money = int.Parse (calculator.text_g.text);
+            Money -= 300 * num;
+            calculator.text_g.text = Money.ToString ();
+            //Debug.Log (-300 * num);
+
             //delete drop down~~~~~~
             // listにオブジェクト名を格納 num_cnt
             name = dropdown.value.ToString () + "_" + corp_cnt[dropdown.value];
@@ -92,8 +98,6 @@ public class CorpCreate : MonoBehaviour {
             if (num == 6) {
                 pos_y = pos_y - 87;
                 pos_x = 320;
-
-                pos_x_toggle = 680;
             }
             dropdown_delete.RefreshShownValue ();
 
@@ -119,8 +123,6 @@ public class CorpCreate : MonoBehaviour {
             //削除したdropdown_delete.value以外のcorp_name_listを全部再生成
             pos_x = 320; //-320
             pos_y = 15; //150
-            pos_x_toggle = 680;
-            pos_y_toggle = 240;
             for (int i = 0; i < corp_name_list.Count; i++) {
                 string[] arr = corp_name_list[i].Split ('_');
 
