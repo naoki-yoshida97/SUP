@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CarEnterButton : MonoBehaviour
+public class CharEnterButton : MonoBehaviour
 {
     [SerializeField] private Dropdown dropdown; //Dropdownを格納する変数
     string[] player = new string[4] {
