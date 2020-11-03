@@ -7,6 +7,7 @@ public class ButtonStartStop : MonoBehaviour
     {
         OK,
         Cancel,
+        Retry,
     }
     
     // ダイアログが操作されたときに発生するイベント
@@ -25,5 +26,10 @@ public class ButtonStartStop : MonoBehaviour
         // イベント通知先があれば通知してダイアログを破棄してしまう
         this.FixDialog?.Invoke(DialogResult.Cancel);
         Destroy(this.gameObject);
+    }
+    
+    public void Onbody()
+    {
+        this.FixDialog.Invoke(DialogResult.Retry);
     }
 }
