@@ -13,5 +13,6 @@ public class Lobby_Button_script : MonoBehaviour {
         SceneManager.LoadScene ("CityBoard");
         Application.LoadLevelAdditive ("CorpCreate");
         Application.LoadLevelAdditive ("SampleScene");
+        Application.LoadLevelAdditive ("kannkyou_para");
     }
 }

@@ -8,9 +8,8 @@ using UnityEngine.UI;
 public class CorpCreate : MonoBehaviour {
     static int pos_x = 320;
     static int pos_y = 15;
-    static int pos_x_toggle = 752;
-    static int pos_y_toggle = 265;
     static int num = 0;
+    static int corp_amount = 300;
 
     // drop down 
     public static List<string> corp_name_list = new List<string> ();
@@ -55,6 +54,13 @@ public class CorpCreate : MonoBehaviour {
             num++;
             string name;
 
+            //会社を立てた分資産を減らす
+            //calculatorからtext_gを参照
+            int Money = int.Parse (calculator.text_g.text);
+            Money -= 300 * num;
+            calculator.text_g.text = Money.ToString ();
+            //Debug.Log (-300 * num);
+
             //delete drop down~~~~~~
             // listにオブジェクト名を格納 num_cnt
             name = dropdown.value.ToString () + "_" + corp_cnt[dropdown.value];
@@ -88,28 +94,16 @@ public class CorpCreate : MonoBehaviour {
             // アスペクト比を元画像と同じサイズにする
             corp.GetComponent<Image> ().preserveAspect = true;
 
-            // 上場/非上場選択の為のToggle作成
-            //GameObject prefab = (GameObject) Resources.Load ("ToggleGroup");
-            //GameObject gameObj = Instantiate (prefab) as GameObject;
-            //GameObject cloneObject = Instantiate (gameObj, new Vector3 (0.0f, 0.0f, 0.0f), Quaternion.identity);
-            GameObject Toggle = Instantiate ((GameObject) Resources.Load ("ToggleGroup")) as GameObject;
-            Toggle.transform.parent = GameObject.Find ("Canvas").transform;
-            // ToggleGroupの位置変更
-            Toggle.transform.position = new Vector3 (pos_x_toggle, pos_y_toggle, 0);
-            // ToggleGroupのrename
-            Toggle.name = "ToggleGroup_" + num;
-
             pos_x = pos_x + 55;
-            pos_x_toggle = pos_x_toggle + 44;
             if (num == 6) {
-                pos_y = pos_y - 90;
+                pos_y = pos_y - 87;
                 pos_x = 320;
-
-                pos_y_toggle = pos_y_toggle - 70;
-                pos_x_toggle = 752;
             }
             dropdown_delete.RefreshShownValue ();
 
+            //for (int i = 0; i < 12; i++) {
+            //    Debug.Log (Listed_flg[i]);
+            //}
         }
     }
 
@@ -123,18 +117,12 @@ public class CorpCreate : MonoBehaviour {
                 GameObject obj = GameObject.Find (corp_name_list[i]);
                 Destroy (obj);
             }
-            for (int i = 1; i < corp_name_list.Count + 1; i++) {
-                GameObject obj = GameObject.Find ("ToggleGroup_" + i);
-                Destroy (obj);
-            }
             corp_name_list.RemoveAt (dropdown_delete.value);
             dropdown_delete.options.RemoveAt (dropdown_delete.value);
 
             //削除したdropdown_delete.value以外のcorp_name_listを全部再生成
             pos_x = 320; //-320
             pos_y = 15; //150
-            pos_x_toggle = 712;
-            pos_y_toggle = 252;
             for (int i = 0; i < corp_name_list.Count; i++) {
                 string[] arr = corp_name_list[i].Split ('_');
 
@@ -157,21 +145,10 @@ public class CorpCreate : MonoBehaviour {
                 // アスペクト比を元画像と同じサイズにする
                 corp.GetComponent<Image> ().preserveAspect = true;
 
-                GameObject Toggle = Instantiate ((GameObject) Resources.Load ("ToggleGroup")) as GameObject;
-                Toggle.transform.parent = GameObject.Find ("Canvas").transform;
-                // ToggleGroupの位置変更
-                Toggle.transform.position = new Vector3 (pos_x_toggle, pos_y_toggle, 0);
-                // ToggleGroupのrename
-                Toggle.name = "ToggleGroup_" + (i + 1);
-
                 pos_x = pos_x + 55;
-                pos_x_toggle = pos_x_toggle + 41;
                 if (i == 5) {
-                    pos_y = pos_y - 90;
+                    pos_y = pos_y - 87;
                     pos_x = 320;
-
-                    pos_y_toggle = pos_y_toggle - 70;
-                    pos_x_toggle = 752;
                 }
             }
         }
@@ -187,7 +164,10 @@ public class CorpCreate : MonoBehaviour {
     public void onClick_Nonlisted () {
         //Debug.Log ("Nonlisted: " + num);
         // 親のオブジェクト名を取得
+        //        o.transform.SetParent (this.transform);
+        //GameObject parent = this.transform.parent.gameObject;
         GameObject parent = this.transform.parent.gameObject;
+        //parent.transform.SetParent (this.transform); // = this.transform.parent.gameObject;
 
         // ToggleGroup_XのXを切り出し
         string str = parent.name;
@@ -220,7 +200,6 @@ public class CorpCreate : MonoBehaviour {
         Listed_flg[n] = 1;
 
         //Debug.Log ("Listed! : " + str + ": 1: " + Listed_flg[n]);
-
     }
 
 }
