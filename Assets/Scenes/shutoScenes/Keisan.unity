@@ -216,31 +216,6 @@ PrefabInstance:
       propertyPath: m_Text
       value: "\u9589\u3058\u308B"
       objectReference: {fileID: 0}
-    - target: {fileID: 2894071596289964796, guid: 01833385d52cb4a40b97fd4ce8328b6b,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2894071597636938945, guid: 01833385d52cb4a40b97fd4ce8328b6b,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2894071597636938945, guid: 01833385d52cb4a40b97fd4ce8328b6b,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2894071597636938945, guid: 01833385d52cb4a40b97fd4ce8328b6b,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2894071597636938945, guid: 01833385d52cb4a40b97fd4ce8328b6b,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0.43137255
-      objectReference: {fileID: 0}
     - target: {fileID: 2894071598113884704, guid: 01833385d52cb4a40b97fd4ce8328b6b,
         type: 3}
       propertyPath: m_LocalPosition.x
