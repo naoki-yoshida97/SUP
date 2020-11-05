@@ -18,7 +18,7 @@ public class CharacterMove : MonoBehaviour
     Vector3 PlayerPos;
     Vector3 MovedPos;
     Vector3 searchPos;
-    Vector3 startPos = new Vector3(-600f, -35f,1f); //cityのA地点
+    Vector3 startPos = new Vector3( -600f, 245f,-6f); //aiming start
     Vector3 Apoint = new Vector3(-600f,-35f,1f);
     Vector3 Bpoint = new Vector3(-205f ,241f,1f);
     Vector3 Cpoint = new Vector3(-203f, -320f,1f);
@@ -42,9 +42,14 @@ public class CharacterMove : MonoBehaviour
     {
         GameObject SampleDialog = Instantiate ((GameObject) Resources.Load ("SampleDia")) as GameObject;  
     }
-    public void DecidePlayer(int PlayerNum)
-    {
+    public void ShowOnly(){
+        GameObject Showhide = GameObject.Find("ChangeBranch");
+        Showhide.transform.localScale = new Vector3(1,1,1);
+    }
 
+    public void NoMove(){
+        GameObject Showhide = GameObject.Find("ChangeBranch");
+        Showhide.transform.localScale = new Vector3(0,0,0);
     }
     public void BranchChange(){
         //z座標を基準にどのコースにいるのか把握
@@ -73,7 +78,7 @@ public class CharacterMove : MonoBehaviour
         PlayerTranse.position = aimV[0];
     }
 
-    public void inBranch(){
+    public void InBranch(){
         Transform PlayerTranse = this.transform;
         Vector3 VecterJudge = PlayerTranse.position;
 
@@ -244,6 +249,8 @@ public class CharacterMove : MonoBehaviour
         }
     }
 
+
+
     public void rollOfDice()
     {
             Transform myPosition = this.transform;
@@ -364,7 +371,7 @@ public class CharacterMove : MonoBehaviour
                 if(MovedPos == Apoint|MovedPos == Bpoint|MovedPos == Cpoint|MovedPos == Dpoint)
                 {   
                     //ここに分岐用のダイアログを生成するプログラムを書く 
-                    ShowDialog();               
+                    ShowOnly();               
                 }
             }  //if(this.nowBranch == 3)  vinの移動
 
