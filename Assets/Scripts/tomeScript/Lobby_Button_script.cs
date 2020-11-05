@@ -14,5 +14,6 @@ public class Lobby_Button_script : MonoBehaviour {
         Application.LoadLevelAdditive ("CorpCreate");
         Application.LoadLevelAdditive ("SampleScene");
         Application.LoadLevelAdditive ("kannkyou_para");
+        Application.LoadLevelAdditive ("turn_manager");
     }
 }
