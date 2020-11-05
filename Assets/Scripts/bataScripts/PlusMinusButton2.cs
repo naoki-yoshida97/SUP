@@ -9,7 +9,7 @@ using Photon.Realtime;
 public class PlusMinusButton2 : MonoBehaviour
 {
     public Text text;
-    public int num = 3;
+    public int num = 0;
 
     void Start(){
         text = text.GetComponent<Text> ();
