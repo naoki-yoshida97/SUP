@@ -31,7 +31,7 @@ public class kessan : MonoBehaviour {
     int[, ] pg_school = { { 700, 4100 }, { 900, 5100 }, { 1100, 6100 }, { 1400, 7100 }, { 1700, 8100 } }; //17
     int[, ] ad_agency = { { 1400, 5200 }, { 1800, 6200 }, { 2200, 7200 }, { 2700, 8200 }, { 3300, 9200 } }; //18
     int[, ] video_production = { { 1100, 4800 }, { 1500, 5800 }, { 1800, 6800 }, { 2200, 7800 }, { 2700, 8800 } }; //19
-    int[, ] it_company = { { 800, 4200 }, { 1000, 5200 }, { 1200, 6200 }, { 1500, 7200 }, { 1800, 8200 } };;
+    int[, ] it_company = { { 800, 4200 }, { 1000, 5200 }, { 1200, 6200 }, { 1500, 7200 }, { 1800, 8200 } };
 
     // 収入計算
     public void kessanIvent () {
@@ -92,7 +92,7 @@ public class kessan : MonoBehaviour {
                     env_para = int.Parse (PlusMinusButton2.keikiText_g.text) - 1;
                     income = influencer[env_para, Flg];
                     break;
-
+                    /*
                 case "7":
                     env_para = int.Parse (PlusMinusButton3.keikiText_g.text) - 1;
                     income = influencer[env_para, Flg];
@@ -139,10 +139,11 @@ public class kessan : MonoBehaviour {
                     env_para = int.Parse (PlusMinusButton.techText_g.text) - 1;
                     income = IT_company[env_para, Flg];
                     break;
+                    * /
             }
         } else if (Flg == 1) { //上場
             switch (corp) {
-                case "0":
+                /*               case "0":
                     break;
 
                 case "1":
@@ -203,10 +204,10 @@ public class kessan : MonoBehaviour {
 
                 case "19":
                     break;
-
+*/
                 case "20":
                     env_para = int.Parse (PlusMinusButton.techText_g.text) - 3;
-                    income = IT_company[env_para, Flg];
+                    income = it_company[env_para, Flg];
                     break;
             }
         }
