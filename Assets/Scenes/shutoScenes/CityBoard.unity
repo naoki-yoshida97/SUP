@@ -976,10 +976,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 477117818}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceaf3b22dfd155a40a1ed7f239b84e7e, type: 3}
+  m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropdown: {fileID: 636765613}
 --- !u!1 &477629761
 GameObject:
   m_ObjectHideFlags: 0
@@ -5112,8 +5111,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29939f7a333828241aab23f9d32bf051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  par: {fileID: 0}
-  dial: {fileID: 0}
 --- !u!4 &1784970696
 Transform:
   m_ObjectHideFlags: 0

@@ -6,8 +6,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class CorpCreate : MonoBehaviour {
-    static int pos_x = 320;
-    static int pos_y = 15;
+    static int pos_x = 0;
+    static int pos_y = 0;
     static int num = 0;
     static int corp_amount = 300;
 
@@ -80,7 +80,7 @@ public class CorpCreate : MonoBehaviour {
             GameObject corp = new GameObject (corp_name_list[corp_name_list.Count - 1]);
 
             // 作ったゲームオブジェクトをCanvasの子にする
-            corp.transform.parent = GameObject.Find ("Canvas").transform;
+            corp.transform.parent = GameObject.Find ("Canvas_tome").transform;
 
             // 画像のアンカーポジションを追加
             corp.AddComponent<RectTransform> ().anchoredPosition = new Vector3 (pos_x, pos_y, 0);
@@ -131,7 +131,7 @@ public class CorpCreate : MonoBehaviour {
                 GameObject corp = new GameObject (corp_name_list[i]);
 
                 // 作ったゲームオブジェクトをCanvasの子にする
-                corp.transform.parent = GameObject.Find ("Canvas").transform;
+                corp.transform.parent = GameObject.Find ("Canvas_tome").transform;
 
                 // 画像のアンカーポジションを追加
                 corp.AddComponent<RectTransform> ().anchoredPosition = new Vector3 (pos_x, pos_y, 0);
