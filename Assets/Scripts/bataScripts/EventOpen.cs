@@ -29,7 +29,7 @@ public class EventOpen : MonoBehaviour
         GameObject corp = new GameObject(var);
 
         // 作ったゲームオブジェクトをCanvasの子にする
-        corp.transform.parent = GameObject.Find ("Canvas").transform;
+        corp.transform.parent = GameObject.Find ("Canvas_1").transform;
 
         // 画像のアンカーポジションを追加
         corp.AddComponent<RectTransform> ().anchoredPosition = new Vector3 (0, 0, 0);
@@ -37,16 +37,17 @@ public class EventOpen : MonoBehaviour
         // 縮尺を変更
         corp.GetComponent<RectTransform> ().localScale = new Vector3 (5, 5, 5);
 
-        num = UnityEngine.Random.Range(0,14); //0から10
+        num = UnityEngine.Random.Range(69,92); //0から10
         Debug.Log(num); 
-        if(num<=4){
-            list.Add(num);
-            Debug.Log(list.ToString());
-        }
+        //if(num<=4){
+            //list.Add(num);
+            //Debug.Log(list.ToString());
+        //}
         // スプライト画像追加
         corp.AddComponent<Image> ().sprite = Resources.Load<Sprite>(num.ToString());
 
         // アスペクト比を元画像と同じサイズにする
         corp.GetComponent<Image> ().preserveAspect = true;
+        Debug.Log("表示された");
     }
 }
