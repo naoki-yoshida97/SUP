@@ -31,7 +31,7 @@ public class kessan : MonoBehaviour {
     int[, ] pg_school = { { 700, 4100 }, { 900, 5100 }, { 1100, 6100 }, { 1400, 7100 }, { 1700, 8100 } }; //17
     int[, ] ad_agency = { { 1400, 5200 }, { 1800, 6200 }, { 2200, 7200 }, { 2700, 8200 }, { 3300, 9200 } }; //18
     int[, ] video_production = { { 1100, 4800 }, { 1500, 5800 }, { 1800, 6800 }, { 2200, 7800 }, { 2700, 8800 } }; //19
-    int[, ] it_company = { { 800, 4200 }, { 1000, 5200 }, { 1200, 6200 }, { 1500, 7200 }, { 1800, 8200 } };;
+    int[, ] it_company = { { 800, 4200 }, { 1000, 5200 }, { 1200, 6200 }, { 1500, 7200 }, { 1800, 8200 } };
 
     // 収入計算
     public void kessanIvent () {
@@ -62,7 +62,7 @@ public class kessan : MonoBehaviour {
     // 会社名に対応した金額と環境パラメータをincomとenv_paraに格納
     void referenceFunc (int Flg, string corp) {
         // 環境パラメータを要素番号に変更
-        if (Flg == 0) { //未上場
+        /*if (Flg == 0) { //未上場
             switch (corp) {
                 case "0":
                     env_para = int.Parse (PlusMinusButton2.keikiText_g.text) - 1;
@@ -210,6 +210,7 @@ public class kessan : MonoBehaviour {
                     break;
             }
         }
+        */
     }
 
     // Start is called before the first frame update
