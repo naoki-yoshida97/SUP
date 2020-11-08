@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System;
 
-public class EventShow : MonoBehaviour
+public class ClickEvent : MonoBehaviour
 {
-    string var = "EventBox";
+    string var = "EventView";
     public enum DialogResult
     {
         Cancel,
@@ -13,7 +13,7 @@ public class EventShow : MonoBehaviour
     // ダイアログが操作されたときに発生するイベント
     public Action<DialogResult> FixDialog { get; set; }
     
-    // Cancelボタンが押されたとき
+    // OKボタンが押されたとき
     public void OnCancel()
     {
         Debug.Log("消された!");  // ログを出力
