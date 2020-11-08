@@ -37,17 +37,22 @@ public class EventOpen : MonoBehaviour
         // 縮尺を変更
         corp.GetComponent<RectTransform> ().localScale = new Vector3 (5, 5, 5);
 
-        num = UnityEngine.Random.Range(69,92); //0から10
+        // イベントをランダムで1枚選択
+        num = UnityEngine.Random.Range(69,92); //69から92
         Debug.Log(num); 
-        //if(num<=4){
-            //list.Add(num);
-            //Debug.Log(list.ToString());
-        //}
+        if(num==89 || num==90 || num==91 || num==92){
+            list.Add(num);
+            Debug.Log(list.ToString());
+        }
         // スプライト画像追加
         corp.AddComponent<Image> ().sprite = Resources.Load<Sprite>(num.ToString());
 
         // アスペクト比を元画像と同じサイズにする
         corp.GetComponent<Image> ().preserveAspect = true;
         Debug.Log("表示された");
+    }
+
+    public void ShowEventOnClick(){
+
     }
 }
