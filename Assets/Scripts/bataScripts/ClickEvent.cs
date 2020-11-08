@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
 using System;
 
-public class EventShow : MonoBehaviour
+public class ClickEvent : MonoBehaviour
 {
-    string var = "EventBox";
-    string var2 = "EventView";
+    string var = "EventView";
     public enum DialogResult
     {
-        Cancel2,
+        OK,
         Cancel,
         Retry,
     }
@@ -16,13 +15,9 @@ public class EventShow : MonoBehaviour
     public Action<DialogResult> FixDialog { get; set; }
     
     // OKボタンが押されたとき
-    public void OnCancel2()
+    public void OnOk()
     {
-        Debug.Log("消された!");  // ログを出力
-        GameObject obj = GameObject.Find (var2);
-        Destroy (obj);
-        // イベント通知先があれば通知してダイアログを破棄してしまう
-        this.FixDialog?.Invoke(DialogResult.Cancel);
+        this.FixDialog?.Invoke(DialogResult.OK);
         Destroy(this.gameObject);
     }
     
