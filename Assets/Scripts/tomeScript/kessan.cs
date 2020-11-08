@@ -31,7 +31,7 @@ public class kessan : MonoBehaviour {
     int[, ] pg_school = { { 700, 4100 }, { 900, 5100 }, { 1100, 6100 }, { 1400, 7100 }, { 1700, 8100 } }; //17
     int[, ] ad_agency = { { 1400, 5200 }, { 1800, 6200 }, { 2200, 7200 }, { 2700, 8200 }, { 3300, 9200 } }; //18
     int[, ] video_production = { { 1100, 4800 }, { 1500, 5800 }, { 1800, 6800 }, { 2200, 7800 }, { 2700, 8800 } }; //19
-    int[, ] it_company = { { 800, 4200 }, { 1000, 5200 }, { 1200, 6200 }, { 1500, 7200 }, { 1800, 8200 } };
+    int[, ] it_company = { { 800, 4200 }, { 1000, 5200 }, { 1200, 6200 }, { 1500, 7200 }, { 1800, 8200 } };;
 
     // 収入計算
     public void kessanIvent () {
@@ -64,7 +64,6 @@ public class kessan : MonoBehaviour {
         // 環境パラメータを要素番号に変更
         if (Flg == 0) { //未上場
             switch (corp) {
-                //Red
                 case "0":
                     env_para = int.Parse (PlusMinusButton2.keikiText_g.text) - 1;
                     income = constructor[env_para, Flg];
@@ -93,153 +92,121 @@ public class kessan : MonoBehaviour {
                     env_para = int.Parse (PlusMinusButton2.keikiText_g.text) - 1;
                     income = influencer[env_para, Flg];
                     break;
-                    //Green
+
                 case "7":
-                    env_para = int.Parse (PlusMinusButton3.kankyoText_g.text) - 1;
-                    income = agriculture[env_para, Flg];
+                    env_para = int.Parse (PlusMinusButton3.keikiText_g.text) - 1;
+                    income = influencer[env_para, Flg];
                     break;
                 case "8":
-                    env_para = int.Parse (PlusMinusButton3.kankyoText_g.text) - 1;
-                    income = insurance_agency[env_para, Flg];
                     break;
+
                 case "9":
-                    env_para = int.Parse (PlusMinusButton3.kankyoText_g.text) - 1;
-                    income = pharmacy[env_para, Flg];
                     break;
+
                 case "10":
-                    env_para = int.Parse (PlusMinusButton3.kankyoText_g.text) - 1;
-                    income = power_company[env_para, Flg];
                     break;
+
                 case "11":
-                    env_para = int.Parse (PlusMinusButton3.kankyoText_g.text) - 1;
-                    income = pharmaceutical_company[env_para, Flg];
                     break;
+
                 case "12":
-                    env_para = int.Parse (PlusMinusButton3.kankyoText_g.text) - 1;
-                    income = real_estate[env_para, Flg];
                     break;
+
                 case "13":
-                    env_para = int.Parse (PlusMinusButton3.kankyoText_g.text) - 1;
-                    income = biomass[env_para, Flg];
                     break;
-                    //Blue
+
                 case "14":
-                    env_para = int.Parse (PlusMinusButton.techText_g.text) - 1;
-                    income = tv_station[env_para, Flg];
                     break;
+
                 case "15":
-                    env_para = int.Parse (PlusMinusButton.techText_g.text) - 1;
-                    income = web_production[env_para, Flg];
                     break;
+
                 case "16":
-                    env_para = int.Parse (PlusMinusButton.techText_g.text) - 1;
-                    income = robotics[env_para, Flg];
                     break;
+
                 case "17":
                     env_para = int.Parse (PlusMinusButton.techText_g.text) - 1;
-                    income = pg_school[env_para, Flg];
+                    income = PG_school[env_para, Flg];
                     break;
+
                 case "18":
-                    env_para = int.Parse (PlusMinusButton.techText_g.text) - 1;
-                    income = ad_agency[env_para, Flg];
                     break;
+
                 case "19":
-                    env_para = int.Parse (PlusMinusButton.techText_g.text) - 1;
-                    income = video_production[env_para, Flg];
                     break;
+
                 case "20":
                     env_para = int.Parse (PlusMinusButton.techText_g.text) - 1;
-                    income = it_company[env_para, Flg];
+                    income = IT_company[env_para, Flg];
                     break;
             }
         } else if (Flg == 1) { //上場
             switch (corp) {
-                //Red
                 case "0":
-                    env_para = int.Parse (PlusMinusButton2.keikiText_g.text) - 3;
-                    income = constructor[env_para, Flg];
                     break;
+
                 case "1":
-                    env_para = int.Parse (PlusMinusButton2.keikiText_g.text) - 3;
-                    income = guest_house[env_para, Flg];
                     break;
+
                 case "2":
-                    env_para = int.Parse (PlusMinusButton2.keikiText_g.text) - 3;
-                    income = convenient_store[env_para, Flg];
                     break;
+
                 case "3":
-                    env_para = int.Parse (PlusMinusButton2.keikiText_g.text) - 3;
-                    income = family_restaurant[env_para, Flg];
                     break;
+
                 case "4":
-                    env_para = int.Parse (PlusMinusButton2.keikiText_g.text) - 3;
-                    income = caffe[env_para, Flg];
                     break;
+
                 case "5":
-                    env_para = int.Parse (PlusMinusButton2.keikiText_g.text) - 3;
-                    income = apparel[env_para, Flg];
                     break;
+
                 case "6":
-                    env_para = int.Parse (PlusMinusButton2.keikiText_g.text) - 3;
-                    income = influencer[env_para, Flg];
                     break;
-                    //Green
+
                 case "7":
-                    env_para = int.Parse (PlusMinusButton3.kankyoText_g.text) - 3;
-                    income = agriculture[env_para, Flg];
                     break;
+
                 case "8":
-                    env_para = int.Parse (PlusMinusButton3.kankyoText_g.text) - 3;
-                    income = insurance_agency[env_para, Flg];
                     break;
+
                 case "9":
-                    env_para = int.Parse (PlusMinusButton3.kankyoText_g.text) - 3;
-                    income = pharmacy[env_para, Flg];
                     break;
+
                 case "10":
-                    env_para = int.Parse (PlusMinusButton3.kankyoText_g.text) - 3;
-                    income = power_company[env_para, Flg];
                     break;
+
                 case "11":
-                    env_para = int.Parse (PlusMinusButton3.kankyoText_g.text) - 3;
-                    income = pharmaceutical_company[env_para, Flg];
                     break;
+
                 case "12":
-                    env_para = int.Parse (PlusMinusButton3.kankyoText_g.text) - 3;
-                    income = real_estate[env_para, Flg];
                     break;
+
                 case "13":
-                    env_para = int.Parse (PlusMinusButton3.kankyoText_g.text) - 3;
-                    income = biomass[env_para, Flg];
                     break;
-                    //Blue
+
                 case "14":
-                    env_para = int.Parse (PlusMinusButton.techText_g.text) - 3;
-                    income = tv_station[env_para, Flg];
                     break;
+
                 case "15":
-                    env_para = int.Parse (PlusMinusButton.techText_g.text) - 3;
-                    income = web_production[env_para, Flg];
                     break;
+
                 case "16":
-                    env_para = int.Parse (PlusMinusButton.techText_g.text) - 3;
-                    income = robotics[env_para, Flg];
                     break;
+
                 case "17":
                     env_para = int.Parse (PlusMinusButton.techText_g.text) - 3;
-                    income = pg_school[env_para, Flg];
+                    income = PG_school[env_para, Flg];
                     break;
+
                 case "18":
-                    env_para = int.Parse (PlusMinusButton.techText_g.text) - 3;
-                    income = ad_agency[env_para, Flg];
                     break;
+
                 case "19":
-                    env_para = int.Parse (PlusMinusButton.techText_g.text) - 3;
-                    income = video_production[env_para, Flg];
                     break;
+
                 case "20":
                     env_para = int.Parse (PlusMinusButton.techText_g.text) - 3;
-                    income = it_company[env_para, Flg];
+                    income = IT_company[env_para, Flg];
                     break;
             }
         }
