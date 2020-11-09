@@ -72,6 +72,7 @@ public class CorpCreate : MonoBehaviour {
             // ドロップダウンに会社名を追加
             //dropdown_delete.options.Add (new Dropdown.OptionData { text = corpAry[dropdown.value] + corp_cnt[dropdown.value] });
             dropdown_delete.options.Add (new Dropdown.OptionData { text = corpAry[dropdown.value] });
+
             //~~~~dellete drop down
 
             //add column
