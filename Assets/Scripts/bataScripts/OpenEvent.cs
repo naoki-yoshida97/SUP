@@ -25,20 +25,15 @@ public class OpenEvent : MonoBehaviour{
 
         Debug.Log("押された!");  // ログを出力
 
-        GameObject corp = new GameObject(var);
-
-        // 作ったゲームオブジェクトをCanvasの子にする
-        //corp.transform.parent = GameObject.Find ("Canvas_1").transform;
-        //corp.transform.parent = GameObject.Find ("Pane-ra").transform;
-
         int[] list={89,90,91};
         for (int j = 0; j < list.Length; j++){
             Debug.Log(list[j]);
         }
+        int v = -400;
         Debug.Log(list.Length);
-        for(int i = 0; i < 4; i++){
-            int v = -400;
-
+        for(int i = 0; i < list.Length; i++){
+            
+            GameObject corp = new GameObject(var+i.ToString());
             corp.transform.parent = GameObject.Find ("Pane-ra").transform;
 
             // 画像のアンカーポジションを追加
@@ -52,21 +47,11 @@ public class OpenEvent : MonoBehaviour{
 
             // アスペクト比を元画像と同じサイズにする
             corp.GetComponent<Image> ().preserveAspect = true;
-            v += 200;
+            v += 250;
             Debug.Log(list[i]);
-            Debug.Log("表示するしゅば!(>_<)#");
+            Debug.Log("表示するしゅば!(>_<)#"+i);
+            Debug.Log(v+" "+i);
         }
-        // 画像のアンカーポジションを追加
-        //corp.AddComponent<RectTransform> ().anchoredPosition = new Vector3 (0, 0, 0);
-
-        // 縮尺を変更
-        //corp.GetComponent<RectTransform> ().localScale = new Vector3 (5, 5, 5);
-
-        // スプライト画像追加
-        //corp.AddComponent<Image> ().sprite = Resources.Load<Sprite>("69");
-
-        // アスペクト比を元画像と同じサイズにする
-        //corp.GetComponent<Image> ().preserveAspect = true;
         Debug.Log("表示された");
     }
 }
