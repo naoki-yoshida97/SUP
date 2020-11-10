@@ -10,7 +10,7 @@ public class EventOpen : MonoBehaviour
 {
     int num = 0;
     string var = "EventBox";
-    private List<int> list = new List<int>();
+    public static List<int> list = new List<int>();
     // ダイアログを追加する親のCanvas
     [SerializeField] private Canvas parent = default;
     // 表示するダイアログ
@@ -37,7 +37,7 @@ public class EventOpen : MonoBehaviour
         corp.GetComponent<RectTransform> ().localScale = new Vector3 (5, 5, 5);
 
         // イベントをランダムで1枚選択
-        num = UnityEngine.Random.Range(69,92); //69から92
+        num = UnityEngine.Random.Range(89,92); //69から92
         Debug.Log(num); 
         if(num==89 || num==90 || num==91 || num==92){
             list.Add(num);
