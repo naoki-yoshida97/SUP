@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System;
 
-public class ClickEvent : MonoBehaviour
-{
+public class ClickEvent : MonoBehaviour{
+
     string var = "EventView";
     public enum DialogResult
     {
@@ -17,7 +17,7 @@ public class ClickEvent : MonoBehaviour
     public void OnCancel()
     {
         Debug.Log("消された!");  // ログを出力
-        GameObject obj = GameObject.Find (var);
+        GameObject obj = GameObject.Find(var);
         Destroy (obj);
         // イベント通知先があれば通知してダイアログを破棄してしまう
         this.FixDialog?.Invoke(DialogResult.Cancel);

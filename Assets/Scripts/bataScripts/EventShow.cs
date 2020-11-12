@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System;
 
-public class EventShow : MonoBehaviour
-{
+public class EventShow : MonoBehaviour{
     string var = "EventBox";
+    //public static List<int> list = new List<int>();
     public enum DialogResult
     {
         Cancel,

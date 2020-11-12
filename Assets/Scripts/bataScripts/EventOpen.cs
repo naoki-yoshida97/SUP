@@ -16,7 +16,15 @@ public class EventOpen : MonoBehaviour
     // 表示するダイアログ
     [SerializeField] private EventShow dialog = default;
 
+    public static int Flag = 0;
+
     public void ShowDialog(){
+        Debug.Log("Flag:"+Flag);
+        if(Flag==0){
+            list.Clear();
+            Debug.Log("リストの中身:"+list.Count);
+            Flag = 1;
+        }
         // 生成してCanvasの子要素に設定
         var _dialog = Instantiate(dialog);
         _dialog.transform.SetParent(parent.transform, false);
@@ -24,7 +32,7 @@ public class EventOpen : MonoBehaviour
         _dialog.FixDialog = result => Debug.Log(result);
 
 
-        Debug.Log("押された!");  // ログを出力
+        //Debug.Log("押された!");  // ログを出力
         GameObject corp = new GameObject(var);
 
         // 作ったゲームオブジェクトをCanvasの子にする
@@ -38,16 +46,18 @@ public class EventOpen : MonoBehaviour
 
         // イベントをランダムで1枚選択
         num = UnityEngine.Random.Range(89,92); //69から92
-        Debug.Log(num); 
+        //Debug.Log(num); 
         if(num==89 || num==90 || num==91 || num==92){
             list.Add(num);
-            Debug.Log(list.ToString());
+            //Debug.Log(list.ToString());
+            Debug.Log("リストの中身:"+list.Count);
         }
+
         // スプライト画像追加
         corp.AddComponent<Image> ().sprite = Resources.Load<Sprite>(num.ToString());
 
         // アスペクト比を元画像と同じサイズにする
         corp.GetComponent<Image> ().preserveAspect = true;
-        Debug.Log("表示された");
+        //Debug.Log("表示された");
     }
 }

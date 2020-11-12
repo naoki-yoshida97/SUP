@@ -9,14 +9,19 @@ using UnityEngine.SceneManagement;
 public class OpenEvent : MonoBehaviour{
     int num = 0;
     string var = "EventView";
-    //private List<int> list = new List<int>();
     List<int> list = EventOpen.list;
+    int  Flag = EventOpen.Flag;
     // ダイアログを追加する親のCanvas
     [SerializeField] private Canvas parent = default;
     // 表示するダイアログ
     [SerializeField] private ClickEvent dialog = default;
 
     public void ShowEventOnClick(){
+        if(Flag==0){
+            list.Clear();
+            Debug.Log("リストの中身:"+list.Count);
+            Flag = 1;
+        }
         // 生成してCanvasの子要素に設定
         var _dialog = Instantiate(dialog);
         _dialog.transform.SetParent(parent.transform, false);
@@ -25,6 +30,7 @@ public class OpenEvent : MonoBehaviour{
 
 
         Debug.Log("押された!");  // ログを出力
+        //list.Clear();
 
         int v = -400;
         if(list!=null){
@@ -45,12 +51,13 @@ public class OpenEvent : MonoBehaviour{
                 // アスペクト比を元画像と同じサイズにする
                 corp.GetComponent<Image> ().preserveAspect = true;
                 v += 250;
-                Debug.Log(list[i]);
-                Debug.Log("表示するしゅば!(>_<)#"+i);
-                Debug.Log(v+" "+i);
+                //Debug.Log(list[i]);
+                //Debug.Log("表示する"+i);
+                //Debug.Log(v+" "+i);
             }
+            Debug.Log("リストの中身:"+list.Count);
         }
         
-        Debug.Log("表示された");
+        //Debug.Log("表示された");
     }
 }
