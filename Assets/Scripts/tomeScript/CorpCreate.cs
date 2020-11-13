@@ -9,12 +9,17 @@ public class CorpCreate : MonoBehaviour {
     static int num;
     public int income = 0;
     private Text SumCom;
+    static string[] c;
+    
     // drop down 
     public static List<string> corp_name_list = new List<string> ();
     [SerializeField] private Dropdown dropdown; //Dropdownを格納する変数
     [SerializeField] private Dropdown dropdown_delete; //Dropdownを格納する変数
     //drop down
 
+    //あとで
+    // int zzuuuuu = 3;
+ 
     // Start is called before the first frame update
     void Start()
     {
@@ -73,7 +78,7 @@ public class CorpCreate : MonoBehaviour {
     int[,] eighteen =new int[,]{{1400,5200},{1800,6200},{2200,7200},{2700,8200},{3300,9200}};//広告代理店
     int[,] nineteen =new int[,]{{1100,4800},{1500,5800},{1800,6800},{2200,7800},{2700,8800}};//動画制作
     int[,] twenty =new int[,]{{800,4200},{1000,5200},{1200,6200},{1500,7200},{1800,8200}};//IT企業
-    
+
     private GameObject corp; //会社を格納する変数
 
     //ボタンが押された場合、今回呼び出される関数
@@ -84,9 +89,9 @@ public class CorpCreate : MonoBehaviour {
             num++;
             string name;
             
+            
             //呼び出された番号を元に引っ張っってくる
-
-
+            
 
             //delete drop down~~~~~~
             // listにオブジェクト名を格納 num_cnt
@@ -95,6 +100,10 @@ public class CorpCreate : MonoBehaviour {
             //会社番号(0,1,2...)_その枚数
             corp_name_list.Add (name);
             corp_cnt[dropdown.value]++;
+            Debug.Log(num-1);
+            c = corp_name_list[num-1].Split('_');
+            //moziretuwosansyounisurumonowotukeru
+            Debug.Log(c[num-1]);
 
             // ドロップダウンに会社名を追加
             //dropdown_delete.options.Add (new Dropdown.OptionData { text = corpAry[dropdown.value] + corp_cnt[dropdown.value] });
