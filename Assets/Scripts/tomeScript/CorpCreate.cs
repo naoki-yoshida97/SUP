@@ -6,8 +6,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class CorpCreate : MonoBehaviour {
-    static int pos_x = 320;
-    static int pos_y = 15;
+    static int pos_x = -250;
+    static int pos_y = -335;
     static int num = 0;
     static int corp_amount = 300;
 
@@ -81,13 +81,13 @@ public class CorpCreate : MonoBehaviour {
             GameObject corp = new GameObject (corp_name_list[corp_name_list.Count - 1]);
 
             // 作ったゲームオブジェクトをCanvasの子にする
-            corp.transform.parent = GameObject.Find ("Canvas").transform;
+            corp.transform.parent = GameObject.Find ("Canvas_CorpCreate").transform;
 
             // 画像のアンカーポジションを追加
             corp.AddComponent<RectTransform> ().anchoredPosition = new Vector3 (pos_x, pos_y, 0);
 
             // 縮尺を変更
-            corp.GetComponent<RectTransform> ().localScale = new Vector3 (0.6f, 0.6f, 0.6f);
+            corp.GetComponent<RectTransform> ().localScale = new Vector3 (0.9f, 0.9f, 0.9f);
 
             // スプライト画像追加
             corp.AddComponent<Image> ().sprite = Resources.Load<Sprite> (dropdown.value.ToString ());
@@ -95,10 +95,10 @@ public class CorpCreate : MonoBehaviour {
             // アスペクト比を元画像と同じサイズにする
             corp.GetComponent<Image> ().preserveAspect = true;
 
-            pos_x = pos_x + 55;
+            pos_x = pos_x + 75;
             if (num == 6) {
-                pos_y = pos_y - 87;
-                pos_x = 320;
+                pos_y = pos_y - 120;
+                pos_x = -250;
             }
             dropdown_delete.RefreshShownValue ();
 
@@ -122,8 +122,8 @@ public class CorpCreate : MonoBehaviour {
             dropdown_delete.options.RemoveAt (dropdown_delete.value);
 
             //削除したdropdown_delete.value以外のcorp_name_listを全部再生成
-            pos_x = 320; //-320
-            pos_y = 15; //150
+            pos_x = -250; //-320
+            pos_y = -335; //150
             for (int i = 0; i < corp_name_list.Count; i++) {
                 string[] arr = corp_name_list[i].Split ('_');
 
@@ -132,13 +132,13 @@ public class CorpCreate : MonoBehaviour {
                 GameObject corp = new GameObject (corp_name_list[i]);
 
                 // 作ったゲームオブジェクトをCanvasの子にする
-                corp.transform.parent = GameObject.Find ("Canvas").transform;
+                corp.transform.parent = GameObject.Find ("Canvas_CorpCreate").transform;
 
                 // 画像のアンカーポジションを追加
                 corp.AddComponent<RectTransform> ().anchoredPosition = new Vector3 (pos_x, pos_y, 0);
 
                 // 縮尺を変更
-                corp.GetComponent<RectTransform> ().localScale = new Vector3 (0.6f, 0.6f, 0.6f);
+                corp.GetComponent<RectTransform> ().localScale = new Vector3 (0.9f, 0.9f, 0.9f);
 
                 // スプライト画像追加
                 corp.AddComponent<Image> ().sprite = Resources.Load<Sprite> (arr[0]);
@@ -146,10 +146,10 @@ public class CorpCreate : MonoBehaviour {
                 // アスペクト比を元画像と同じサイズにする
                 corp.GetComponent<Image> ().preserveAspect = true;
 
-                pos_x = pos_x + 55;
+                pos_x = pos_x + 75;
                 if (i == 5) {
-                    pos_y = pos_y - 87;
-                    pos_x = 320;
+                    pos_y = pos_y - 120;
+                    pos_x = -250;
                 }
             }
         }
@@ -179,8 +179,8 @@ public class CorpCreate : MonoBehaviour {
         n = Convert.ToInt32 (arr[1]);
 
         // nの要素番号のListed_flgを0に
-        Listed_flg[n] = 0;
-        //Debug.Log ("Nonlisted! : " + str + ": 0: " + Listed_flg[n]);
+        Listed_flg[n - 1] = 0;
+        Debug.Log ("Nonlisted! : " + str + ": 0: " + Listed_flg[n - 1]);
     }
 
     //上場にチェックされたとき
@@ -198,9 +198,20 @@ public class CorpCreate : MonoBehaviour {
         n = Convert.ToInt32 (arr[1]);
 
         // nの要素番号のListed_flgを1に
-        Listed_flg[n] = 1;
+        Listed_flg[n - 1] = 1;
+        //for (int i = 0; i < Listed_flg.Count (); i++) {
+        //Debug.Log (Listed_flg[i]);
+        //}
+        Debug.Log ("Listed! : " + str + ": 1: " + Listed_flg[n - 1]);
+    }
 
-        //Debug.Log ("Listed! : " + str + ": 1: " + Listed_flg[n]);
+    public static int[] getListed_flg () {
+        int[] array = Listed_flg;
+        //for (int i = 0; i < Listed_flg.Count (); i++) {
+        //    Debug.Log (Listed_flg[i]);
+        //}
+        return array;
+
     }
 
 }

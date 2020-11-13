@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class OfficerCreate : MonoBehaviour {
-    static int pos_x = 320;
-    static int pos_y = -160;
+    static int pos_x = -250;
+    static int pos_y = -575;
     static int num;
     public static List<string> corp_name_list = new List<string> ();
     [SerializeField] private Dropdown dropdown; //Dropdownを格納する変数
@@ -51,13 +51,13 @@ public class OfficerCreate : MonoBehaviour {
             GameObject corp = new GameObject (corp_name_list[corp_name_list.Count - 1]);
 
             // 作ったゲームオブジェクトをCanvasの子にする
-            corp.transform.parent = GameObject.Find ("Canvas").transform;
+            corp.transform.parent = GameObject.Find ("Canvas_CorpCreate").transform;
 
             // 画像のアンカーポジションを追加
             corp.AddComponent<RectTransform> ().anchoredPosition = new Vector3 (pos_x, pos_y, 0);
 
             // 縮尺を変更
-            corp.GetComponent<RectTransform> ().localScale = new Vector3 (0.6f, 0.6f, 0.6f);
+            corp.GetComponent<RectTransform> ().localScale = new Vector3 (0.9f, 0.9f, 0.9f);
 
             // スプライト画像追加
             corp.AddComponent<Image> ().sprite = Resources.Load<Sprite> (officer_card_num.ToString ());
@@ -67,11 +67,7 @@ public class OfficerCreate : MonoBehaviour {
 
             // 画像のwidthとhightを変更
             //corp.sizeDelta = new Vector2 (50.0f, 50.0f);
-            pos_x = pos_x + 55;
-            if (num == 6) {
-                pos_y = pos_y - 65;
-                pos_x = 320;
-            }
+            pos_x = pos_x + 75;
             dropdown_delete.RefreshShownValue ();
         }
     }
@@ -90,8 +86,8 @@ public class OfficerCreate : MonoBehaviour {
             dropdown_delete.options.RemoveAt (dropdown_delete.value);
 
             //削除したdropdown_delete.value以外のcorp_name_listを全部再生成
-            pos_x = 320; //-320
-            pos_y = -160; //150
+            pos_x = -250; //-320
+            pos_y = -575; //150
             for (int i = 0; i < corp_name_list.Count; i++) {
                 string[] arr = corp_name_list[i].Split ('_');
 
@@ -100,13 +96,13 @@ public class OfficerCreate : MonoBehaviour {
                 GameObject corp = new GameObject (corp_name_list[i]);
 
                 // 作ったゲームオブジェクトをCanvasの子にする
-                corp.transform.parent = GameObject.Find ("Canvas").transform;
+                corp.transform.parent = GameObject.Find ("Canvas_CorpCreate").transform;
 
                 // 画像のアンカーポジションを追加
                 corp.AddComponent<RectTransform> ().anchoredPosition = new Vector3 (pos_x, pos_y, 0);
 
                 // 縮尺を変更
-                corp.GetComponent<RectTransform> ().localScale = new Vector3 (0.6f, 0.6f, 0.6f);
+                corp.GetComponent<RectTransform> ().localScale = new Vector3 (0.9f, 0.9f, 0.9f);
 
                 // スプライト画像追加
                 corp.AddComponent<Image> ().sprite = Resources.Load<Sprite> (arr[0]);
@@ -116,11 +112,7 @@ public class OfficerCreate : MonoBehaviour {
 
                 // 画像のwidthとhightを変更
                 //corp.sizeDelta = new Vector2 (50.0f, 50.0f);
-                pos_x = pos_x + 55;
-                if ((num % 6) == 0) {
-                    pos_y = pos_y - 65;
-                    pos_x = 320;
-                }
+                pos_x = pos_x + 75;
             }
         }
 

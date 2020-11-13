@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class CityCreate : MonoBehaviour {
-    static int pos_x = 320;
-    static int pos_y = -225;
+    static int pos_x = -250;
+    static int pos_y = -670;
     static int num;
     public static List<string> city_name_list = new List<string> ();
     [SerializeField] private Dropdown dropdown; //Dropdownを格納する変数
@@ -42,22 +42,18 @@ public class CityCreate : MonoBehaviour {
             // 引数はオブジェクト名
             GameObject corp = new GameObject (city_name_list[city_name_list.Count - 1]);
             // 作ったゲームオブジェクトをCanvasの子にする
-            corp.transform.parent = GameObject.Find ("Canvas").transform;
+            corp.transform.parent = GameObject.Find ("Canvas_CorpCreate").transform;
             // 画像のアンカーポジションを追加
             corp.AddComponent<RectTransform> ().anchoredPosition = new Vector3 (pos_x, pos_y, 0);
             // 縮尺を変更
-            corp.GetComponent<RectTransform> ().localScale = new Vector3 (0.6f, 0.6f, 0.6f);
+            corp.GetComponent<RectTransform> ().localScale = new Vector3 (0.9f, 0.9f, 0.9f);
             // スプライト画像追加
             corp.AddComponent<Image> ().sprite = Resources.Load<Sprite> (city_card_num.ToString ());
             // アスペクト比を元画像と同じサイズにする
             corp.GetComponent<Image> ().preserveAspect = true;
             // 画像のwidthとhightを変更
             //corp.sizeDelta = new Vector2 (50.0f, 50.0f);
-            pos_x = pos_x + 55;
-            if (num == 6) {
-                pos_y = pos_y - 65;
-                pos_x = 320;
-            }
+            pos_x = pos_x + 75;
             dropdown_delete.RefreshShownValue ();
         }
     }
@@ -77,8 +73,8 @@ public class CityCreate : MonoBehaviour {
             dropdown_delete.options.RemoveAt (dropdown_delete.value);
 
             //削除したdropdown_delete.value以外のcity_name_listを全部再生成
-            pos_x = 320; //-320
-            pos_y = -225; //150
+            pos_x = -250; //-320
+            pos_y = -670; //150
             for (int i = 0; i < city_name_list.Count; i++) {
                 string[] arr = city_name_list[i].Split ('_');
                 Debug.Log (arr[0]);
@@ -86,7 +82,7 @@ public class CityCreate : MonoBehaviour {
                 // 引数はオブジェクト名
                 GameObject corp = new GameObject (city_name_list[i]);
                 // 作ったゲームオブジェクトをCanvasの子にする
-                corp.transform.parent = GameObject.Find ("Canvas").transform;
+                corp.transform.parent = GameObject.Find ("Canvas_CorpCreate").transform;
                 // 画像のアンカーポジションを追加
                 corp.AddComponent<RectTransform> ().anchoredPosition = new Vector3 (pos_x, pos_y, 0);
                 // 縮尺を変更
@@ -97,11 +93,7 @@ public class CityCreate : MonoBehaviour {
                 corp.GetComponent<Image> ().preserveAspect = true;
                 // 画像のwidthとhightを変更
                 //corp.sizeDelta = new Vector2 (50.0f, 50.0f);
-                pos_x = pos_x + 55;
-                if ((num % 6) == 0) {
-                    pos_y = pos_y - 65;
-                    pos_x = 320;
-                }
+                pos_x = pos_x + 75;
             }
         }
     }
