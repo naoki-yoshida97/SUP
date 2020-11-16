@@ -19,7 +19,7 @@ public class EventOpen : MonoBehaviour
     public static int Flag = 0;
 
     public void ShowDialog(){
-        //Debug.Log("Flag:"+Flag);
+        Debug.Log("Flag:"+Flag);
         if(Flag==0){
             list.Clear();
             Debug.Log("空");
@@ -33,19 +33,19 @@ public class EventOpen : MonoBehaviour
 
 
         //Debug.Log("押された!");  // ログを出力
-        GameObject corp = new GameObject(var);
+        GameObject event1 = new GameObject(var);
 
         // 作ったゲームオブジェクトをCanvasの子にする
-        corp.transform.parent = GameObject.Find ("Canvas_1").transform;
+        event1.transform.parent = GameObject.Find ("Canvas_1").transform;
 
         // 画像のアンカーポジションを追加
-        corp.AddComponent<RectTransform> ().anchoredPosition = new Vector3 (0, 0, 0);
+        event1.AddComponent<RectTransform> ().anchoredPosition = new Vector3 (0, 0, 0);
 
         // 縮尺を変更
-        corp.GetComponent<RectTransform> ().localScale = new Vector3 (5, 5, 5);
+        event1.GetComponent<RectTransform> ().localScale = new Vector3 (5, 5, 5);
 
         // イベントをランダムで1枚選択
-        num = UnityEngine.Random.Range(89,92); //69から92
+        num = UnityEngine.Random.Range(89,93); //69から92
         //Debug.Log(num); 
         if(num==89 || num==90 || num==91 || num==92){
             list.Add(num);
@@ -54,10 +54,13 @@ public class EventOpen : MonoBehaviour
         }
 
         // スプライト画像追加
-        corp.AddComponent<Image> ().sprite = Resources.Load<Sprite>(num.ToString());
+        event1.AddComponent<Image> ().sprite = Resources.Load<Sprite>(num.ToString());
 
         // アスペクト比を元画像と同じサイズにする
-        corp.GetComponent<Image> ().preserveAspect = true;
+        event1.GetComponent<Image> ().preserveAspect = true;
         //Debug.Log("表示された");
+
+        GameObject havebutton = GameObject.Find ("ButtonHaveCard");
+        GameObject.Find("ButtonHaveCard").GetComponent<Button>().interactable = true;
     }
 }

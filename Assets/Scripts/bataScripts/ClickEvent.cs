@@ -4,8 +4,7 @@ using System;
 public class ClickEvent : MonoBehaviour{
 
     string var = "EventView";
-    public enum DialogResult
-    {
+    public enum DialogResult{
         Cancel,
         Retry,
     }
@@ -14,8 +13,7 @@ public class ClickEvent : MonoBehaviour{
     public Action<DialogResult> FixDialog { get; set; }
     
     // OKボタンが押されたとき
-    public void OnCancel()
-    {
+    public void OnCancel(){
         //Debug.Log("消された!");  // ログを出力
         GameObject obj = GameObject.Find(var);
         Destroy (obj);
@@ -24,8 +22,11 @@ public class ClickEvent : MonoBehaviour{
         Destroy(this.gameObject);
     }
     
-    public void Onbody()
-    {
+    public void Onbody(){
         this.FixDialog.Invoke(DialogResult.Retry);
     }
+    
+    /*public void OnClick(){
+        GameObject obj = GameObject.Find();
+    }*/
 }
