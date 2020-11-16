@@ -323,7 +323,7 @@ public class CharacterMove : MonoBehaviour
                 if(MovedPos == Apoint|MovedPos == Bpoint|MovedPos == Cpoint|MovedPos == Dpoint)
                 {   
                     //ここに分岐用のダイアログを生成するプログラムを書く 
-                    ShowDialog();               
+                    ShowOnly();               
                 }
             }  //if(this.nowBranch == 1)  Aimingの移動
 
@@ -361,7 +361,7 @@ public class CharacterMove : MonoBehaviour
                 if(MovedPos == AOUT|MovedPos == BOUT|MovedPos == COUT|MovedPos == DOUT)
                 {   
                     //ここに分岐用のダイアログを生成するプログラムを書く 
-                    ShowDialog();               
+                    ShowOnly();               
                 }
             }  //if(this.nowBranch == 2)  Voutの移動
 
