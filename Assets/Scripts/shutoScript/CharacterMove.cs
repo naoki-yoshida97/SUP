@@ -79,10 +79,10 @@ public class CharacterMove : MonoBehaviour
     }
 
     public void InBranch(){
+        
         Transform PlayerTranse = this.transform;
         Vector3 VecterJudge = PlayerTranse.position;
-
-        if( nowBranch == 1){
+        if( nowBranch == 1|nowBranch == 2|nowBranch == 3){
             GameObject InAstart = GameObject.Find("Button_Astart");
             GameObject InBstart = GameObject.Find("Button_Bstart");
             GameObject InCstart = GameObject.Find("Button_Cstart");
@@ -91,16 +91,44 @@ public class CharacterMove : MonoBehaviour
             InCstart.GetComponent<Button>().interactable = true;
             InBstart.GetComponent<Button>().interactable = true;
             InAstart.GetComponent<Button>().interactable = true;
-        }else
+        }/*else
         if(nowBranch == 2){
             GameObject InAstart = GameObject.Find("Button_Astart");
             GameObject InBstart = GameObject.Find("Button_Bstart");
             GameObject InCstart = GameObject.Find("Button_Cstart");
             GameObject InDstart = GameObject.Find("Button_Dstart");
-            InDstart.GetComponent<Button>().interactable = false;
-            InCstart.GetComponent<Button>().interactable = false;
-            InBstart.GetComponent<Button>().interactable = false;
-            InAstart.GetComponent<Button>().interactable = false;
+            InDstart.GetComponent<Button>().interactable = true;
+            InCstart.GetComponent<Button>().interactable = true;
+            InBstart.GetComponent<Button>().interactable = true;
+            InAstart.GetComponent<Button>().interactable = true;
+           
+           for (int i = 0; i < 48; i++){ // 自分の座標がどの配列番号か判定(外側)
+                if(vout[i] == PlayerTranse.position)
+                {
+                    nowPos_num = i;
+                    break;
+                }
+            }
+            if(nowPos_num == 0 ){
+                PlayerTranse.position = vin[nowPos_num]; //A
+            }else if(nowPos_num == 12 ){
+                PlayerTranse.position = vin[24]; //B
+            }else if(nowPos_num == 24){
+                PlayerTranse.position = vin[16]; //D
+            }else if(nowPos_num == 36){
+                PlayerTranse.position = vin[8]; //C
+            }
+            
+        }
+        if(nowBranch == 3){
+            GameObject InAstart = GameObject.Find("Button_Astart");
+            GameObject InBstart = GameObject.Find("Button_Bstart");
+            GameObject InCstart = GameObject.Find("Button_Cstart");
+            GameObject InDstart = GameObject.Find("Button_Dstart");
+            InDstart.GetComponent<Button>().interactable = true;
+            InCstart.GetComponent<Button>().interactable = true;
+            InBstart.GetComponent<Button>().interactable = true;
+            InAstart.GetComponent<Button>().interactable = true;
            for (int i = 0; i < 48; i++){ // 自分の座標がどの配列番号か判定(外側)
                 if(vout[i] == PlayerTranse.position)
                 {
@@ -118,6 +146,7 @@ public class CharacterMove : MonoBehaviour
                 PlayerTranse.position = vin[8]; //C
             }
         }
+        */
     }
     public void InApoint(){
         Transform PlayerTranse = this.transform;
@@ -170,10 +199,10 @@ public class CharacterMove : MonoBehaviour
     public void OutApoint(){
         Transform PlayerTranse = this.transform;
         PlayerTranse.position = vout[0];
-            GameObject OutAstart = GameObject.Find("Button_Astart");
-            GameObject OutBstart = GameObject.Find("Button_Bstart");
-            GameObject OutCstart = GameObject.Find("Button_Cstart");
-            GameObject OutDstart = GameObject.Find("Button_Dstart");
+            GameObject OutAstart = GameObject.Find("Button_OAstart");
+            GameObject OutBstart = GameObject.Find("Button_OBstart");
+            GameObject OutCstart = GameObject.Find("Button_OCstart");
+            GameObject OutDstart = GameObject.Find("Button_ODstart");
             OutDstart.GetComponent<Button>().interactable = false;
             OutCstart.GetComponent<Button>().interactable = false;
             OutBstart.GetComponent<Button>().interactable = false;
@@ -182,10 +211,10 @@ public class CharacterMove : MonoBehaviour
     public void OutBpoint(){
         Transform PlayerTranse = this.transform;
         PlayerTranse.position = vout[12];
-            GameObject OutAstart = GameObject.Find("Button_Astart");
-            GameObject OutBstart = GameObject.Find("Button_Bstart");
-            GameObject OutCstart = GameObject.Find("Button_Cstart");
-            GameObject OutDstart = GameObject.Find("Button_Dstart");
+            GameObject OutAstart = GameObject.Find("Button_OAstart");
+            GameObject OutBstart = GameObject.Find("Button_OBstart");
+            GameObject OutCstart = GameObject.Find("Button_OCstart");
+            GameObject OutDstart = GameObject.Find("Button_ODstart");
             OutDstart.GetComponent<Button>().interactable = false;
             OutCstart.GetComponent<Button>().interactable = false;
             OutBstart.GetComponent<Button>().interactable = false;
@@ -194,10 +223,10 @@ public class CharacterMove : MonoBehaviour
     public void OutCpoint(){
         Transform PlayerTranse = this.transform;
         PlayerTranse.position = vout[36];
-            GameObject OutAstart = GameObject.Find("Button_Astart");
-            GameObject OutBstart = GameObject.Find("Button_Bstart");
-            GameObject OutCstart = GameObject.Find("Button_Cstart");
-            GameObject OutDstart = GameObject.Find("Button_Dstart");
+            GameObject OutAstart = GameObject.Find("Button_OAstart");
+            GameObject OutBstart = GameObject.Find("Button_OBstart");
+            GameObject OutCstart = GameObject.Find("Button_OCstart");
+            GameObject OutDstart = GameObject.Find("Button_ODstart");
             OutDstart.GetComponent<Button>().interactable = false;
             OutCstart.GetComponent<Button>().interactable = false;
             OutBstart.GetComponent<Button>().interactable = false;
@@ -206,10 +235,10 @@ public class CharacterMove : MonoBehaviour
     public void OutDpoint(){
         Transform PlayerTranse = this.transform;
         PlayerTranse.position = vout[24];
-            GameObject OutAstart = GameObject.Find("Button_Astart");
-            GameObject OutBstart = GameObject.Find("Button_Bstart");
-            GameObject OutCstart = GameObject.Find("Button_Cstart");
-            GameObject OutDstart = GameObject.Find("Button_Dstart");
+            GameObject OutAstart = GameObject.Find("Button_OAstart");
+            GameObject OutBstart = GameObject.Find("Button_OBstart");
+            GameObject OutCstart = GameObject.Find("Button_OCstart");
+            GameObject OutDstart = GameObject.Find("Button_ODstart");
             OutDstart.GetComponent<Button>().interactable = false;
             OutCstart.GetComponent<Button>().interactable = false;
             OutBstart.GetComponent<Button>().interactable = false;
@@ -219,7 +248,7 @@ public class CharacterMove : MonoBehaviour
         Transform PlayerTranse = this.transform;
         Vector3 VecterJudge = PlayerTranse.position;
 
-        if( nowBranch == 1){
+        if( nowBranch == 1 | nowBranch == 2 |nowBranch == 3){
             GameObject OutAstart = GameObject.Find("Button_OAstart");
             GameObject OutBstart = GameObject.Find("Button_OBstart");
             GameObject OutCstart = GameObject.Find("Button_OCstart");
@@ -228,7 +257,7 @@ public class CharacterMove : MonoBehaviour
             OutCstart.GetComponent<Button>().interactable = true;
             OutBstart.GetComponent<Button>().interactable = true;
             OutAstart.GetComponent<Button>().interactable = true;
-        }else if(nowBranch == 3){
+        }/*else if(nowBranch == 3){
            for (int i = 0; i < 32; i++){ // 自分の座標がどの配列番号か判定(外側)
                 if(vin[i] == PlayerTranse.position)
                 {
@@ -245,8 +274,7 @@ public class CharacterMove : MonoBehaviour
             }else if(nowPos_num == 8){
                 PlayerTranse.position = vout[36]; //C
             }
-
-        }
+        } */
     }
 
 
