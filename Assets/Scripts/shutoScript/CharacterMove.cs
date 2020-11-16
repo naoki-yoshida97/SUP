@@ -513,15 +513,15 @@ public class CharacterMove : MonoBehaviour
 
         if(ZVecterJudge.z == -6f){
             this.nowBranch = 1;
-            Debug.Log($"今nowBranch1");
+            //Debug.Log($"今nowBranch1");
         }
         if(ZVecterJudge.z == 0f){
             this.nowBranch = 2;
-            Debug.Log($"今nowBranch2");
+            //Debug.Log($"今nowBranch2");
         }
         if(ZVecterJudge.z == 1f){
             this.nowBranch = 3;
-            Debug.Log($"今nowBranch3");
+            //Debug.Log($"今nowBranch3");
         }
     }
     
