@@ -41,7 +41,7 @@ public class kessan : MonoBehaviour {
         //Debug.Log (CorpCreate.Listed_flg[0]);
 
         List<string> corp_list = new List<string> ();
-        int[] Listed_flg = CorpCreate.getListed_flg ();
+
         // corp_name_listから_Xを削除
         corp_list.Clear ();
         for (int i = 0; i < CorpCreate.corp_name_list.Count; i++) {

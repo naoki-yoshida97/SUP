@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class OfficerCreate : MonoBehaviour {
     static int pos_x = -250;
-    static int pos_y = -575;
+    static int pos_y = -547;
     static int num;
     public static List<string> corp_name_list = new List<string> ();
     [SerializeField] private Dropdown dropdown; //Dropdownを格納する変数
@@ -87,7 +87,7 @@ public class OfficerCreate : MonoBehaviour {
 
             //削除したdropdown_delete.value以外のcorp_name_listを全部再生成
             pos_x = -250; //-320
-            pos_y = -575; //150
+            pos_y = -547; //150
             for (int i = 0; i < corp_name_list.Count; i++) {
                 string[] arr = corp_name_list[i].Split ('_');
 

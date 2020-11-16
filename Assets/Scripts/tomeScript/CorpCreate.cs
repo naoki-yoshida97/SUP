@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class CorpCreate : MonoBehaviour {
     static int pos_x = -250;
-    static int pos_y = -335;
+    static int pos_y = -305;
     static int num = 0;
     static int corp_amount = 300;
 
@@ -15,6 +15,13 @@ public class CorpCreate : MonoBehaviour {
     public static List<string> corp_name_list = new List<string> ();
     [SerializeField] private Dropdown dropdown; //Dropdownを格納する変数
     [SerializeField] private Dropdown dropdown_delete; //Dropdownを格納する変数
+    [SerializeField] private Dropdown dropdown1; //役員の所属会社の為のDropdown1
+    [SerializeField] private Dropdown dropdown2; //役員の所属会社の為のDropdown2
+    [SerializeField] private Dropdown dropdown3; //役員の所属会社の為のDropdown3
+    [SerializeField] private Dropdown dropdown4; //役員の所属会社の為のDropdown4
+    [SerializeField] private Dropdown dropdown5; //役員の所属会社の為のDropdown5
+    [SerializeField] private Dropdown dropdown6; //役員の所属会社の為のDropdown6
+
     //drop down
 
     // 会社名配列
@@ -72,6 +79,12 @@ public class CorpCreate : MonoBehaviour {
             // ドロップダウンに会社名を追加
             //dropdown_delete.options.Add (new Dropdown.OptionData { text = corpAry[dropdown.value] + corp_cnt[dropdown.value] });
             dropdown_delete.options.Add (new Dropdown.OptionData { text = corpAry[dropdown.value] });
+            dropdown1.options.Add (new Dropdown.OptionData { text = corpAry[dropdown.value] });
+            dropdown2.options.Add (new Dropdown.OptionData { text = corpAry[dropdown.value] });
+            dropdown3.options.Add (new Dropdown.OptionData { text = corpAry[dropdown.value] });
+            dropdown4.options.Add (new Dropdown.OptionData { text = corpAry[dropdown.value] });
+            dropdown5.options.Add (new Dropdown.OptionData { text = corpAry[dropdown.value] });
+            dropdown6.options.Add (new Dropdown.OptionData { text = corpAry[dropdown.value] });
 
             //~~~~dellete drop down
 
@@ -120,10 +133,16 @@ public class CorpCreate : MonoBehaviour {
             }
             corp_name_list.RemoveAt (dropdown_delete.value);
             dropdown_delete.options.RemoveAt (dropdown_delete.value);
+            dropdown1.options.RemoveAt (dropdown_delete.value);
+            dropdown2.options.RemoveAt (dropdown_delete.value);
+            dropdown3.options.RemoveAt (dropdown_delete.value);
+            dropdown4.options.RemoveAt (dropdown_delete.value);
+            dropdown5.options.RemoveAt (dropdown_delete.value);
+            dropdown6.options.RemoveAt (dropdown_delete.value);
 
             //削除したdropdown_delete.value以外のcorp_name_listを全部再生成
             pos_x = -250; //-320
-            pos_y = -335; //150
+            pos_y = -305; //150
             for (int i = 0; i < corp_name_list.Count; i++) {
                 string[] arr = corp_name_list[i].Split ('_');
 
@@ -180,7 +199,7 @@ public class CorpCreate : MonoBehaviour {
 
         // nの要素番号のListed_flgを0に
         Listed_flg[n - 1] = 0;
-        Debug.Log ("Nonlisted! : " + str + ": 0: " + Listed_flg[n - 1]);
+        //Debug.Log ("Nonlisted! : " + str + ": 0: " + Listed_flg[n - 1]);
     }
 
     //上場にチェックされたとき
@@ -202,9 +221,9 @@ public class CorpCreate : MonoBehaviour {
         //for (int i = 0; i < Listed_flg.Count (); i++) {
         //Debug.Log (Listed_flg[i]);
         //}
-        Debug.Log ("Listed! : " + str + ": 1: " + Listed_flg[n - 1]);
+        //Debug.Log ("Listed! : " + str + ": 1: " + Listed_flg[n - 1]);
     }
-
+    /*
     public static int[] getListed_flg () {
         int[] array = Listed_flg;
         //for (int i = 0; i < Listed_flg.Count (); i++) {
@@ -213,5 +232,5 @@ public class CorpCreate : MonoBehaviour {
         return array;
 
     }
-
+*/
 }
