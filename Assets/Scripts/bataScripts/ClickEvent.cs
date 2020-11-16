@@ -1,9 +1,16 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ClickEvent : MonoBehaviour{
 
     string var = "EventView";
+    List<int> list = EventOpen.list;
+
     public enum DialogResult{
         Cancel,
         Retry,
@@ -11,6 +18,7 @@ public class ClickEvent : MonoBehaviour{
     
     // ダイアログが操作されたときに発生するイベント
     public Action<DialogResult> FixDialog { get; set; }
+
     
     // OKボタンが押されたとき
     public void OnCancel(){
@@ -26,7 +34,10 @@ public class ClickEvent : MonoBehaviour{
         this.FixDialog.Invoke(DialogResult.Retry);
     }
     
-    /*public void OnClick(){
-        GameObject obj = GameObject.Find();
-    }*/
+    public void OnClick(){
+        GameObject eventview = GameObject.Find("EventView0");
+        Destroy (eventview);
+        list.RemoveAt(0);
+        Debug.Log("カード効果発動");
+    }
 }

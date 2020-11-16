@@ -23,7 +23,7 @@ public class OpenEvent : MonoBehaviour{
             Debug.Log("空");
             Flag = 1;
         }*/
-        
+
         // 生成してCanvasの子要素に設定
         var _dialog = Instantiate(dialog);
         _dialog.transform.SetParent(parent.transform, false);
