@@ -19,7 +19,7 @@ public class OpenEvent : MonoBehaviour{
     public void ShowEventOnClick(){
         if(Flag==0){
             list.Clear();
-            Debug.Log("リストの中身:"+list.Count);
+            Debug.Log("空");
             Flag = 1;
         }
         // 生成してCanvasの子要素に設定
@@ -29,7 +29,7 @@ public class OpenEvent : MonoBehaviour{
         _dialog.FixDialog = result => Debug.Log(result);
 
 
-        Debug.Log("押された!");  // ログを出力
+        //Debug.Log("押された!");  // ログを出力
         //list.Clear();
 
         int v = -400;

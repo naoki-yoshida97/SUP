@@ -19,10 +19,10 @@ public class EventOpen : MonoBehaviour
     public static int Flag = 0;
 
     public void ShowDialog(){
-        Debug.Log("Flag:"+Flag);
+        //Debug.Log("Flag:"+Flag);
         if(Flag==0){
             list.Clear();
-            Debug.Log("リストの中身:"+list.Count);
+            Debug.Log("空");
             Flag = 1;
         }
         // 生成してCanvasの子要素に設定

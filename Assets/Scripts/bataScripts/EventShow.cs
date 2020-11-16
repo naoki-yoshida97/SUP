@@ -16,7 +16,7 @@ public class EventShow : MonoBehaviour{
     // Cancelボタンが押されたとき
     public void OnCancel()
     {
-        Debug.Log("消された!");  // ログを出力
+        //Debug.Log("消された!");  // ログを出力
         GameObject obj = GameObject.Find (var);
         Destroy (obj);
         // イベント通知先があれば通知してダイアログを破棄してしまう
