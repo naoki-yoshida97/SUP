@@ -1222,7 +1222,7 @@ GameObject:
   - component: {fileID: 498248123}
   - component: {fileID: 498248122}
   m_Layer: 0
-  m_Name: mugi
+  m_Name: mugiSymbol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2859,7 +2859,7 @@ GameObject:
   - component: {fileID: 1065786236}
   - component: {fileID: 1065786235}
   m_Layer: 0
-  m_Name: sim
+  m_Name: simSymbol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3959,7 +3959,7 @@ GameObject:
   - component: {fileID: 1363556494}
   - component: {fileID: 1363556493}
   m_Layer: 0
-  m_Name: nia
+  m_Name: niaSymbol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5130,7 +5130,7 @@ GameObject:
   - component: {fileID: 1744406788}
   - component: {fileID: 1744406787}
   m_Layer: 0
-  m_Name: whiteMugi
+  m_Name: whiteMugiSymbol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
