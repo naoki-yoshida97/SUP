@@ -6,6 +6,7 @@ public class kessan : MonoBehaviour {
     // 計算の際の会社カードに対応した色の環境パラメータ
     int income = 0;
     int env_para = 0;
+    int pay = 0;
 
     // 会社の収入を配列で保存[未上場/上場Flg, env_para-1 or 3]
     //Red
@@ -33,6 +34,19 @@ public class kessan : MonoBehaviour {
     int[, ] video_production = { { 1100, 4800 }, { 1500, 5800 }, { 1800, 6800 }, { 2200, 7800 }, { 2700, 8800 } }; //19
     int[, ] it_company = { { 800, 4200 }, { 1000, 5200 }, { 1200, 6200 }, { 1500, 7200 }, { 1800, 8200 } };
 
+    // 役員の年収を配列で管理
+    int[] salary = new int[9] {
+        600, //マーケティング
+        800, //企画
+        800, //SE
+        800, //マネージャー
+        600, //人事
+        600, //事務
+        600, //経理
+        600, //PG
+        600 //営業
+    };
+
     // 収入計算
     public void kessanIvent () {
         //Debug.Log (PlusMinusButton.techText_g.text);
@@ -55,16 +69,36 @@ public class kessan : MonoBehaviour {
         //CorpCreate.onClick_Listed ();
         //CorpCreate.onClick_Nonlisted ();
         for (int i = 0; i < corp_list.Count; i++) {
-            referenceFunc (CorpCreate.Listed_flg[i], corp_list[i]);
+            Income (CorpCreate.Listed_flg[i], corp_list[i]);
             total_income = total_income + income;
 
             Debug.Log ("income:" + income);
             Debug.Log ("Flg:" + CorpCreate.Listed_flg[i]);
             //Debug.Log ("total: " + total_income);
         }
+        pay = 0;
+        for (int i = 0; i < OfficerCreate.corp_name_list.Count; i++) {
+            //Debug.Log (OfficerCreate.corp_name_list[i]);
+            Payment (OfficerCreate.corp_name_list[i]);
+        }
+        Debug.Log ("payment:" + pay);
+
+        //会社からの収入から役員の収入を減らし、calculator.text_g.textの中身を書換え
+        //calculatorからtext_gを参照
+        int Money = int.Parse (calculator.text_g.text);
+        Money = Money + (total_income - pay);
+        calculator.text_g.text = Money.ToString ();
     }
+
+    // 役員に支払う年収の合計を計算してpaymentに格納
+    void Payment (string officer) {
+        string[] arr = officer.Split ('_');
+        int card_num = int.Parse (arr[0]) - 54;
+        pay = pay + salary[card_num];
+    }
+
     // 会社名に対応した金額と環境パラメータをincomとenv_paraに格納
-    void referenceFunc (int Flg, string corp) {
+    void Income (int Flg, string corp) {
         // 環境パラメータを要素番号に変更
         if (Flg == 0) { //未上場
             switch (corp) {
