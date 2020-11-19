@@ -8,15 +8,52 @@ public class ChoseChara : MonoBehaviour
     public void SimChose()
     {
         GameObject Showhide = GameObject.Find("ChoseChara");
-        /*
+        
         GameObject nia = GameObject.Find("nia");
         GameObject mugi = GameObject.Find("mugi");
         GameObject whiteMugi = GameObject.Find("whiteMugi");
-        */
-        Destroy(this.gameObject);
-        Showhide.transform.localScale = new Vector3(0,0,0);
-        Destroy(this.gameObject);
         
+        Destroy(nia);
+        Destroy(mugi);
+        Destroy(whiteMugi);
+        Showhide.transform.localScale = new Vector3(0,0,0);  
+    }
+    public void niaChose()
+    {
+        GameObject Showhide = GameObject.Find("ChoseChara");
+        
+        GameObject sim = GameObject.Find("sim");
+        GameObject mugi = GameObject.Find("mugi");
+        GameObject whiteMugi = GameObject.Find("whiteMugi");
+        Destroy(sim);
+        Destroy(mugi);
+        Destroy(whiteMugi);
+        Showhide.transform.localScale = new Vector3(0,0,0);  
+    }
+    public void mugiChose()
+    {
+        GameObject Showhide = GameObject.Find("ChoseChara");
+        
+        GameObject nia = GameObject.Find("nia");
+        GameObject sim = GameObject.Find("sim");
+        GameObject whiteMugi = GameObject.Find("whiteMugi");
+        Destroy(nia);
+        Destroy(sim);
+        Destroy(whiteMugi);
+        Showhide.transform.localScale = new Vector3(0,0,0);  
+    }
+    public void whiteMugiChose()
+    {
+        GameObject Showhide = GameObject.Find("ChoseChara");
+        
+        GameObject nia = GameObject.Find("nia");
+        GameObject mugi = GameObject.Find("mugi");
+        GameObject whiteMugi = GameObject.Find("sim");
+        
+        Destroy(nia);
+        Destroy(mugi);
+        Destroy(whiteMugi);
+        Showhide.transform.localScale = new Vector3(0,0,0);  
     }
     // Start is called before the first frame update
     void Start()
