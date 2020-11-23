@@ -12,6 +12,7 @@ public class CharacterMove : MonoBehaviour
     public int moveTime;
     public int roll_of_Dice;
     public int nowPos_num;
+    public int Movedpos_num;
     public int terget_num;            
 
     Vector3 zero = new Vector3(0, 0, 0);
@@ -27,6 +28,18 @@ public class CharacterMove : MonoBehaviour
     Vector3 BOUT = new Vector3(-206f,275f);
     Vector3 COUT = new Vector3(-205f,-345f);
     Vector3 DOUT = new Vector3(226f, -40f);
+
+    Vector3[] SettlementPoint ={new Vector3(-600f, 245f,-6f), //[0]
+                                new Vector3( 210f,-325f,-6f), //[1]
+                                new Vector3(-405f, -178f,1f), //...
+                                new Vector3(-4f,  -187f,1f),
+                                new Vector3(-5f,   88f, 1f),
+                                new Vector3(-405f ,100f,1f),
+                                new Vector3(-635f, 262f),
+                                new Vector3(224f, 272f),
+                                new Vector3(224f, -345f),
+                                new Vector3(-635f, -345f)   //[9]
+                                };
     Vector3[] vin = new Vector3[32];
     Vector3[] vout = new Vector3[48];
     Vector3[] aimV = new Vector3[30];
@@ -45,6 +58,11 @@ public class CharacterMove : MonoBehaviour
     public void ShowOnly(){
         GameObject Showhide = GameObject.Find("ChangeBranch");
         Showhide.transform.localScale = new Vector3(1,1,1);
+    }
+
+    public void Settlement(){
+        GameObject Settlement = GameObject.Find("SettlementPoint");
+        Settlement.transform.localScale = new Vector3(1,1,1);
     }
 
     public void NoMove(){
@@ -303,7 +321,8 @@ public class CharacterMove : MonoBehaviour
                 terget_num = nowPos_num + moveTime;//配列番号にサイコロの目を足す
                 
                 if (terget_num > 29){
-                    terget_num = terget_num - 29;
+                    terget_num = terget_num - 30;
+                    ShowOnly();
                 } 
     　　　　　　　
                 Vector3 pos = myPosition.position;
@@ -313,7 +332,15 @@ public class CharacterMove : MonoBehaviour
 
                 myPosition.position = pos;  // 座標を設定
                 MovedPos = pos;
-                
+
+                for (int i = 0; i < 30; i++) // 自分の座標がどの配列番号か判定
+         	{        
+                    if(aimV[i] == MovedPos)
+                    {
+                        Movedpos_num = i;
+                        break;
+                    }
+                }
 
                 Debug.Log($"今{nowPos_num}");
                 Debug.Log($"サイコロ {moveTime}");
@@ -325,6 +352,11 @@ public class CharacterMove : MonoBehaviour
                     //ここに分岐用のダイアログを生成するプログラムを書く 
                     ShowOnly();               
                 }
+                if(nowPos_num < 15 && Movedpos_num >= 15){
+                    ShowOnly();
+                }
+
+                
             }  //if(this.nowBranch == 1)  Aimingの移動
 
             if(this.nowBranch == 2) //Voutの移動
@@ -341,7 +373,7 @@ public class CharacterMove : MonoBehaviour
                 terget_num = nowPos_num + moveTime;//配列番号にサイコロの目を足す
                 
                 if (terget_num > 47){
-                    terget_num = terget_num - 47;
+                    terget_num = terget_num - 48;
                 } 
     　　　　　　　
                 Vector3 pos = myPosition.position;
@@ -379,7 +411,7 @@ public class CharacterMove : MonoBehaviour
                 terget_num = nowPos_num + moveTime;//配列番号にサイコロの目を足す
                 
                 if (terget_num > 31){
-                    terget_num = terget_num - 31;
+                    terget_num = terget_num - 32;
                 } 
     　　　　　　　
                 Vector3 pos = myPosition.position;
