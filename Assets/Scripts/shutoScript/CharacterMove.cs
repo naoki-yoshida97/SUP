@@ -13,7 +13,10 @@ public class CharacterMove : MonoBehaviour
     public int roll_of_Dice;
     public int nowPos_num;
     public int Movedpos_num;
-    public int terget_num;            
+    public int terget_num;
+    private int SettlementCount; 
+    public Text SettleText;  
+         
 
     Vector3 zero = new Vector3(0, 0, 0);
     Vector3 PlayerPos;
@@ -28,6 +31,7 @@ public class CharacterMove : MonoBehaviour
     Vector3 BOUT = new Vector3(-206f,275f);
     Vector3 COUT = new Vector3(-205f,-345f);
     Vector3 DOUT = new Vector3(226f, -40f);
+    Vector3 Zero = new Vector3(0,0,0);
 
     Vector3[] SettlementPoint ={new Vector3(-600f, 245f,-6f), //[0]
                                 new Vector3( 210f,-325f,-6f), //[1]
@@ -64,7 +68,10 @@ public class CharacterMove : MonoBehaviour
         GameObject Settlement = GameObject.Find("SettlementPoint");
         Settlement.transform.localScale = new Vector3(1,1,1);
     }
-
+    public void DoSettlement(){
+        GameObject DoSettle = GameObject.Find("SettlementPoint");
+        DoSettle.transform.localScale = new Vector3(0,0,0);
+    }
     public void NoMove(){
         GameObject Showhide = GameObject.Find("ChangeBranch");
         Showhide.transform.localScale = new Vector3(0,0,0);
@@ -322,7 +329,9 @@ public class CharacterMove : MonoBehaviour
                 
                 if (terget_num > 29){
                     terget_num = terget_num - 30;
-                    ShowOnly();
+                    //決算升の処理
+                    Settlement();
+                    SettlementCount++;
                 } 
     　　　　　　　
                 Vector3 pos = myPosition.position;
@@ -334,7 +343,7 @@ public class CharacterMove : MonoBehaviour
                 MovedPos = pos;
 
                 for (int i = 0; i < 30; i++) // 自分の座標がどの配列番号か判定
-         	{        
+         	    {        
                     if(aimV[i] == MovedPos)
                     {
                         Movedpos_num = i;
@@ -353,7 +362,9 @@ public class CharacterMove : MonoBehaviour
                     ShowOnly();               
                 }
                 if(nowPos_num < 15 && Movedpos_num >= 15){
-                    ShowOnly();
+                    //決算升の処理
+                    Settlement();
+                    SettlementCount++;
                 }
 
                 
@@ -383,6 +394,14 @@ public class CharacterMove : MonoBehaviour
 
                 myPosition.position = pos;  // 座標を設定
                 MovedPos = pos;
+                for (int i = 0; i < 48; i++) // 自分の座標がどの配列番号か判定
+         	    {        
+                    if(vout[i] == MovedPos)
+                    {
+                        Movedpos_num = i;
+                        break;
+                    }
+                }
                 
 
                 Debug.Log($"今{nowPos_num}");
@@ -394,6 +413,26 @@ public class CharacterMove : MonoBehaviour
                 {   
                     //ここに分岐用のダイアログを生成するプログラムを書く 
                     ShowOnly();               
+                }
+                if(nowPos_num < 5 && Movedpos_num >= 5){
+                    //決算升の処理
+                    Settlement();
+                    SettlementCount++;
+                }
+                if(nowPos_num < 19 && Movedpos_num >= 19){
+                    //決算升の処理
+                    Settlement();
+                    SettlementCount++;
+                }
+                if(nowPos_num < 29 && Movedpos_num >= 29){
+                    //決算升の処理
+                    Settlement();
+                    SettlementCount++;
+                }
+                if(nowPos_num < 43 && Movedpos_num >= 43){
+                    //決算升の処理
+                    Settlement();
+                    SettlementCount++;
                 }
             }  //if(this.nowBranch == 2)  Voutの移動
 
@@ -421,7 +460,14 @@ public class CharacterMove : MonoBehaviour
 
                 myPosition.position = pos;  // 座標を設定
                 MovedPos = pos;
-                
+                for (int i = 0; i < 32; i++) // 自分の座標がどの配列番号か判定
+         	    {        
+                    if(vin[i] == MovedPos)
+                    {
+                        Movedpos_num = i;
+                        break;
+                    }
+                }
 
                 Debug.Log($"今{nowPos_num}");
                 Debug.Log($"サイコロ {moveTime}");
@@ -433,6 +479,26 @@ public class CharacterMove : MonoBehaviour
                     //ここに分岐用のダイアログを生成するプログラムを書く 
                     ShowOnly();               
                 }
+                if(nowPos_num < 4 && Movedpos_num >= 4){
+                    //決算升の処理
+                    Settlement();
+                    SettlementCount++;
+                }
+                if(nowPos_num < 12 && Movedpos_num >= 12){
+                    //決算升の処理
+                    Settlement();
+                    SettlementCount++;
+                }
+                if(nowPos_num < 20 && Movedpos_num >= 20){
+                    //決算升の処理
+                    Settlement();
+                    SettlementCount++;
+                }
+                if(nowPos_num < 28 && Movedpos_num >= 28){
+                    //決算升の処理
+                    Settlement();
+                    SettlementCount++;
+                }
             }  //if(this.nowBranch == 3)  vinの移動
 
     }
@@ -440,6 +506,7 @@ public class CharacterMove : MonoBehaviour
     // mypositionに設定したstart positionを入れる
     void Start()
     {
+        SettlementCount =0;
         moveTime = 0;
         Transform myPosition = this.transform;
         myPosition.position = startPos;
@@ -566,6 +633,7 @@ public class CharacterMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {     
+        
         Transform PlayerTranse = this.transform;
         Vector3 ZVecterJudge = PlayerTranse.position;
         //z座標を基準にどのコースにいるのか把握
@@ -583,6 +651,7 @@ public class CharacterMove : MonoBehaviour
             this.nowBranch = 3;
             //Debug.Log($"今nowBranch3");
         }
+        SettleText.text = string.Format("いま{0}かいめのけっさん",SettlementCount);
     }
     
 }
