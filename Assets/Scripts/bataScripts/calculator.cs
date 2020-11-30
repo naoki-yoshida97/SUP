@@ -19,11 +19,26 @@ public class calculator : MonoBehaviour {
     }
 
     public void OnClickCalculator () {
-        int num1 = int.Parse (text.text);
-        int num2 = int.Parse (text2.text);
-        x = 0;
-        x = num1 + num2;
-        text.text = x.ToString ();
-        Debug.Log ("計算終了");
+        int i;
+        bool flg1 = int.TryParse (text.text, out i);
+        bool flg2 = int.TryParse (text2.text, out i);
+        if (flg1) {
+            if (flg2) {
+                int num1 = int.Parse (text.text);
+                int num2 = int.Parse (text2.text);
+                x = 0;
+                x = num1 + num2;
+                text.text = x.ToString ();
+                Debug.Log ("計算終了");
+            }
+        } else {
+            Debug.Log ("数字じゃないよ.");
+        }
+        //int num1 = int.Parse (text.text);
+        //int num2 = int.Parse (text2.text);
+        //x = 0;
+        //x = num1 + num2;
+        //text.text = x.ToString ();
+        //Debug.Log ("計算終了");
     }
 }
