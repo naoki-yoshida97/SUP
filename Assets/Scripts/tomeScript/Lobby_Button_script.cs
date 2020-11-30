@@ -10,10 +10,10 @@ public class Lobby_Button_script : MonoBehaviour {
     public void OnClickRoom1Button () {
         PhotonNetwork.JoinRoom ("Room1");
 
-        SceneManager.LoadScene ("CityBoard");
+        SceneManager.LoadScene ("turn_manager");
+        Application.LoadLevelAdditive ("conin&calcutor");
         Application.LoadLevelAdditive ("CorpCreate");
-        Application.LoadLevelAdditive ("SampleScene");
         Application.LoadLevelAdditive ("kannkyou_para");
-        Application.LoadLevelAdditive ("turn_manager");
+        Application.LoadLevelAdditive ("CityBoard");
     }
 }
