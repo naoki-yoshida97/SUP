@@ -55,7 +55,7 @@ public class BoardChange : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.UpArrow))
         {
-            if(tf.position.y <= 150f)
+            if(tf.position.y <= 240f)
             {
                 tf.position = tf.position + new Vector3(0.0f,30f,0.0f);
             }
@@ -77,7 +77,7 @@ public class BoardChange : MonoBehaviour
         }
         else if(Input.GetKeyDown(KeyCode.RightArrow))
         {
-            if(tf.position.x <= 180f)
+            if(tf.position.x <= 450f)
             {
                 tf.position = tf.position + new Vector3(30f,0.0f,0.0f);
             }
@@ -94,7 +94,7 @@ public class BoardChange : MonoBehaviour
 
         //----BoardChange----
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.LeftControl )|| Input.GetKeyDown( KeyCode.RightControl))
         {
             tf.position = new Vector3(0.0f, 0.0f, tf.position.z);
             cam.orthographicSize = 390f;
