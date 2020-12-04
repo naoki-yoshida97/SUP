@@ -45,13 +45,18 @@ public class EventOpen : MonoBehaviour
         event1.GetComponent<RectTransform> ().localScale = new Vector3 (5, 5, 5);
 
         // イベントをランダムで1枚選択
-        num = UnityEngine.Random.Range(89,93); //69から92
+        num = UnityEngine.Random.Range(69,93); //69から92
+
         //Debug.Log(num); 
+        //　リストが４個以上入っていたら追加しない
+        //if(list.Count<4){
+        // カード番号89,90,91,92なら追加する
         if(num==89 || num==90 || num==91 || num==92){
-            list.Add(num);
-            //Debug.Log(list.ToString());
-            Debug.Log("リストの中身:"+list.Count);
+                list.Add(num);
+                //Debug.Log(list.ToString());
+                Debug.Log("リストの中身:"+list.Count);
         }
+        //}
 
         // スプライト画像追加
         event1.AddComponent<Image> ().sprite = Resources.Load<Sprite>(num.ToString());
