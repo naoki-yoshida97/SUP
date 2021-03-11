@@ -8,8 +8,8 @@ using UnityEngine.UI;
 
 public class Lobby_Button_script : MonoBehaviour {
     public void OnClickRoom1Button () {
-        PhotonNetwork.JoinRoom ("Room1");
-
+        PhotonNetwork.CreateRoom("Room1", new RoomOptions() { MaxPlayers = 5 }, TypedLobby.Default);
+        Debug.Log("Room1作成&入室");
         SceneManager.LoadScene ("turn_manager");
         Application.LoadLevelAdditive ("conin&calcutor");
         Application.LoadLevelAdditive ("CorpCreate");

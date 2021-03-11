@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/yoshiScenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 0
-    path: Assets/Scenes/PhotonSample.unity
+    path: Assets/Scenes/shutoScenes/PhotonSample.unity
     guid: 6b78d985cb00bfe42864a75d7c33254a
   - enabled: 0
     path: 
