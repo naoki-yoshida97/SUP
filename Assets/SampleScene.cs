@@ -1,6 +1,4 @@
-﻿using Photon.Pun;
-using Photon.Realtime;
-using UnityEngine;
+﻿using UnityEngine;
 
 using System.Collections;
 using System.Collections.Generic;
@@ -8,14 +6,14 @@ using UnityEngine.UI;
 
 
 // MonoBehaviourではなくMonoBehaviourPunCallbacksを継承して、Photonのコールバックを受け取れるようにする
-public class SampleScene : MonoBehaviourPunCallbacks{
+public class SampleScene : Photon.PunBehaviour{
 
     //InputFieldを格納するための変数
-    ///InputField inputField;
+    //InputField inputField;
 
     private void Start() {
         // PhotonServerSettingsに設定した内容を使ってマスターサーバーへ接続する
-        PhotonNetwork.ConnectUsingSettings();
+        PhotonNetwork.ConnectUsingSettings("v1.0");
         //InputFieldコンポーネントを取得
         ///inputField = GameObject.Find("InputField").GetComponent<InputField>();
     }
@@ -32,7 +30,7 @@ public class SampleScene : MonoBehaviourPunCallbacks{
     // マッチングが成功した時に呼ばれるコールバック
     public override void OnJoinedRoom() {
         // マッチング後、ランダムな位置に自分自身のネットワークオブジェクトを生成する
-        var v = new Vector3(Random.Range(-3f, 3f), Random.Range(-3f, 3f));
-        PhotonNetwork.Instantiate("GamePlayer", v, Quaternion.identity);
+        //var v = new Vector3(Random.Range(-3f, 3f), Random.Range(-3f, 3f));
+        //PhotonNetwork.Instantiate("GamePlayer", v, Quaternion.identity);
     }
 }
