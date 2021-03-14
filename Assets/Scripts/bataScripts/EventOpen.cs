@@ -64,8 +64,9 @@ public class EventOpen : MonoBehaviour
         // アスペクト比を元画像と同じサイズにする
         event1.GetComponent<Image> ().preserveAspect = true;
         //Debug.Log("表示された");
-
+        if(list.Count >= 1){
         GameObject havebutton = GameObject.Find ("ButtonHaveCard");
         GameObject.Find("ButtonHaveCard").GetComponent<Button>().interactable = true;
+        }
     }
 }
