@@ -33,23 +33,39 @@ public class ClickEvent : MonoBehaviour{
     public void Onbody(){
         this.FixDialog.Invoke(DialogResult.Retry);
     }
+    private Text text = null;
     private string eventname;
     public void OnClick(){
-        eventname = "EventView"+text.text;
-        //Debug.Log("eventname:"+eventname);
-        GameObject eventview = GameObject.Find(eventname);
-        Destroy (eventview);
-        int x = int.Parse(text.text);
-        list.RemoveAt(x);
-        Debug.Log("カード効果発動");
-        GameObject obj = GameObject.Find(var);
-        Destroy (obj);
-        // イベント通知先があれば通知してダイアログを破棄してしまう
-        this.FixDialog?.Invoke(DialogResult.Cancel);
-        Destroy(this.gameObject);
+        if(text != null ){
+            eventname = "EventView"+text.text;
+            if(true){
+                eventname = "EventView"+text.text;
+                //Debug.Log("eventname:"+eventname);
+                GameObject eventview = GameObject.Find(eventname);
+                Destroy (eventview);
+                int x = int.Parse(text.text);
+                list.RemoveAt(x);
+                Debug.Log("カード効果発動");
+                if(list.Count == 0){
+                    Debug.Log("リストの中身:"+list.Count);
+                    GameObject havebutton = GameObject.Find ("ButtonHaveCard");
+                    GameObject.Find("ButtonHaveCard").GetComponent<Button>().interactable = false;
+                }
+                GameObject obj = GameObject.Find(var);
+                Destroy (obj);
+                // イベント通知先があれば通知してダイアログを破棄してしまう
+                this.FixDialog?.Invoke(DialogResult.Cancel);
+                Destroy(this.gameObject);
+            }
+            else{
+                Onbody();
+            }
+        }else{
+            Onbody();
+        }    
     }
 
-    private Text text;
+    //private Text text;
     public void SelectEvent0(){
         this.text = GameObject.Find("TextE0").GetComponent<Text>();
         Debug.Log("text:"+text.text);
