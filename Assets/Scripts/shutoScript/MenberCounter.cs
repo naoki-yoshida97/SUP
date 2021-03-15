@@ -4,25 +4,23 @@ using UnityEngine;
 
 public class MenberCounter : MonoBehaviour
 {
+    int i;
+    int v;
     public void Awake(){
         
     }    
     // Start is called before the first frame update
     void Start()
     {
-
+        PhotonNetwork.ConnectUsingSettings("1");
     }
 
     // Update is called once per frame
     void Update()
     {
-        RoomInfo []roomInfo = PhotonNetwork.GetRoomList();
-        if(roomInfo == null || roomInfo.Length == 0) return;
-
-        for(int i=0; i<roomInfo.Length; i++){
-            if(roomInfo[i].name=="RoomName"){
-                Debug.Log((i).ToString() + ":" + roomInfo[i].name +"-"+roomInfo[i].PlayerCount);
-            }
-        }
+       i = PhotonNetwork.countOfPlayers;
+       v = PhotonNetwork.countOfPlayersInRooms;
+       Debug.Log("接続している人数 :"+i);
+       Debug.Log("ルームに入っている人数 :"+v);
     }
 }
