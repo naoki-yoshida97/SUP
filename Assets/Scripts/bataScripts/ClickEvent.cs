@@ -19,6 +19,22 @@ public class ClickEvent : MonoBehaviour{
     // ダイアログが操作されたときに発生するイベント
     public Action<DialogResult> FixDialog { get; set; }
 
+    void Update(){
+        if(list.Count >= 1){
+            GameObject.Find("SelectEvent0").GetComponent<Button>().interactable = true;
+            if(list.Count >= 2){
+                GameObject.Find("SelectEvent1").GetComponent<Button>().interactable = true;
+                if(list.Count >= 3){
+                    GameObject.Find("SelectEvent2").GetComponent<Button>().interactable = true;
+                    if(list.Count >= 4){
+                        GameObject.Find("SelectEvent3").GetComponent<Button>().interactable = true;
+                    }
+                }
+
+            }   
+        }
+
+    }
     
     // OKボタンが押されたとき
     public void OnCancel(){
@@ -39,10 +55,10 @@ public class ClickEvent : MonoBehaviour{
         if(text != null ){
             eventname = "EventView"+text.text;
             if(true){
-                eventname = "EventView"+text.text;
                 //Debug.Log("eventname:"+eventname);
                 GameObject eventview = GameObject.Find(eventname);
                 Destroy (eventview);
+                
                 int x = int.Parse(text.text);
                 list.RemoveAt(x);
                 Debug.Log("カード効果発動");
