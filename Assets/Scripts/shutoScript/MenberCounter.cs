@@ -6,6 +6,8 @@ public class MenberCounter : MonoBehaviour
 {
     int i;
     int v;
+    int r;
+    int u;
     public void Awake(){
         
     }    
@@ -18,8 +20,12 @@ public class MenberCounter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       r = PhotonNetwork.countOfRooms;
+       u = PhotonNetwork.countOfPlayersOnMaster;
        i = PhotonNetwork.countOfPlayers;
        v = PhotonNetwork.countOfPlayersInRooms;
+       Debug.Log("稼働しているルーム数 :"+r);
+       Debug.Log("ルームに参加していないプレイヤー数 :"+u);
        Debug.Log("接続している人数 :"+i);
        Debug.Log("ルームに入っている人数 :"+v);
     }

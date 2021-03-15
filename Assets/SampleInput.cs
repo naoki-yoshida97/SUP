@@ -174,10 +174,11 @@ using UnityEngine.SceneManagement;
 		public override void OnPhotonRandomJoinFailed(object[] codeAndMsg)
 		{
 			LogFeedback("<Color=Red>OnPhotonRandomJoinFailed</Color>: Next -> Create a new Room");
-			Debug.Log("DemoAnimator/Launcher:OnPhotonRandomJoinFailed() was called by PUN. No random room available, so we create one.\nCalling: PhotonNetwork.CreateRoom(null, new RoomOptions() {maxPlayers = 4}, null);");
+			Debug.Log("DemoAnimator/Launcher:OnPhotonRandomJoinFailed() was called by PUN. No random room available, so we create one.\nCalling: PhotonNetwork.CreateRoom(RoomName, new RoomOptions() {isVisible = true,maxPlayers = this.maxPlayersPerRoom}, null);");
 
 			// #Critical: we failed to join a random room, maybe none exists or they are all full. No worries, we create a new room.
 			PhotonNetwork.CreateRoom("RoomName", new RoomOptions() { isVisible = true, MaxPlayers = this.maxPlayersPerRoom}, null);
+			
 		}
 
 
@@ -208,7 +209,7 @@ using UnityEngine.SceneManagement;
 			// #Critical: We only load if we are the first player, else we rely on  PhotonNetwork.automaticallySyncScene to sync our instance scene.
 			if (PhotonNetwork.room.PlayerCount <= 5)
 			{
-				Debug.Log("We load the 'Room for 1' ");
+				Debug.Log("We load the 'GameStart' ");
 
 				// #Critical
 				// Load the Room Level. 
