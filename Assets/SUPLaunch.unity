@@ -329,7 +329,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 729081674}
-        m_MethodName: onConnect
+        m_MethodName: Connect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -759,7 +759,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 729081673}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7faf4079780de41a6a86688b56d19b44, type: 3}
+  m_Script: {fileID: 11500000, guid: 1862179a8f82b4bb29b313c0a7f802eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   controlPanel: {fileID: 32672271}
@@ -1019,6 +1019,7 @@ GameObject:
   - component: {fileID: 1696604673}
   - component: {fileID: 1696604672}
   - component: {fileID: 1696604675}
+  - component: {fileID: 1696604676}
   m_Layer: 5
   m_Name: InputField
   m_TagString: Untagged
@@ -1165,8 +1166,20 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1696604670}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a16238a8d0ca4bf5a5b58736435f442, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1696604676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696604670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c07c5c4fea5643ba9bbc78b5b79fae9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
