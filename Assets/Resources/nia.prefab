@@ -98,9 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2511142d9acd1b640a6548418d2fe5ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerUiPrefab: {fileID: 0}
-  moveTime: 0
-  roll_of_Dice: 0
+  PlayerUiPrefab: {fileID: 6875196861814039512, guid: 366270609a5ff4f37b4abfd72c2d48db,
+    type: 3}
+  moveTime: 5
+  roll_of_Dice: 5
   nowPos_num: 0
   Movedpos_num: 0
   terget_num: 0
