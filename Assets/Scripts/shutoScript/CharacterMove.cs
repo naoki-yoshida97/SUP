@@ -3,9 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class CharacterMove : MonoBehaviour
+public class CharacterMove : Photon.PunBehaviour
 {
+
+    [Tooltip("The Player's UI GameObject Prefab")]
+    public GameObject PlayerUiPrefab;
+    [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
+    public static GameObject LocalPlayerInstance;
     //---variable----
 
     private int nowBranch;
@@ -503,9 +509,30 @@ public class CharacterMove : MonoBehaviour
 
     }
 
+    public void Awake()
+    {
+        if (photonView.isMine)
+        {
+            LocalPlayerInstance = gameObject;
+        }
+        DontDestroyOnLoad(gameObject);
+    }
+
+
     // mypositionに設定したstart positionを入れる
     void Start()
     {
+        // Create the UI
+        if (this.PlayerUiPrefab != null)
+        {
+            GameObject _uiGo = Instantiate(this.PlayerUiPrefab) as GameObject;
+            _uiGo.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
+        }
+        else
+        {
+            Debug.LogWarning("<Color=Red><b>Missing</b></Color> PlayerUiPrefab reference on player Prefab.", this);
+        }
+
         SettlementCount =0;
         moveTime = 0;
         Transform myPosition = this.transform;
@@ -628,7 +655,19 @@ public class CharacterMove : MonoBehaviour
         vout[45] = new Vector3(-635f, -212f);
         vout[46] = new Vector3(-635f, -154f);
         vout[47] = new Vector3(-635f, -96f);
+
+        #if UNITY_5_4_OR_NEWER
+            // Unity 5.4 has a new scene management. register a method to call CalledOnLevelWasLoaded.
+			UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
+        #endif
     }
+
+    public void OnDisable()
+	{
+		#if UNITY_5_4_OR_NEWER
+		UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
+		#endif
+	}
 
     // Update is called once per frame
     void Update()
@@ -653,5 +692,24 @@ public class CharacterMove : MonoBehaviour
         }
         SettleText.text = string.Format("いま{0}かいめのけっさん",SettlementCount);
     }
+
+    void CalledOnLevelWasLoaded(int level)
+    {
+        // check if we are outside the Arena and if it's the case, spawn around the center of the arena in a safe zone
+        if (!Physics.Raycast(transform.position, -Vector3.up, 5f))
+        {
+            transform.position = new Vector3(-600f, 245f,-6f);
+        }
+
+            GameObject _uiGo = Instantiate(this.PlayerUiPrefab) as GameObject;
+            _uiGo.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
+    }
+
+    #if UNITY_5_4_OR_NEWER
+	void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode loadingMode)
+	{		
+		this.CalledOnLevelWasLoaded(scene.buildIndex);
+	}
+	#endif
     
 }
