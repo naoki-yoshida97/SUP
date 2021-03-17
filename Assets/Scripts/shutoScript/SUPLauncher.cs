@@ -166,9 +166,9 @@ public class SUPLauncher : Photon.PunBehaviour
 			Debug.Log("DemoAnimator/Launcher: OnJoinedRoom() called by PUN. Now this client is in a room.\nFrom here on, your game would be running. For reference, all callbacks are listed in enum: PhotonNetworkingMessage");
 		
 			// #Critical: We only load if we are the first player, else we rely on  PhotonNetwork.automaticallySyncScene to sync our instance scene.
-			if (PhotonNetwork.room.PlayerCount == 1)
+			if (PhotonNetwork.room.PlayerCount <= 5)
 			{
-				Debug.Log("We load the 'Room for 1' ");
+				Debug.Log("We load the 'Room for 5' ");
 
 				// #Critical
 				// Load the Room Level. 
