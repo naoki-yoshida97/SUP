@@ -1,5 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -41,8 +42,8 @@ public class GameManager : Photon.PunBehaviour
 				Debug.LogError("<Color=Red><b>Missing</b></Color> playerPrefab Reference. Please set it up in GameObject 'Game Manager'",this);
 			} else {
 				
-                /*
-				if (PlayerManager.LocalPlayerInstance==null)
+                
+				if (CharacterMove.LocalPlayerInstance==null)
 				{
 					Debug.Log("We are Instantiating LocalPlayer from "+SceneManagerHelper.ActiveSceneName);
 
@@ -52,7 +53,7 @@ public class GameManager : Photon.PunBehaviour
 
 					Debug.Log("Ignoring scene load for "+ SceneManagerHelper.ActiveSceneName);
 				}
-                */
+                
 
 				
 			}
@@ -131,7 +132,7 @@ public class GameManager : Photon.PunBehaviour
 
 			Debug.Log( "PhotonNetwork : Loading Level : " + PhotonNetwork.room.PlayerCount ); 
 
-			PhotonNetwork.LoadLevel("PunBasics-Room for "+PhotonNetwork.room.PlayerCount);
+			PhotonNetwork.LoadLevel("CityBoard");
 		}
 
 		#endregion    

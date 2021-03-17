@@ -312,7 +312,9 @@ public class CharacterMove : Photon.PunBehaviour
 
     public void rollOfDice()
     {
+        Debug.Log("ダイスをふっています");
             Transform myPosition = this.transform;
+        Debug.Log("今の位置は"+myPosition);    
             roll_of_Dice = UnityEngine.Random.Range(1, 6);
             moveTime = roll_of_Dice;     //サイコロの目が動く数とする
 
