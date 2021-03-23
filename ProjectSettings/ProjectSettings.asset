@@ -645,10 +645,10 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  cloudProjectId: c9796999-c5fc-4fb0-a1c1-eba3c43d7948
+  cloudProjectId: 
   framebufferDepthMemorylessMode: 0
-  projectName: hogehoge11
-  organizationId: tib-ichi
+  projectName: 
+  organizationId: 
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

@@ -21,13 +21,14 @@ public class ChoseChara : MonoBehaviour
     public void niaChose()
     {
         GameObject Showhide = GameObject.Find("ChoseChara");
-        
+        /*
         GameObject sim = GameObject.Find("sim");
         GameObject mugi = GameObject.Find("mugi");
         GameObject whiteMugi = GameObject.Find("whiteMugi");
         Destroy(sim);
         Destroy(mugi);
         Destroy(whiteMugi);
+        */
         Showhide.transform.localScale = new Vector3(0,0,0);  
     }
     public void mugiChose()
