@@ -262,7 +262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PositionModel:
-    SynchronizeEnabled: 0
+    SynchronizeEnabled: 1
     TeleportEnabled: 1
     TeleportIfDistanceGreaterThan: 3
     InterpolateOption: 2
@@ -477,12 +477,12 @@ PrefabInstance:
     - target: {fileID: 1959365781561464622, guid: c1ec0e7aeebf54df4ac0bfa7418bb481,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 194.24
+      value: 440
       objectReference: {fileID: 0}
     - target: {fileID: 1959365781561464622, guid: c1ec0e7aeebf54df4ac0bfa7418bb481,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 167
+      value: 260
       objectReference: {fileID: 0}
     - target: {fileID: 1959365781561464622, guid: c1ec0e7aeebf54df4ac0bfa7418bb481,
         type: 3}
@@ -523,6 +523,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1959365781561464622, guid: c1ec0e7aeebf54df4ac0bfa7418bb481,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1959365781561464622, guid: c1ec0e7aeebf54df4ac0bfa7418bb481,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 1959365781561464623, guid: c1ec0e7aeebf54df4ac0bfa7418bb481,
         type: 3}
@@ -612,12 +622,12 @@ PrefabInstance:
     - target: {fileID: 2547712707493572713, guid: e8a5cf0582dd94445a445229aec85741,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 129
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 2547712707493572713, guid: e8a5cf0582dd94445a445229aec85741,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 215
+      value: 285
       objectReference: {fileID: 0}
     - target: {fileID: 2547712707493572713, guid: e8a5cf0582dd94445a445229aec85741,
         type: 3}
@@ -658,6 +668,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2547712707493572713, guid: e8a5cf0582dd94445a445229aec85741,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2547712707493572713, guid: e8a5cf0582dd94445a445229aec85741,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 2547712707493572718, guid: e8a5cf0582dd94445a445229aec85741,
         type: 3}
