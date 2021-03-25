@@ -81,12 +81,12 @@ public class NameUI : MonoBehaviour
 			_targetRenderer = _target.GetComponent<Renderer>();
 
 
-			//CharacterController _characterController = _target.GetComponent<CharacterController> ();
+			CharacterController _characterController = _target.GetComponent<CharacterController> ();
 
 			// Get data from the Player that won't change during the lifetime of this Component
-			//if (_characterController != null){
-			//	_characterControllerHeight = _characterController.height;
-			//}
+			if (_characterController != null){
+				_characterControllerHeight = _characterController.height;
+			}
 
 			if (PlayerNameText != null) {
 				PlayerNameText.text = _target.photonView.owner.NickName;
