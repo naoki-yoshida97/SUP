@@ -693,6 +693,23 @@ public class CharacterMove : Photon.PunBehaviour
             //Debug.Log($"今nowBranch3");
         }
         SettleText.text = string.Format("いま{0}かいめのけっさん",SettlementCount);
+
+
+        ///キーボードでサイコロを回す ＆ コースの変更をする。
+        if(Input.GetKeyDown(KeyCode.D))
+        {
+            GameObject Settlement = GameObject.Find("SettlementPoint");
+            //決済ダイアログ起動時はサイコロをふらない
+            if(Settlement.transform.localScale == new Vector3(0,0,0))
+            {
+                rollOfDice();
+            }  
+        }
+
+        if(Input.GetKeyDown(KeyCode.C))
+        {
+            ShowOnly();
+        }
     }
 
     void CalledOnLevelWasLoaded(int level)
