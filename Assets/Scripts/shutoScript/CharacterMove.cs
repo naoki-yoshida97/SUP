@@ -524,17 +524,6 @@ public class CharacterMove : Photon.PunBehaviour
     // mypositionに設定したstart positionを入れる
     void Start()
     {
-        // Create the UI
-        if (this.PlayerUiPrefab != null)
-        {
-            GameObject _uiGo = Instantiate(this.PlayerUiPrefab) as GameObject;
-            _uiGo.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
-        }
-        else
-        {
-            Debug.LogWarning("<Color=Red><b>Missing</b></Color> PlayerUiPrefab reference on player Prefab.", this);
-        }
-
         SettlementCount =0;
         moveTime = 0;
         Transform myPosition = this.transform;

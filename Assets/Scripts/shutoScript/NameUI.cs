@@ -17,7 +17,7 @@ public class NameUI : MonoBehaviour
 
     #region Private Properties
 
-		CharacterMove _target;
+		SUPlayerManager _target;
 
 		float _characterControllerHeight = 0f;
 
@@ -68,7 +68,7 @@ public class NameUI : MonoBehaviour
 
 		}
 
-    public void SetTarget(CharacterMove target){
+    public void SetTarget(SUPlayerManager target){
 
 			if (target == null) {
 				Debug.LogError("<Color=Red><b>Missing</b></Color> PlayMakerManager target for PlayerUI.SetTarget.",this);

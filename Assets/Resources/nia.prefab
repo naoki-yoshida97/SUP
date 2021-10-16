@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8348443455406985115}
   - component: {fileID: 7246622323999718603}
   - component: {fileID: 8856411001389122969}
+  - component: {fileID: 4171410861053890376}
   m_Layer: 0
   m_Name: nia
   m_TagString: Untagged
@@ -145,7 +146,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 7246622323999718603}
   - {fileID: 8348443455406985117}
-  ObservedComponentsFoldoutOpen: 1
+  ObservedComponentsFoldoutOpen: 0
   viewIdField: 0
   instantiationId: -1
   currentMasterID: -1
@@ -246,6 +247,20 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4171410861053890376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8348443455406985056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93d9f668263124848aa2c6980dc07f71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerUiPrefab: {fileID: 6875196861814039512, guid: 366270609a5ff4f37b4abfd72c2d48db,
+    type: 3}
 --- !u!1001 &55925923
 PrefabInstance:
   m_ObjectHideFlags: 0
