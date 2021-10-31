@@ -14,6 +14,10 @@ public class GameManager : Photon.PunBehaviour
 
 		[Tooltip("The prefab to use for representing the player")]
 		public GameObject playerPrefab;
+		public GameObject playerPrefabsim;
+		public GameObject playerPrefabmugi;
+		public GameObject playerPrefabwhitemugi;
+
 
 	#endregion
 
@@ -37,7 +41,7 @@ public class GameManager : Photon.PunBehaviour
 				return;
 			}
 
-			if (playerPrefab == null) { // #Tip Never assume public properties of Components are filled up properly, always check and inform the developer of it.
+			if (playerPrefab == null && playerPrefabsim == null && playerPrefabmugi == null && playerPrefabwhitemugi == null) { // #Tip Never assume public properties of Components are filled up properly, always check and inform the developer of it.
 				
 				Debug.LogError("<Color=Red><b>Missing</b></Color> playerPrefab Reference. Please set it up in GameObject 'Game Manager'",this);
 			} else {
@@ -49,6 +53,9 @@ public class GameManager : Photon.PunBehaviour
 
 					// we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
 					PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(-600f, 245f,-6f), Quaternion.identity, 0);
+					PhotonNetwork.Instantiate(this.playerPrefabsim.name, new Vector3(-600f, 245f,-6f), Quaternion.identity, 0);
+					PhotonNetwork.Instantiate(this.playerPrefabmugi.name, new Vector3(-600f, 245f,-6f), Quaternion.identity, 0);
+					PhotonNetwork.Instantiate(this.playerPrefabwhitemugi.name, new Vector3(-600f, 245f,-6f), Quaternion.identity, 0);
 				}else{
 
 					Debug.Log("Ignoring scene load for "+ SceneManagerHelper.ActiveSceneName);
