@@ -24366,6 +24366,24 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5542069888656794390, guid: caf4b5d3a39a149178293e44565f3e97,
+        type: 3}
+      propertyPath: playerPrefabsim
+      value: 
+      objectReference: {fileID: 6811849948678348592, guid: 6892fe495018d41e2aba8c4a58f69dbe,
+        type: 3}
+    - target: {fileID: 5542069888656794390, guid: caf4b5d3a39a149178293e44565f3e97,
+        type: 3}
+      propertyPath: playerPrefabmugi
+      value: 
+      objectReference: {fileID: 141751748666489200, guid: 0dcafd044852a4fdb8f465cf20197423,
+        type: 3}
+    - target: {fileID: 5542069888656794390, guid: caf4b5d3a39a149178293e44565f3e97,
+        type: 3}
+      propertyPath: playerPrefabwhitemugi
+      value: 
+      objectReference: {fileID: 8682662599586390395, guid: ebd532bd034dd4a239ba35a5425aaeae,
+        type: 3}
     - target: {fileID: 5542069888656794392, guid: caf4b5d3a39a149178293e44565f3e97,
         type: 3}
       propertyPath: m_Name
