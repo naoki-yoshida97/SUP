@@ -35,7 +35,7 @@ public class SUPlayerManager : Photon.PunBehaviour
             if (this.PlayerUiPrefab != null)
             {
                 GameObject _uiGo = Instantiate(this.PlayerUiPrefab) as GameObject;
-                _uiGo.SendMessage("SetTarget", this, SendMessageOptions.DontRequireReceiver);
+                _uiGo.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
             }
             else
             {
@@ -59,9 +59,9 @@ public class SUPlayerManager : Photon.PunBehaviour
     void Update()
     {
         if (photonView.isMine)
-            {
-                this.ProcessInputs();
-            }
+        {
+            this.ProcessInputs();
+        }
     }
 
     #if !UNITY_5_4_OR_NEWER

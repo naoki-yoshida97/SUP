@@ -663,7 +663,6 @@ public class CharacterMove : Photon.PunBehaviour
     // Update is called once per frame
     void Update()
     {     
-        
         Transform PlayerTranse = this.transform;
         Vector3 ZVecterJudge = PlayerTranse.position;
         //z座標を基準にどのコースにいるのか把握

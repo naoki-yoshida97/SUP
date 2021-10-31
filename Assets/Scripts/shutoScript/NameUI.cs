@@ -34,11 +34,6 @@ public class NameUI : MonoBehaviour
 
 		this.GetComponent<Transform>().SetParent (GameObject.Find("Canvas").GetComponent<Transform>());
 	}
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -62,8 +57,9 @@ public class NameUI : MonoBehaviour
 			{
 				_targetPosition = _targetTransform.position;
 				_targetPosition.y += _characterControllerHeight;
+				Debug.Log(_targetPosition);
 				
-				this.transform.position = Camera.main.WorldToScreenPoint (_targetPosition) + ScreenOffset;
+				this.transform.position = _targetPosition + ScreenOffset;
 			}
 
 		}
