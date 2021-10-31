@@ -59,8 +59,8 @@ public class ChoseChara : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject Showhide = GameObject.Find("ChoseChara");
-        Showhide.transform.localScale = new Vector3(1,1,1);
+        //GameObject Showhide = GameObject.Find("ChoseChara");
+        //Showhide.transform.localScale = new Vector3(1,1,1);
     }
 
     // Update is called once per frame
