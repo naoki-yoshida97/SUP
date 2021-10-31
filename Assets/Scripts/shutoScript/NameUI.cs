@@ -39,6 +39,7 @@ public class NameUI : MonoBehaviour
     void Update()
     {
         if (_target == null) {
+				Debug.LogError("削除されたんだが");
 				Destroy(this.gameObject);
 				return;
 			}
@@ -48,7 +49,8 @@ public class NameUI : MonoBehaviour
 
 			// Do not show the UI if we are not visible to the camera, thus avoid potential bugs with seeing the UI, but not the player itself.
 			if (_targetRenderer!=null) {
-				this.gameObject.SetActive(_targetRenderer.isVisible);
+				//Debug.LogError("削除されたような気がするLateUpdate");
+				//this.gameObject.SetActive(_targetRenderer.isVisible);
 			}
 			
 			// #Critical
