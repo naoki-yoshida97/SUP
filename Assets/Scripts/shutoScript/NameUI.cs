@@ -53,7 +53,7 @@ public class NameUI : MonoBehaviour
 
 			// Do not show the UI if we are not visible to the camera, thus avoid potential bugs with seeing the UI, but not the player itself.
 			if (_targetRenderer!=null) {
-				this.gameObject.SetActive(_targetRenderer.isVisible);
+				//this.gameObject.SetActive(_targetRenderer.isVisible);
 			}
 			
 			// #Critical
@@ -63,7 +63,7 @@ public class NameUI : MonoBehaviour
 				_targetPosition = _targetTransform.position;
 				_targetPosition.y += _characterControllerHeight;
 				
-				this.transform.position = Camera.main.WorldToScreenPoint (_targetPosition) + ScreenOffset;
+				this.transform.position = _targetPosition + ScreenOffset;
 			}
 
 		}
