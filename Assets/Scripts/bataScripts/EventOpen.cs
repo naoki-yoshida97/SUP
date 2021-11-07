@@ -39,7 +39,7 @@ public class EventOpen : MonoBehaviour
         event1.transform.parent = GameObject.Find ("Canvas_1").transform;
 
         // 画像のアンカーポジションを追加
-        event1.AddComponent<RectTransform> ().anchoredPosition = new Vector3 (0, 0, 0);
+        event1.AddComponent<RectTransform> ().anchoredPosition = new Vector3 (-50, 0, 0);
 
         // 縮尺を変更
         event1.GetComponent<RectTransform> ().localScale = new Vector3 (5, 5, 5);
@@ -63,6 +63,8 @@ public class EventOpen : MonoBehaviour
 
         // アスペクト比を元画像と同じサイズにする
         event1.GetComponent<Image> ().preserveAspect = true;
+        //画像のサイズを元の何倍かに調整
+        event1.transform.localScale = Vector3.one * 8;
         //Debug.Log("表示された");
         if(list.Count >= 1){
         GameObject havebutton = GameObject.Find ("ButtonHaveCard");

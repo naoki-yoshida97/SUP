@@ -51,6 +51,8 @@ public class OpenEvent : MonoBehaviour{
 
                 // アスペクト比を元画像と同じサイズにする
                 event1.GetComponent<Image> ().preserveAspect = true;
+                //画像のサイズを元の何倍かに調整
+                 event1.transform.localScale = Vector3.one * 3;
                 v += 250;
                 //Debug.Log(list[i]);
                 //Debug.Log("表示する"+i);
