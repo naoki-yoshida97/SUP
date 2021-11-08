@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DialogCtl : MonoBehaviour
 {
+    [SerializeField] private GameObject terget = default;
     //メニューダイアログの操作↓
     public void MenuDialogShow()
     {
@@ -33,16 +34,14 @@ public class DialogCtl : MonoBehaviour
 
     //--------------------------
 
-
-    // Start is called before the first frame update
-    void Start()
+    public void tergetDialogDestroy()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        GameObject obj = GameObject.Find ("EventBox");
+        GameObject obj2 = GameObject.Find ("EventBox2");
+        GameObject obj3 = GameObject.Find ("EventBox3");
+        Destroy (obj);
+        Destroy (obj2);
+        Destroy (obj3);
+        Destroy(terget);
     }
 }

@@ -32,7 +32,7 @@ public class BoardChange : MonoBehaviour
         {
             if(cam.orthographicSize >= 150f)
             {
-                cam.orthographicSize = cam.orthographicSize - 30f;
+                cam.orthographicSize = cam.orthographicSize - 90f;
             }
             else
             {
@@ -43,7 +43,7 @@ public class BoardChange : MonoBehaviour
         {
             if(cam.orthographicSize <= 360f)
             {
-                cam.orthographicSize = cam.orthographicSize + 30f;
+                cam.orthographicSize = cam.orthographicSize + 90f;
             }
             else
             {
