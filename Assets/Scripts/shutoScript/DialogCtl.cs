@@ -36,12 +36,11 @@ public class DialogCtl : MonoBehaviour
 
     public void tergetDialogDestroy()
     {
-        GameObject obj = GameObject.Find ("EventBox");
-        GameObject obj2 = GameObject.Find ("EventBox2");
-        GameObject obj3 = GameObject.Find ("EventBox3");
-        Destroy (obj);
-        Destroy (obj2);
-        Destroy (obj3);
+        int[] src = new int[7]{ 0,1, 2, 3, 4, 5, 6};
+        foreach(int inte in src) {
+            GameObject obj = GameObject.Find("EventBox"+$"{inte}");
+            Destroy(obj);
+        }
         Destroy(terget);
     }
 }
